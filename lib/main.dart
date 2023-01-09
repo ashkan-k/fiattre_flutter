@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   // Disable orientation
@@ -35,7 +35,7 @@ class FiatreApp extends StatelessWidget {
           darkTheme: MyThemes.darkTheme,
           theme: MyThemes.lightTheme,
           localizationsDelegates: const [
-            AppLocalizations.delegate, // Add this line
+            // AppLocalizations.delegate, // Add this line
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,

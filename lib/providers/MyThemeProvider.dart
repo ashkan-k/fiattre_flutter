@@ -25,7 +25,7 @@ class MyThemes {
 
     ),
     unselectedWidgetColor: Colors.white70,
-    primaryColorLight: Colors.deepOrange,
+    primaryColorLight: Colors.deepOrange[900],
     scaffoldBackgroundColor: Colors.grey.shade900,
     primaryColor: Colors.deepOrange,
     secondaryHeaderColor: Colors.white,
