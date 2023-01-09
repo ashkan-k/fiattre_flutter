@@ -25,11 +25,16 @@ class BasePage extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             child: ElevatedButton(
               onPressed: () {},
-              child: Text('فیاتر', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
+              child: Text('فیاتر',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    color: Theme.of(context).iconTheme.color
+                  )
+              ),
               style: ButtonStyle(
                 // shape: ,
-                  backgroundColor:
-                      MaterialStateProperty.all(Theme.of(context).buttonColor)),
+                backgroundColor: MaterialStateProperty.all(Theme.of(context).buttonColor)),
             ),
           )
         ],

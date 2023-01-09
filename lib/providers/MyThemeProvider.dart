@@ -23,12 +23,12 @@ class MyThemes {
       titleSmall: GoogleFonts.ubuntu(color: Colors.black, fontSize: 12),
     ),
     unselectedWidgetColor: Colors.white70,
-    primaryColorLight: Colors.deepOrange[900],
+    primaryColorLight: Color(0xFFfd0002),
     scaffoldBackgroundColor: Colors.grey.shade900,
     primaryColor: Colors.grey.shade900,
     secondaryHeaderColor: Colors.white,
-    iconTheme: const IconThemeData(color: Colors.deepOrange),
-    buttonColor: Colors.deepOrange[900],
+    iconTheme: const IconThemeData(color: Colors.white),
+    buttonColor: Color(0xFFfd0002),
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey.shade900,
       )
@@ -53,8 +53,8 @@ class MyThemes {
     scaffoldBackgroundColor: Colors.grey,
     primaryColor: Colors.white,
     secondaryHeaderColor: Colors.black,
-    iconTheme: const IconThemeData(color: Colors.white, opacity: 0.8),
-    buttonColor: Colors.deepOrange[900],
+    iconTheme: const IconThemeData(color: Colors.black, opacity: 0.8),
+    buttonColor: Color(0xFFfd0002),
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey,
       )
