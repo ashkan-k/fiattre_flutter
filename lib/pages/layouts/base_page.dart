@@ -1,4 +1,6 @@
+import 'package:fiatre_app/pages/components/ThemeSwitcher.dart';
 import 'package:fiatre_app/providers/MyThemeProvider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BasePage extends StatelessWidget {
@@ -6,22 +8,20 @@ class BasePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     MyThemeProvider themeProvider = MyThemeProvider();
+    Icon theme_switcher_icon = Icon(themeProvider.isDarkMode
+        ? CupertinoIcons.sun_max_fill
+        : CupertinoIcons.moon_fill);
 
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(onPressed: () {
-            themeProvider.SetTheme();
-          }, icon: themeProvider.isDarkMode ? Icon(Icons.wb_sunny) : Icon(Icons.brightness_2))
-        ],
-        backgroundColor: Colors.deepOrangeAccent,
+        title: Text('فیاتر'),
+        centerTitle: true,
+        actions: [ThemeSwitcher()],
+        backgroundColor:Theme.of(context).appBarTheme.backgroundColor ,
       ),
       body: Column(
-        children: [
-          Container()
-        ],
+        children: [Container()],
       ),
     );
   }
