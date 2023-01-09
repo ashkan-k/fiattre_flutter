@@ -32,9 +32,9 @@ class BasePage extends StatelessWidget {
                     color: Theme.of(context).iconTheme.color
                   )
               ),
-              style: ButtonStyle(
-                // shape: ,
-                backgroundColor: MaterialStateProperty.all(Theme.of(context).buttonColor)),
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                backgroundColor: Theme.of(context).buttonColor),
             ),
           )
         ],

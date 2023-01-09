@@ -31,7 +31,8 @@ class MyThemes {
     buttonColor: Color(0xFFfd0002),
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey.shade900,
-      )
+      ),
+    accentColor: Color(0xFF2f2f31)
     // textSelectionTheme: const TextSelectionThemeData(
     //   cursorColor: Colors.red,
     //   selectionColor: Colors.green,
@@ -44,20 +45,21 @@ class MyThemes {
     textTheme: TextTheme(
       titleLarge: GoogleFonts.ubuntu(
           color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
-      bodySmall: GoogleFonts.ubuntu(color: Colors.black, fontSize: 15),
+      bodySmall: GoogleFonts.ubuntu(color: Color(0xFF1a1a1c), fontSize: 15),
       labelSmall: GoogleFonts.ubuntu(color: Colors.black38, fontSize: 13),
-      titleSmall: GoogleFonts.ubuntu(color: Colors.black, fontSize: 12),
+      titleSmall: GoogleFonts.ubuntu(color: Color(0xFF1a1a1c), fontSize: 12),
     ),
-    unselectedWidgetColor: Colors.black,
+    unselectedWidgetColor: Color(0xFF1a1a1c),
     primaryColorLight: Colors.grey,
     scaffoldBackgroundColor: Colors.grey,
     primaryColor: Colors.white,
-    secondaryHeaderColor: Colors.black,
-    iconTheme: const IconThemeData(color: Colors.black, opacity: 0.8),
+    secondaryHeaderColor: Color(0xFF1a1a1c),
+    iconTheme: const IconThemeData(color: Color(0xFF1a1a1c), opacity: 0.8),
     buttonColor: Color(0xFFfd0002),
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey,
-      )
+      ),
+    accentColor: Color(0xFF2f2f31)
 
     // colorScheme: const ColorScheme.light()
   );
