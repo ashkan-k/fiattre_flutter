@@ -11,7 +11,8 @@ class ThemeSwitcher extends StatelessWidget {
     final my_theme_provider = Provider.of<MyThemeProvider>(context);
     Icon theme_switcher_icon = Icon(my_theme_provider.isDarkMode ? CupertinoIcons.sun_max_fill : CupertinoIcons.moon_fill);
 
-    return IconButton(onPressed: (){
+    return IconButton(
+        onPressed: (){
       my_theme_provider.SetTheme();
     }, icon: theme_switcher_icon);
   }

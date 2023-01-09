@@ -28,6 +28,7 @@ class MyThemes {
     primaryColor: Colors.grey.shade900,
     secondaryHeaderColor: Colors.white,
     iconTheme: const IconThemeData(color: Colors.deepOrange),
+    buttonColor: Colors.deepOrange[900],
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey.shade900,
       )
@@ -53,6 +54,7 @@ class MyThemes {
     primaryColor: Colors.white,
     secondaryHeaderColor: Colors.black,
     iconTheme: const IconThemeData(color: Colors.white, opacity: 0.8),
+    buttonColor: Colors.deepOrange[900],
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey,
       )

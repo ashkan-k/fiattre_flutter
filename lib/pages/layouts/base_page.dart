@@ -15,10 +15,25 @@ class BasePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('فیاتر'),
+        // title: Text('فیاتر'),
+        title: Center(
+          child: ThemeSwitcher(),
+        ),
         centerTitle: true,
-        actions: [ThemeSwitcher()],
-        backgroundColor:Theme.of(context).appBarTheme.backgroundColor ,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Text('فیاتر', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
+              style: ButtonStyle(
+                // shape: ,
+                  backgroundColor:
+                      MaterialStateProperty.all(Theme.of(context).buttonColor)),
+            ),
+          )
+        ],
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       ),
       body: Column(
         children: [Container()],
