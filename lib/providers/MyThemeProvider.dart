@@ -11,7 +11,7 @@ class MyThemeProvider extends ChangeNotifier{
   void SetTheme(){
     themeMode = themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
     notifyListeners();
-  }
+    }
 }
 
 class MyThemes {

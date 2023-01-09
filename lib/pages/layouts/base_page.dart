@@ -13,7 +13,7 @@ class BasePage extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(onPressed: () {
-            
+            themeProvider.SetTheme();
           }, icon: themeProvider.isDarkMode ? Icon(Icons.wb_sunny) : Icon(Icons.brightness_2))
         ],
         backgroundColor: Colors.deepOrangeAccent,
