@@ -12,43 +12,46 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: ThemeSwitcher(),
-        ),
-        centerTitle: true,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Text('خرید اشتراک',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                      color: Theme.of(context).iconTheme.color)),
-              style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  backgroundColor: Theme.of(context).buttonColor),
+        title: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text('خرید اشتراک',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                        color: Theme.of(context).iconTheme.color)),
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    backgroundColor: Theme.of(context).buttonColor),
+              ),
             ),
-          ),
 
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Text('فیاتر',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                      color: Theme.of(context).iconTheme.color)),
-              style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  backgroundColor: Theme.of(context).buttonColor),
+            Center(
+              child: ThemeSwitcher(),
             ),
-          ),
-        ],
+
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text('فیاتر',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                        color: Theme.of(context).iconTheme.color)),
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    backgroundColor: Theme.of(context).buttonColor),
+              ),
+            ),
+          ],
+        ),
+        // centerTitle: true,
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       ),
     );
