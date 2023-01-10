@@ -13,21 +13,23 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: const EdgeInsets.all(12),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text('خرید اشتراک',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                        color: Theme.of(context).iconTheme.color)),
-                style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                    backgroundColor: Theme.of(context).buttonColor),
+              child: SizedBox(
+                height: 38,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text('خرید اشتراک',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Theme.of(context).iconTheme.color)),
+                  style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      backgroundColor: Theme.of(context).buttonColor),
+                ),
               ),
             ),
 
@@ -42,7 +44,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: Text('فیاتر',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 25,
+                        fontSize: 28,
                         color: Theme.of(context).iconTheme.color)),
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
