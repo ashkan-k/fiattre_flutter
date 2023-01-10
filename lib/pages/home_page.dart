@@ -49,8 +49,8 @@ class HomePage extends StatelessWidget {
                             dotWidth: 10,
                             dotHeight: 10,
                             spacing: 3,
-                            dotColor: Color.fromARGB(255, 106, 49, 49),
-                            activeDotColor: Colors.red),
+                            dotColor: (Theme.of(context).textTheme.labelSmall?.color)!,
+                            activeDotColor: Theme.of(context).secondaryHeaderColor),
                         onDotClicked: (index) =>
                             pageController.animateToPage(index,
                                 duration: Duration(milliseconds: 10),
