@@ -1,5 +1,6 @@
-import 'package:fiatre_app/pages/layouts/base_page.dart';
-import 'package:fiatre_app/providers/MyThemeProvider.dart';
+import 'package:fiatre_app/pages/home_page.dart';
+import 'package:fiatre_app/pages/layouts/main_wrapper.dart';
+import 'package:fiatre_app/providers/my_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -47,7 +48,7 @@ class FiatreApp extends StatelessWidget {
           locale: Locale('en', ''),
           debugShowCheckedModeBanner: false,
           title: 'فیاتر',
-          home: BasePage(),
+          home: MainWrapper(),
         );
       },
     );
