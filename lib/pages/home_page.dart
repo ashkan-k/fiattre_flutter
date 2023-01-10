@@ -21,46 +21,52 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: MyAppBar(),
-      body: Column(
-        children: [
-          SizedBox(
-            height: (height / 3) * 2,
-            width: double.infinity,
-            child: Stack(
-              children: [
-                PageView(
-                  controller: pageController,
-                  children: [
-                    ShowImage(images[0]),
-                    ShowImage(images[1]),
-                    ShowImage(images[2]),
-                    ShowImage(images[3])
-                  ],
-                ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: SmoothPageIndicator(
-                      controller: pageController,
-                      count: 4,
-                      effect: ExpandingDotsEffect(
-                          dotWidth: 10,
-                          dotHeight: 10,
-                          spacing: 3,
-                          dotColor: Color.fromARGB(255, 106, 49, 49),
-                          activeDotColor: Colors.red),
-                      onDotClicked: (index) =>
-                          pageController.animateToPage(index,
-                              duration: Duration(milliseconds: 10),
-                              curve: Curves.bounceOut),
-                    ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: (height / 3) * 2,
+              width: double.infinity,
+              child: Stack(
+                children: [
+                  PageView(
+                    controller: pageController,
+                    children: [
+                      ShowImage(images[0]),
+                      ShowImage(images[1]),
+                      ShowImage(images[2]),
+                      ShowImage(images[3])
+                    ],
                   ),
-                )
-              ],
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: SmoothPageIndicator(
+                        controller: pageController,
+                        count: 4,
+                        effect: ExpandingDotsEffect(
+                            dotWidth: 10,
+                            dotHeight: 10,
+                            spacing: 3,
+                            dotColor: Color.fromARGB(255, 106, 49, 49),
+                            activeDotColor: Colors.red),
+                        onDotClicked: (index) =>
+                            pageController.animateToPage(index,
+                                duration: Duration(milliseconds: 10),
+                                curve: Curves.bounceOut),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
+            Container(
+              color: Colors.red,
+              height: 500,
+            )
+          ],
+        ),
       ),
     );
   }
