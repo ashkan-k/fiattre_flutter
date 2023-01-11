@@ -61,9 +61,32 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              color: Colors.red,
-              height: 500,
+            Padding(
+              padding: const EdgeInsets.only(top: 50, right: 30, left: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      print('go to all this category episodes');
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.arrow_back_ios, color: Theme.of(context).buttonColor),
+                        Icon(Icons.circle, size: 10, color: Theme.of(context).buttonColor),
+                        SizedBox(width: 15),
+                        Text('مشاهده همه', style: TextStyle(fontSize: 22, color: Theme.of(context).buttonColor)),
+                      ],
+                    ),
+                  ),
+
+                  Row(
+                    children: [
+                      Text('محبوب ترین ها', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Theme.of(context).iconTheme.color)),
+                    ],
+                  )
+                ],
+              ),
             )
           ],
         ),
