@@ -61,8 +61,9 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
+
             Padding(
-              padding: const EdgeInsets.only(top: 50, right: 30, left: 30),
+              padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -87,7 +88,9 @@ class HomePage extends StatelessWidget {
                   )
                 ],
               ),
-            )
+            ),
+
+
           ],
         ),
       ),
