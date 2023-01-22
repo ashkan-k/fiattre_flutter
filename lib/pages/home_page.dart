@@ -1,16 +1,26 @@
+import 'package:fiatre_app/api/services/episode_api_service.dart';
 import 'package:fiatre_app/pages/components/my_app_bar.dart';
+import 'package:fiatre_app/providers/episode_data_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     PageController pageController = PageController(initialPage: 0);
 
     var height = MediaQuery.of(context).size.height;
+
+    final episodeDataProvider = Provider.of<EpisodeDataProvider>(context);
 
     var images = [
       'images/pic0.png',
@@ -70,6 +80,8 @@ class HomePage extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       print('go to all this category episodes');
+
+                      episodeDataProvider.GetAllCategoriesWithEpisodes();
                     },
                     child: Row(
                       children: [
