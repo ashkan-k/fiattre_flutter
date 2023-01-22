@@ -1,3 +1,4 @@
+import 'package:fiatre_app/api/models/categories_model.dart';
 import 'package:fiatre_app/api/models/categories_with_episodes_model.dart';
 import 'package:fiatre_app/api/ResponseModel.dart';
 import 'package:fiatre_app/api/services/episode_api_service.dart';
@@ -7,14 +8,14 @@ class EpisodeDataProvider extends ChangeNotifier{
   EpisodeApiService episodeApiService = EpisodeApiService();
   late ResponseModel state;
   var response;
-  late CategoriesWithEpisodesModel data;
+  late CategoriesModel data;
 
   GetAllCategoriesWithEpisodes() async {
     state = ResponseModel.loading('loading...');
     try{
       response = await episodeApiService.GetAllCategoriesWithEpisodesData();
       if (response.statusCode == 200){
-        // data = CategoriesWithEpisodesModel.fromJson(response.data);
+        data = CategoriesModel.fromJson(response.data);
         print('DDDDDDDDDDDDDDDDDDDDDDDDDDD');
         print(response.data);
         state = ResponseModel.completed(data);

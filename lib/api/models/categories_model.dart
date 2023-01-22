@@ -1,4 +1,3 @@
-
 class CategoriesModel {
   final int? id;
   final String? createdAt;
@@ -24,8 +23,33 @@ class CategoriesModel {
     this.location,
   });
 
-  factory CategoriesModel.fromJson(Map<String, dynamic> json) =>
-      _$CategoriesModelFromJson(json);
+  factory CategoriesModel.fromJson(Map<String, dynamic> json) {
+    return CategoriesModel(
+      id: json['id'],
+      createdAt: json['createdAt'],
+      updatedAt: json['updatedAt'],
+      name: json['name'],
+      slug: json['slug'],
+      image: json['image'],
+      description: json['description'],
+      index: json['index'],
+      isHidden: json['isHidden'],
+      location: json['location'],
+    );
+  }
 
-  Map<String, dynamic> toJson() => _$CategoriesModelToJson(this);
+// CategoriesModel.fromJson(dynamic json) {
+//   id = json['id'];
+//   createdAt = json['createdAt'];
+//   updatedAt = json['updatedAt'];
+//   name = json['name'];
+//   slug = json['slug'];
+//   image = json['image'];
+//   description = json['description'];
+//   index = json['index'];
+//   isHidden = json['isHidden'];
+//   location = json['location'];
+// }
+
+// Map<String, dynamic> toJson() => _$CategoriesModelToJson(this);
 }
