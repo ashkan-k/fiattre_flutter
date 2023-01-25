@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fiatre_app/api/ResponseModel.dart';
 import 'package:fiatre_app/api/models/categories_model.dart';
 import 'package:fiatre_app/api/services/episode_api_service.dart';
@@ -30,6 +31,7 @@ class _HomePageState extends State<HomePage> {
     PageController pageController = PageController(initialPage: 0);
 
     var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
 
     final episodeDataProvider = Provider.of<EpisodeDataProvider>(context);
 
@@ -124,7 +126,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.all(30),
               child: SizedBox(
                 height: 250,
                 child: Consumer<EpisodeDataProvider>(
@@ -217,22 +219,32 @@ class _HomePageState extends State<HomePage> {
                         List<CategoriesModel>? model = episodes_data_provider.data as List<CategoriesModel>?;
 
                         return ListView.separated(
+                            reverse: true,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
                               var number = index + 1;
                               var item_id = model![index].id;
 
-                              print('ssssssssssssssss');
-                              print(number);
-                              print(item_id);
-
-                              return SizedBox(
-                                height: 200,
-                                width: double.infinity,
-                                child: Container(
-                                  width: double.infinity,
+                              return Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: SizedBox(
+                                  width: width * 0.35,
                                   height: double.infinity,
-                                  color: Colors.red,
+                                  child: Column(
+                                    children: [
+
+                                      SizedBox(
+                                        height: double.infinity,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(20),
+                                          child: Image.network(model![index].image.toString(), fit: BoxFit.fill),
+                                        ),
+                                      ),
+
+                                      Text('فیلم یک')
+
+                                    ],
+                                  ),
                                 ),
                               );
                             },
