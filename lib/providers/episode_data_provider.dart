@@ -8,16 +8,15 @@ class EpisodeDataProvider extends ChangeNotifier{
   EpisodeApiService episodeApiService = EpisodeApiService();
   late ResponseModel state;
   var response;
-  late CategoriesModel data;
+  late List<CategoriesModel> data;
 
   GetAllCategoriesWithEpisodes() async {
     state = ResponseModel.loading('loading...');
     try{
       response = await episodeApiService.GetAllCategoriesWithEpisodesData();
       if (response.statusCode == 200){
-        data = CategoriesModel.fromJson(response.data);
-        print('DDDDDDDDDDDDDDDDDDDDDDDDDDD');
-        print(response.data);
+        Iterable l = response.data;
+        data = List<CategoriesModel>.from(l.map((model)=> CategoriesModel.fromJson(model)));
         state = ResponseModel.completed(data);
       }else{
         state = ResponseModel.loading('something is wrong...');

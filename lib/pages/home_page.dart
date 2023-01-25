@@ -18,6 +18,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  void initState() {
+    super.initState();
+
+    final episodeDataProvider = Provider.of<EpisodeDataProvider>(context, listen: false);
+    episodeDataProvider.GetAllCategoriesWithEpisodes();
+  }
+
+  @override
   Widget build(BuildContext context) {
     PageController pageController = PageController(initialPage: 0);
 
@@ -121,6 +129,9 @@ class _HomePageState extends State<HomePage> {
                 height: 250,
                 child: Consumer<EpisodeDataProvider>(
                   builder: (context, episodes_data_provider, child) {
+                    print('bbbbbbbbbbbbbbbbbb');
+                    print(episodes_data_provider.state.status);
+
                     switch (episodes_data_provider.state.status) {
                       case Status.LOADING:
                         return SizedBox(
@@ -203,22 +214,32 @@ class _HomePageState extends State<HomePage> {
                               }),
                         );
                       case Status.COMPLETED:
-                        List<CategoriesModel>? model = episodes_data_provider
-                            .data as List<CategoriesModel>?;
+                        List<CategoriesModel>? model = episodes_data_provider.data as List<CategoriesModel>?;
 
                         return ListView.separated(
+                            scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
                               var number = index + 1;
                               var item_id = model![index].id;
 
+                              print('ssssssssssssssss');
+                              print(number);
+                              print(item_id);
+
                               return SizedBox(
-                                child: Container(),
+                                height: 200,
+                                width: double.infinity,
+                                child: Container(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  color: Colors.red,
+                                ),
                               );
                             },
                             separatorBuilder: (context, index) {
                               return const Divider();
                             },
-                            itemCount: 10);
+                            itemCount: model?.length ?? 0);
                       case Status.ERROR:
                         return Text(episodes_data_provider.state.message);
                       default:
