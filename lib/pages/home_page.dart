@@ -126,13 +126,11 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(30),
+              padding: const EdgeInsets.all(20),
               child: SizedBox(
-                height: 250,
+                height: 260,
                 child: Consumer<EpisodeDataProvider>(
                   builder: (context, episodes_data_provider, child) {
-                    print('bbbbbbbbbbbbbbbbbb');
-                    print(episodes_data_provider.state.status);
 
                     switch (episodes_data_provider.state.status) {
                       case Status.LOADING:
@@ -226,24 +224,32 @@ class _HomePageState extends State<HomePage> {
                               var item_id = model![index].id;
 
                               return Padding(
-                                padding: const EdgeInsets.all(8),
+                                padding: const EdgeInsets.all(10),
                                 child: SizedBox(
                                   width: width * 0.35,
-                                  height: double.infinity,
-                                  child: Column(
-                                    children: [
+                                  child: Container(
+                                      child: Column(
+                                        children: [
+                                          
+                                          SizedBox(
+                                            height: 210,
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.circular(20),
+                                              child: Image.network(model![index].image.toString(), fit: BoxFit.fill),
+                                            ),
+                                          ),
 
-                                      SizedBox(
-                                        height: double.infinity,
-                                        child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(20),
-                                          child: Image.network(model![index].image.toString(), fit: BoxFit.fill),
-                                        ),
-                                      ),
-
-                                      Text('فیلم یک')
-
-                                    ],
+                                          Padding(
+                                            padding: const EdgeInsets.only(top: 3),
+                                            child: Text(model![index].name.toString(),
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16,
+                                                    color: Theme.of(context).iconTheme.color)),
+                                          ),
+                                          
+                                        ],
+                                      )
                                   ),
                                 ),
                               );
