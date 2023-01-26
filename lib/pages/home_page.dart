@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fiatre_app/api/ResponseModel.dart';
 import 'package:fiatre_app/api/models/categories_model.dart';
+import 'package:fiatre_app/api/services/base_service_provider.dart';
 import 'package:fiatre_app/api/services/episode_api_service.dart';
 import 'package:fiatre_app/pages/components/my_app_bar.dart';
 import 'package:fiatre_app/providers/episode_data_provider.dart';
@@ -22,7 +23,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    final episodeDataProvider = Provider.of<EpisodeDataProvider>(context, listen: false);
+    final episodeDataProvider =
+        Provider.of<EpisodeDataProvider>(context, listen: false);
     episodeDataProvider.GetAllCategoriesWithEpisodes();
   }
 
@@ -34,6 +36,7 @@ class _HomePageState extends State<HomePage> {
     var width = MediaQuery.of(context).size.width;
 
     final episodeDataProvider = Provider.of<EpisodeDataProvider>(context);
+    final baseApiService = BaseApiService();
 
     var images = [
       'images/pic0.png',
@@ -42,13 +45,32 @@ class _HomePageState extends State<HomePage> {
       'images/pic0.png',
     ];
 
+    var best_items_images = [
+      [
+        'https://fiatre.ir/categories/%D9%81%DB%8C%D9%84%D9%85-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/',
+        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg'
+      ],
+      [
+        'https://fiatre.ir/categories/%D9%81%DB%8C%D9%84%D9%85-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/',
+        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg'
+      ],
+      [
+        'https://fiatre.ir/categories/%D9%81%DB%8C%D9%84%D9%85-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/',
+        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg'
+      ],
+      [
+        'https://fiatre.ir/categories/%D9%81%DB%8C%D9%84%D9%85-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/',
+        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg'
+      ],
+    ];
+
     return Scaffold(
       appBar: MyAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
-              height: (height / 3) * 2,
+              height: height * 0.70,
               width: double.infinity,
               child: Stack(
                 children: [
@@ -88,6 +110,61 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+            SizedBox(
+              height: 260,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      children: [
+                        Text('محبوب ترین ها',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22,
+                                color: Theme.of(context).iconTheme.color)),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: SizedBox(
+                width: width,
+                height: 100,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(child: SizedBox(
+                      height: 20,
+                      width: width / 2,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        // child: CachedNetworkImage(
+                        //   imageUrl: best_items_images![0][1].toString(),
+                        //   fit: BoxFit.fill,
+                        // ),
+                        child: Image.network(best_items_images![0][1].toString(), fit: BoxFit.fill),
+                      ),
+                    )),
+
+                    Expanded(child: SizedBox(
+                      height: 20,
+                      width: width / 2,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.network(best_items_images![0][1].toString(), fit: BoxFit.fill),
+                      ),
+                    )),
+                  ],
+                ),
+              ),
+            ),
+
             Padding(
               padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
               child: Row(
@@ -131,7 +208,6 @@ class _HomePageState extends State<HomePage> {
                 height: 260,
                 child: Consumer<EpisodeDataProvider>(
                   builder: (context, episodes_data_provider, child) {
-
                     switch (episodes_data_provider.state.status) {
                       case Status.LOADING:
                         return SizedBox(
@@ -214,7 +290,8 @@ class _HomePageState extends State<HomePage> {
                               }),
                         );
                       case Status.COMPLETED:
-                        List<CategoriesModel>? model = episodes_data_provider.data as List<CategoriesModel>?;
+                        List<CategoriesModel>? model = episodes_data_provider
+                            .data as List<CategoriesModel>?;
 
                         return ListView.separated(
                             reverse: true,
@@ -229,28 +306,33 @@ class _HomePageState extends State<HomePage> {
                                   width: width * 0.35,
                                   child: Container(
                                       child: Column(
-                                        children: [
-                                          
-                                          SizedBox(
-                                            height: 210,
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.circular(20),
-                                              child: Image.network(model![index].image.toString(), fit: BoxFit.fill),
-                                            ),
-                                          ),
-
-                                          Padding(
-                                            padding: const EdgeInsets.only(top: 3),
-                                            child: Text(model![index].name.toString(),
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 16,
-                                                    color: Theme.of(context).iconTheme.color)),
-                                          ),
-                                          
-                                        ],
-                                      )
-                                  ),
+                                    children: [
+                                      SizedBox(
+                                        height: 210,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Image.network(
+                                              baseApiService.apiUrl +
+                                                  model![index]
+                                                      .image
+                                                      .toString(),
+                                              fit: BoxFit.fill),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 3),
+                                        child: Text(
+                                            model![index].name.toString(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                                color: Theme.of(context)
+                                                    .iconTheme
+                                                    .color)),
+                                      ),
+                                    ],
+                                  )),
                                 ),
                               );
                             },
