@@ -143,9 +143,12 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           child: Column(
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                                child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                              Container(
+                                height: 200,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                  child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                                ),
                               ),
 
                               Padding(
@@ -165,9 +168,12 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           child: Column(
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                                child: Image.asset(best_items_images![1][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                              Container(
+                                height: 200,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                  child: Image.asset(best_items_images![1][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                                ),
                               ),
 
                               Padding(
@@ -197,9 +203,12 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         child: Column(
                           children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                            Container(
+                              height: 200,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                child: Image.asset(best_items_images![2][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                              ),
                             ),
 
                             Padding(
@@ -219,9 +228,12 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         child: Column(
                           children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              child: Image.asset(best_items_images![1][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                            Container(
+                              height: 200,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                child: Image.asset(best_items_images![3][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                              ),
                             ),
 
                             Padding(
