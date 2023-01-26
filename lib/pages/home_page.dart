@@ -12,6 +12,9 @@ import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../api/services/poster_api_service.dart';
+import '../providers/poster_data_provider.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -24,9 +27,11 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    final episodeDataProvider =
-        Provider.of<EpisodeDataProvider>(context, listen: false);
+    final episodeDataProvider = Provider.of<EpisodeDataProvider>(context, listen: false);
     episodeDataProvider.GetAllCategoriesWithEpisodes();
+
+    final posterDataProvider = Provider.of<PosterDataProvider>(context, listen: false);
+    posterDataProvider.GetPosters(1);
   }
 
   @override
@@ -37,6 +42,7 @@ class _HomePageState extends State<HomePage> {
     var width = MediaQuery.of(context).size.width;
 
     final episodeDataProvider = Provider.of<EpisodeDataProvider>(context);
+    final posterDataProvider = Provider.of<PosterDataProvider>(context);
     final baseApiService = BaseApiService();
 
     var images = [
@@ -315,6 +321,75 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+              ],
+            ),
+
+            Column(
+              children: [
+                  Consumer<PosterDataProvider>(
+                  builder: (context, posterDataProvider, child) {
+
+                    print('mmmmmmmmmmmmmmmmmmmm');
+                    print(posterDataProvider.state.status);
+
+                    switch (posterDataProvider.state.status) {
+                      case Status.LOADING:
+                        return Center(
+                          child: JumpingDotsProgressIndicator(
+                            color: Colors.black,
+                            fontSize: 80,
+                            dotSpacing: 3,
+                          ),
+                        );
+                      case Status.COMPLETED:
+                        List<CategoriesModel>? model = posterDataProvider
+                            .data as List<CategoriesModel>?;
+
+                        return ListView.separated(
+                            reverse: true,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              var number = index + 1;
+                              var item_id = model![index].id;
+
+                              print('aaaaaaaaaaaaaaaaaaaaaa');
+                              print(model![index]);
+
+                              return Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: SizedBox(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Container(
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              height: 250,
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                child: Image.asset(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                            separatorBuilder: (context, index) {
+                              return const Divider();
+                            },
+                            itemCount: model?.length ?? 0);
+                      case Status.ERROR:
+                        return Text(posterDataProvider.state.message);
+                      default:
+                        return Container();
+                    }
+                  },
+                )
               ],
             ),
 
