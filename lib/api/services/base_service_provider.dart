@@ -1,4 +1,4 @@
 
 class BaseApiService{
-  String apiUrl = 'http://192.168.1.4:8000';
+  String apiUrl = 'http://192.168.1.2:8000';
 }

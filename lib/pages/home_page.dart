@@ -7,6 +7,7 @@ import 'package:fiatre_app/pages/components/my_app_bar.dart';
 import 'package:fiatre_app/providers/episode_data_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:progress_indicators/progress_indicators.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -47,20 +48,20 @@ class _HomePageState extends State<HomePage> {
 
     var best_items_images = [
       [
-        'https://fiatre.ir/categories/%D9%81%DB%8C%D9%84%D9%85-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/',
-        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg'
+        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg',
+        'images/best_items_images/1.jpg',
       ],
       [
-        'https://fiatre.ir/categories/%D9%81%DB%8C%D9%84%D9%85-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/',
-        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg'
+        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg',
+        'images/best_items_images/2.jpg',
       ],
       [
-        'https://fiatre.ir/categories/%D9%81%DB%8C%D9%84%D9%85-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/',
-        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg'
+        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg',
+        'images/best_items_images/3.jpg',
       ],
       [
-        'https://fiatre.ir/categories/%D9%81%DB%8C%D9%84%D9%85-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/',
-        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg'
+        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg',
+        'images/best_items_images/4.jpg',
       ],
     ];
 
@@ -119,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Row(
                       children: [
-                        Text('محبوب ترین ها',
+                        Text('برترین ها',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 22,
@@ -130,23 +131,20 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Directionality(
-                textDirection: TextDirection.rtl,
-                child: SizedBox(
-                  width: width,
-                  height: 350,
+
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 25),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Expanded(child: SizedBox(
-                        width: width / 2,
+                      Container(
                         child: Column(
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.asset(images![0].toString().toString(), fit: BoxFit.fill),
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: 190),
                             ),
 
                             Padding(
@@ -162,15 +160,13 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
-                      )),
-
-                      Expanded(child: SizedBox(
-                        width: width / 2,
+                      ),
+                      Container(
                         child: Column(
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.asset(images![0].toString().toString(), fit: BoxFit.fill),
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: Image.asset(best_items_images![1][1].toString(), fit: BoxFit.fill, width: 190),
                             ),
 
                             Padding(
@@ -186,31 +182,22 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
-                      )),
-
-
+                      ),
                     ],
                   ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Directionality(
-                textDirection: TextDirection.rtl,
-                child: SizedBox(
-                  width: width,
-                  height: 350,
+
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Expanded(child: SizedBox(
-                        width: width / 2,
+                      Container(
                         child: Column(
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.asset(images![0].toString().toString(), fit: BoxFit.fill),
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: 190),
                             ),
 
                             Padding(
@@ -226,15 +213,13 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
-                      )),
-
-                      Expanded(child: SizedBox(
-                        width: width / 2,
+                      ),
+                      Container(
                         child: Column(
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.asset(images![0].toString().toString(), fit: BoxFit.fill),
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: Image.asset(best_items_images![1][1].toString(), fit: BoxFit.fill, width: 190),
                             ),
 
                             Padding(
@@ -250,13 +235,11 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
-                      )),
-
-
+                      ),
                     ],
                   ),
                 ),
-              ),
+              ],
             ),
 
             Padding(
@@ -304,84 +287,12 @@ class _HomePageState extends State<HomePage> {
                   builder: (context, episodes_data_provider, child) {
                     switch (episodes_data_provider.state.status) {
                       case Status.LOADING:
-                        return SizedBox(
-                          height: 80,
-                          child: ListView.builder(
-                              itemCount: 10,
-                              itemBuilder: (context, index) {
-                                return Shimmer.fromColors(
-                                    child: Row(
-                                      children: [
-                                        const Padding(
-                                          padding: EdgeInsets.only(
-                                              top: 8.0, bottom: 8, left: 8),
-                                          child: CircleAvatar(
-                                            backgroundColor: Colors.white,
-                                            radius: 30,
-                                            child: Icon(Icons.add),
-                                          ),
-                                        ),
-                                        Flexible(
-                                          fit: FlexFit.tight,
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                right: 8.0, left: 8),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                SizedBox(
-                                                  width: 50,
-                                                  height: 15,
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 8.0),
-                                                  child: SizedBox(
-                                                    width: 25,
-                                                    height: 15,
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Flexible(
-                                          fit: FlexFit.tight,
-                                          child: SizedBox(
-                                            width: 70,
-                                            height: 40,
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    baseColor: Colors.grey.shade400,
-                                    highlightColor: Colors.white);
-                              }),
+                        return Center(
+                          child: JumpingDotsProgressIndicator(
+                            color: Colors.black,
+                            fontSize: 80,
+                            dotSpacing: 3,
+                          ),
                         );
                       case Status.COMPLETED:
                         List<CategoriesModel>? model = episodes_data_provider
