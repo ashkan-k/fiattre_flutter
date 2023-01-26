@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             SizedBox(
-              height: height * 0.70,
+              height: height * 0.65,
               width: double.infinity,
               child: Stack(
                 children: [
@@ -251,6 +251,68 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ],
+                  ),
+                ),
+              ],
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 40, bottom: 40, left: 20, right: 20),
+              child: Container(
+                height: 1,
+                color: Theme.of(context)
+                    .iconTheme
+                    .color,
+              ),
+            ),
+
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SizedBox(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 250,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                  child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width * 0.90),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SizedBox(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 250,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                  child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width * 0.90),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
