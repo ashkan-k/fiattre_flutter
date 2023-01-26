@@ -110,8 +110,8 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+
             SizedBox(
-              height: 260,
               child: Padding(
                 padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
                 child: Row(
@@ -130,37 +130,131 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.all(20),
-              child: SizedBox(
-                width: width,
-                height: 100,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(child: SizedBox(
-                      height: 20,
-                      width: width / 2,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        // child: CachedNetworkImage(
-                        //   imageUrl: best_items_images![0][1].toString(),
-                        //   fit: BoxFit.fill,
-                        // ),
-                        child: Image.network(best_items_images![0][1].toString(), fit: BoxFit.fill),
-                      ),
-                    )),
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: SizedBox(
+                  width: width,
+                  height: 350,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(child: SizedBox(
+                        width: width / 2,
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.asset(images![0].toString().toString(), fit: BoxFit.fill),
+                            ),
 
-                    Expanded(child: SizedBox(
-                      height: 20,
-                      width: width / 2,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.network(best_items_images![0][1].toString(), fit: BoxFit.fill),
-                      ),
-                    )),
-                  ],
+                            Padding(
+                              padding: const EdgeInsets.only(top: 3),
+                              child: Text(
+                                  'فیلم تئاتر',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: Theme.of(context)
+                                          .iconTheme
+                                          .color)),
+                            ),
+                          ],
+                        ),
+                      )),
+
+                      Expanded(child: SizedBox(
+                        width: width / 2,
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.asset(images![0].toString().toString(), fit: BoxFit.fill),
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.only(top: 3),
+                              child: Text(
+                                  'مستند تئاتر',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: Theme.of(context)
+                                          .iconTheme
+                                          .color)),
+                            ),
+                          ],
+                        ),
+                      )),
+
+
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: SizedBox(
+                  width: width,
+                  height: 350,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(child: SizedBox(
+                        width: width / 2,
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.asset(images![0].toString().toString(), fit: BoxFit.fill),
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.only(top: 3),
+                              child: Text(
+                                  'کار در تئاتر',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: Theme.of(context)
+                                          .iconTheme
+                                          .color)),
+                            ),
+                          ],
+                        ),
+                      )),
+
+                      Expanded(child: SizedBox(
+                        width: width / 2,
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.asset(images![0].toString().toString(), fit: BoxFit.fill),
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.only(top: 3),
+                              child: Text(
+                                  'اکتورز استودیو',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: Theme.of(context)
+                                          .iconTheme
+                                          .color)),
+                            ),
+                          ],
+                        ),
+                      )),
+
+
+                    ],
+                  ),
                 ),
               ),
             ),
