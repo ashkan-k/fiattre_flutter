@@ -136,54 +136,56 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 25),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        child: Column(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: 190),
-                            ),
+                  child: SizedBox(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          child: Column(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                              ),
 
-                            Padding(
-                              padding: const EdgeInsets.only(top: 3),
-                              child: Text(
-                                  'فیلم تئاتر',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12,
-                                      color: Theme.of(context)
-                                          .iconTheme
-                                          .color)),
-                            ),
-                          ],
+                              Padding(
+                                padding: const EdgeInsets.only(top: 3),
+                                child: Text(
+                                    'فیلم تئاتر',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        color: Theme.of(context)
+                                            .iconTheme
+                                            .color)),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        child: Column(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              child: Image.asset(best_items_images![1][1].toString(), fit: BoxFit.fill, width: 190),
-                            ),
+                        Container(
+                          child: Column(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                child: Image.asset(best_items_images![1][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                              ),
 
-                            Padding(
-                              padding: const EdgeInsets.only(top: 3),
-                              child: Text(
-                                  'مستند تئاتر',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12,
-                                      color: Theme.of(context)
-                                          .iconTheme
-                                          .color)),
-                            ),
-                          ],
+                              Padding(
+                                padding: const EdgeInsets.only(top: 3),
+                                child: Text(
+                                    'مستند تئاتر',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        color: Theme.of(context)
+                                            .iconTheme
+                                            .color)),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
 
@@ -197,7 +199,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.all(Radius.circular(10)),
-                              child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: 190),
+                              child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
                             ),
 
                             Padding(
@@ -219,7 +221,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.all(Radius.circular(10)),
-                              child: Image.asset(best_items_images![1][1].toString(), fit: BoxFit.fill, width: 190),
+                              child: Image.asset(best_items_images![1][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
                             ),
 
                             Padding(
