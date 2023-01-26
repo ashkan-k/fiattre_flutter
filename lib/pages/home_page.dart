@@ -111,9 +111,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            SizedBox(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
+            Padding(
+              padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
+              child: SizedBox(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
