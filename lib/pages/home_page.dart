@@ -15,8 +15,10 @@ import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../api/models/sliders_model.dart';
 import '../api/services/poster_api_service.dart';
 import '../providers/poster_data_provider.dart';
+import '../providers/slider_data_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,6 +37,9 @@ class _HomePageState extends State<HomePage> {
 
     final posterDataProvider = Provider.of<PosterDataProvider>(context, listen: false);
     posterDataProvider.GetPosters(1);
+
+    final sliderDataProvider = Provider.of<SliderDataProvider>(context, listen: false);
+    sliderDataProvider.GetSliders();
   }
 
   @override
@@ -46,14 +51,8 @@ class _HomePageState extends State<HomePage> {
 
     final episodeDataProvider = Provider.of<EpisodeDataProvider>(context);
     final posterDataProvider = Provider.of<PosterDataProvider>(context);
+    final sliderDataProvider = Provider.of<SliderDataProvider>(context);
     final baseApiService = BaseApiService();
-
-    var images = [
-      'images/pic0.png',
-      'images/pic0.png',
-      'images/pic0.png',
-      'images/pic0.png',
-    ];
 
     var best_items_images = [
       [
@@ -79,45 +78,70 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+
             SizedBox(
               height: height * 0.65,
               width: double.infinity,
-              child: Stack(
-                children: [
-                  PageView(
-                    controller: pageController,
-                    children: [
-                      ShowImage(images[0]),
-                      ShowImage(images[1]),
-                      ShowImage(images[2]),
-                      ShowImage(images[3])
-                    ],
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: SmoothPageIndicator(
-                        controller: pageController,
-                        count: 4,
-                        effect: ExpandingDotsEffect(
-                            dotWidth: 10,
-                            dotHeight: 10,
-                            spacing: 3,
-                            dotColor: (Theme.of(context)
-                                .textTheme
-                                .labelSmall
-                                ?.color)!,
-                            activeDotColor:
-                                Theme.of(context).secondaryHeaderColor),
-                        onDotClicked: (index) => pageController.animateToPage(
-                            index,
-                            duration: Duration(milliseconds: 10),
-                            curve: Curves.bounceOut),
-                      ),
-                    ),
-                  )
-                ],
+              child:  Consumer<SliderDataProvider>(
+                builder: (context, posterDataProvider, child) {
+
+                  switch (posterDataProvider.state.status) {
+                    case Status.LOADING:
+                      return Center(
+                        child: JumpingDotsProgressIndicator(
+                          color: Colors.black,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ),
+                      );
+                    case Status.COMPLETED:
+                      List<SlidersModel>? model = sliderDataProvider.data as List<SlidersModel>?;
+
+                      return Stack(
+                        children: [
+                          PageView(
+                            controller: pageController,
+                            children: List.generate(model!.length, (index){
+                              return InkWell(
+                                onTap: () async {
+                                  await HelpersProvider.LunchUrl(model[index].link.toString(), false);
+                                },
+                                child: ShowImage(model[index].file_mobile.toString(), 'network', 0),
+                              );
+                            }),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 10),
+                              child: SmoothPageIndicator(
+                                controller: pageController,
+                                count: 4,
+                                effect: ExpandingDotsEffect(
+                                    dotWidth: 10,
+                                    dotHeight: 10,
+                                    spacing: 3,
+                                    dotColor: (Theme.of(context)
+                                        .textTheme
+                                        .labelSmall
+                                        ?.color)!,
+                                    activeDotColor:
+                                    Theme.of(context).secondaryHeaderColor),
+                                onDotClicked: (index) => pageController.animateToPage(
+                                    index,
+                                    duration: Duration(milliseconds: 10),
+                                    curve: Curves.bounceOut),
+                              ),
+                            ),
+                          )
+                        ],
+                      );
+                    case Status.ERROR:
+                      return Text(posterDataProvider.state.message);
+                    default:
+                      return Container();
+                  }
+                },
               ),
             ),
 
@@ -449,11 +473,20 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget ShowImage(String image) {
+  Widget ShowImage(String image, String type, double border) {
+    if(type == 'asset'){
+      return ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(border)),
+          child: Image(
+            image: AssetImage(image),
+            fit: BoxFit.fill,
+          ));
+    }
+
     return ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(30)),
+        borderRadius: BorderRadius.all(Radius.circular(border)),
         child: Image(
-          image: AssetImage(image),
+          image: NetworkImage(image),
           fit: BoxFit.fill,
         ));
   }
