@@ -299,7 +299,7 @@ class _HomePageState extends State<HomePage> {
 
                             return InkWell(
                               onTap: () async {
-                                await HelpersProvider.LunchUrl(model[index].link.toString());
+                                await HelpersProvider.LunchUrl(model[index].link.toString(), true);
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
