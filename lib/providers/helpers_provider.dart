@@ -12,4 +12,22 @@ class HelpersProvider extends ChangeNotifier
       throw 'Could not launch $url';
     }
   }
+
+  static Widget ShowImage(String image, String type, double border) {
+    if(type == 'asset'){
+      return ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(border)),
+          child: Image(
+            image: AssetImage(image),
+            fit: BoxFit.fill,
+          ));
+    }
+
+    return ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(border)),
+        child: Image(
+          image: NetworkImage(image),
+          fit: BoxFit.fill,
+        ));
+  }
 }

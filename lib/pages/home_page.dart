@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fiatre_app/api/ResponseModel.dart';
 import 'package:fiatre_app/api/models/categories_model.dart';
@@ -28,6 +30,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int currentIndex = 0;
+  PageController pageController = PageController(initialPage: 0);
+
   @override
   void initState() {
     super.initState();
@@ -43,9 +48,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    PageController pageController = PageController(initialPage: 0);
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
@@ -56,19 +65,19 @@ class _HomePageState extends State<HomePage> {
 
     var best_items_images = [
       [
-        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg',
+        'https://fiatre.ir/categories/%D9%81%DB%8C%D9%84%D9%85-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/',
         'images/best_items_images/1.jpg',
       ],
       [
-        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg',
+        'https://fiatre.ir/categories/%D9%85%D8%B3%D8%AA%D9%86%D8%AF-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/',
         'images/best_items_images/2.jpg',
       ],
       [
-        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg',
+        'https://www.fiatre.ir/categories/%DA%A9%D8%A7%D8%B1-%D8%AF%D8%B1-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/',
         'images/best_items_images/3.jpg',
       ],
       [
-        'https://fiatre.ir/uploads/categories/%DA%A9%D8%A7%D8%B1%DA%AF%D8%B1%D8%AF%D8%A7%D9%86%DB%8C-%D8%AA%D8%A6%D8%A7%D8%AA%D8%B1/1669050910.794893-t0mUwbnkc8os-theatre_directing.jpg',
+        'https://fiatre.ir/categories/%D8%A7%DA%A9%D8%AA%D9%88%D8%B1%D8%B2-%D8%A7%D8%B3%D8%AA%D9%88%D8%AF%DB%8C%D9%88/',
         'images/best_items_images/4.jpg',
       ],
     ];
@@ -83,9 +92,9 @@ class _HomePageState extends State<HomePage> {
               height: height * 0.65,
               width: double.infinity,
               child:  Consumer<SliderDataProvider>(
-                builder: (context, posterDataProvider, child) {
+                builder: (context, sliderDataProvider, child) {
 
-                  switch (posterDataProvider.state.status) {
+                  switch (sliderDataProvider.state.status) {
                     case Status.LOADING:
                       return Center(
                         child: JumpingDotsProgressIndicator(
@@ -97,6 +106,8 @@ class _HomePageState extends State<HomePage> {
                     case Status.COMPLETED:
                       List<SlidersModel>? model = sliderDataProvider.data as List<SlidersModel>?;
 
+                      AutoPlaySlider(model);
+
                       return Stack(
                         children: [
                           PageView(
@@ -106,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                                 onTap: () async {
                                   await HelpersProvider.LunchUrl(model[index].link.toString(), false);
                                 },
-                                child: ShowImage(model[index].file_mobile.toString(), 'network', 0),
+                                child: HelpersProvider.ShowImage(model[index].file_mobile.toString(), 'network', 0),
                               );
                             }),
                           ),
@@ -116,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.only(bottom: 10),
                               child: SmoothPageIndicator(
                                 controller: pageController,
-                                count: 4,
+                                count: model!.length,
                                 effect: ExpandingDotsEffect(
                                     dotWidth: 10,
                                     dotHeight: 10,
@@ -173,54 +184,64 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 200,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                                  child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                        InkWell(
+                          onTap: () async {
+                            await HelpersProvider.LunchUrl(best_items_images![0][0].toString(), false);
+                          },
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 200,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                    child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                                  ),
                                 ),
-                              ),
 
-                              Padding(
-                                padding: const EdgeInsets.only(top: 3),
-                                child: Text(
-                                    'فیلم تئاتر',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12,
-                                        color: Theme.of(context)
-                                            .iconTheme
-                                            .color)),
-                              ),
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 3),
+                                  child: Text(
+                                      'فیلم تئاتر',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                          color: Theme.of(context)
+                                              .iconTheme
+                                              .color)),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                        Container(
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 200,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                                  child: Image.asset(best_items_images![1][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                        InkWell(
+                          onTap: () async {
+                            await HelpersProvider.LunchUrl(best_items_images![1][0].toString(), false);
+                          },
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 200,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                    child: Image.asset(best_items_images![1][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                                  ),
                                 ),
-                              ),
 
-                              Padding(
-                                padding: const EdgeInsets.only(top: 3),
-                                child: Text(
-                                    'مستند تئاتر',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12,
-                                        color: Theme.of(context)
-                                            .iconTheme
-                                            .color)),
-                              ),
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 3),
+                                  child: Text(
+                                      'مستند تئاتر',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                          color: Theme.of(context)
+                                              .iconTheme
+                                              .color)),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -233,54 +254,64 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 200,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                                child: Image.asset(best_items_images![2][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                      InkWell(
+                        onTap: () async {
+                          await HelpersProvider.LunchUrl(best_items_images![2][0].toString(), false);
+                        },
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 200,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                  child: Image.asset(best_items_images![2][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                                ),
                               ),
-                            ),
 
-                            Padding(
-                              padding: const EdgeInsets.only(top: 3),
-                              child: Text(
-                                  'کار در تئاتر',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12,
-                                      color: Theme.of(context)
-                                          .iconTheme
-                                          .color)),
-                            ),
-                          ],
+                              Padding(
+                                padding: const EdgeInsets.only(top: 3),
+                                child: Text(
+                                    'کار در تئاتر',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        color: Theme.of(context)
+                                            .iconTheme
+                                            .color)),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      Container(
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 200,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                                child: Image.asset(best_items_images![3][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                      InkWell(
+                        onTap: () async {
+                          await HelpersProvider.LunchUrl(best_items_images![3][0].toString(), false);
+                        },
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 200,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                  child: Image.asset(best_items_images![3][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                                ),
                               ),
-                            ),
 
-                            Padding(
-                              padding: const EdgeInsets.only(top: 3),
-                              child: Text(
-                                  'اکتورز استودیو',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12,
-                                      color: Theme.of(context)
-                                          .iconTheme
-                                          .color)),
-                            ),
-                          ],
+                              Padding(
+                                padding: const EdgeInsets.only(top: 3),
+                                child: Text(
+                                    'اکتورز استودیو',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        color: Theme.of(context)
+                                            .iconTheme
+                                            .color)),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -473,21 +504,24 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget ShowImage(String image, String type, double border) {
-    if(type == 'asset'){
-      return ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(border)),
-          child: Image(
-            image: AssetImage(image),
-            fit: BoxFit.fill,
-          ));
-    }
-
-    return ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(border)),
-        child: Image(
-          image: NetworkImage(image),
-          fit: BoxFit.fill,
-        ));
+  void AutoPlaySlider(data)
+  {
+    Timer.periodic(Duration(seconds: 3), (Timer timer) {
+      if (currentIndex <= data.length) {
+        pageController.animateToPage(
+          currentIndex,
+          duration: Duration(milliseconds: 350),
+          curve: Curves.easeIn,
+        );
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+        pageController.animateToPage(
+          currentIndex,
+          duration: Duration(milliseconds: 350),
+          curve: Curves.easeIn,
+        );
+      }
+    });
   }
 }
