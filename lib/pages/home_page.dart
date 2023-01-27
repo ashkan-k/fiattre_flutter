@@ -7,6 +7,7 @@ import 'package:fiatre_app/api/services/base_service_provider.dart';
 import 'package:fiatre_app/api/services/episode_api_service.dart';
 import 'package:fiatre_app/pages/components/my_app_bar.dart';
 import 'package:fiatre_app/providers/episode_data_provider.dart';
+import 'package:fiatre_app/providers/helpers_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_indicators/progress_indicators.dart';
@@ -297,8 +298,8 @@ class _HomePageState extends State<HomePage> {
                             var item_id = model![index].id;
 
                             return InkWell(
-                              onTap: () {
-                                HelpersProvider
+                              onTap: () async {
+                                await HelpersProvider.LunchUrl(model[index].link.toString());
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
