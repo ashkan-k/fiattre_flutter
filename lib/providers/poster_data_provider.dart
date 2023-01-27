@@ -13,7 +13,7 @@ class PosterDataProvider extends ChangeNotifier{
   var response;
   late List<PostersModel> data;
 
-  GetPosters(location) async {
+  GetPosters([location]) async {
     state = ResponseModel.loading('loading...');
     try{
       response = await posterApiService.GetPostersData(location);

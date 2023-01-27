@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fiatre_app/api/ResponseModel.dart';
 import 'package:fiatre_app/api/models/categories_model.dart';
+import 'package:fiatre_app/api/models/posters_model.dart';
+import 'package:fiatre_app/api/models/posters_model.dart';
 import 'package:fiatre_app/api/services/base_service_provider.dart';
 import 'package:fiatre_app/api/services/episode_api_service.dart';
 import 'package:fiatre_app/pages/components/my_app_bar.dart';
@@ -272,90 +274,33 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: SizedBox(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 250,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                                  child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width * 0.90),
-                                ),
-                              ),
-                            ],
-                          ),
+            SizedBox(
+              height: height * 0.5,
+              child: Consumer<PosterDataProvider>(
+                builder: (context, posterDataProvider, child) {
+
+                  switch (posterDataProvider.state.status) {
+                    case Status.LOADING:
+                      return Center(
+                        child: JumpingDotsProgressIndicator(
+                          color: Colors.black,
+                          fontSize: 80,
+                          dotSpacing: 3,
                         ),
-                      ],
-                    ),
-                  ),
-                ),
+                      );
+                    case Status.COMPLETED:
+                      List<PostersModel>? model = posterDataProvider.data as List<PostersModel>?;
 
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: SizedBox(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 250,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                                  child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width * 0.90),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+                      return ListView.separated(
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (context, index) {
+                            var item_id = model![index].id;
 
-            Column(
-              children: [
-                  Consumer<PosterDataProvider>(
-                  builder: (context, posterDataProvider, child) {
-
-                    print('mmmmmmmmmmmmmmmmmmmm');
-                    print(posterDataProvider.state.status);
-
-                    switch (posterDataProvider.state.status) {
-                      case Status.LOADING:
-                        return Center(
-                          child: JumpingDotsProgressIndicator(
-                            color: Colors.black,
-                            fontSize: 80,
-                            dotSpacing: 3,
-                          ),
-                        );
-                      case Status.COMPLETED:
-                        List<CategoriesModel>? model = posterDataProvider
-                            .data as List<CategoriesModel>?;
-
-                        return ListView.separated(
-                            reverse: true,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              var number = index + 1;
-                              var item_id = model![index].id;
-
-                              print('aaaaaaaaaaaaaaaaaaaaaa');
-                              print(model![index]);
-
-                              return Padding(
+                            return InkWell(
+                              onTap: () {
+                                HelpersProvider
+                              },
+                              child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: SizedBox(
                                   child: Row(
@@ -365,10 +310,9 @@ class _HomePageState extends State<HomePage> {
                                         child: Column(
                                           children: [
                                             Container(
-                                              height: 250,
                                               child: ClipRRect(
                                                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                child: Image.asset(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
+                                                child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
                                               ),
                                             ),
                                           ],
@@ -377,20 +321,20 @@ class _HomePageState extends State<HomePage> {
                                     ],
                                   ),
                                 ),
-                              );
-                            },
-                            separatorBuilder: (context, index) {
-                              return const Divider();
-                            },
-                            itemCount: model?.length ?? 0);
-                      case Status.ERROR:
-                        return Text(posterDataProvider.state.message);
-                      default:
-                        return Container();
-                    }
-                  },
-                )
-              ],
+                              ),
+                            );
+                          },
+                          separatorBuilder: (context, index) {
+                            return const Divider();
+                          },
+                          itemCount: model?.length ?? 0);
+                    case Status.ERROR:
+                      return Text(posterDataProvider.state.message);
+                    default:
+                      return Container();
+                  }
+                },
+              ),
             ),
 
             Padding(
