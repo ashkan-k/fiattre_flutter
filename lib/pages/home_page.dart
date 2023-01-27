@@ -506,7 +506,7 @@ class _HomePageState extends State<HomePage> {
 
   void AutoPlaySlider(data)
   {
-    Timer.periodic(Duration(seconds: 3), (Timer timer) {
+    Timer.periodic(Duration(seconds: 5), (Timer timer) {
       if (currentIndex <= data.length) {
         pageController.animateToPage(
           currentIndex,
