@@ -276,7 +276,6 @@ class _HomePageState extends State<HomePage> {
             ),
 
             SizedBox(
-              height: height * 0.5,
               child: Consumer<PosterDataProvider>(
                 builder: (context, posterDataProvider, child) {
 
@@ -292,43 +291,37 @@ class _HomePageState extends State<HomePage> {
                     case Status.COMPLETED:
                       List<PostersModel>? model = posterDataProvider.data as List<PostersModel>?;
 
-                      return ListView.separated(
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (context, index) {
-                            var item_id = model![index].id;
-
-                            return InkWell(
-                              onTap: () async {
-                                await HelpersProvider.LunchUrl(model[index].link.toString(), true);
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: SizedBox(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Container(
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
-                                              ),
+                      return Column(
+                        children: List.generate(model!.length, (index){
+                          return InkWell(
+                            onTap: () async {
+                              await HelpersProvider.LunchUrl(model[index].link.toString(), false);
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: SizedBox(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Container(
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                                              child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            );
-                          },
-                          separatorBuilder: (context, index) {
-                            return const Divider();
-                          },
-                          itemCount: model?.length ?? 0);
+                            ),
+                          );
+                        }),
+                      );
                     case Status.ERROR:
                       return Text(posterDataProvider.state.message);
                     default:
