@@ -11,7 +11,7 @@ class CategoriesModel {
   final int? index;
   final bool? is_hidden;
   final String? location;
-  final List<EpisodesModel>? episodes;
+  late final List<EpisodesModel>? episodes;
 
   CategoriesModel({
     this.id,
@@ -28,6 +28,15 @@ class CategoriesModel {
   });
 
   factory CategoriesModel.fromJson(Map<String, dynamic> json) {
+    if (json['episodes'] != null) {
+      dynamic helperEpisodesList = <EpisodesModel>[];
+      json['episodes'].forEach((v) {
+        helperEpisodesList!.add(EpisodesModel.fromJson(v));
+      });
+
+      json['episodes'] = helperEpisodesList;
+    }
+
     return CategoriesModel(
       id: json['id'],
       created_at: json['created_at'],

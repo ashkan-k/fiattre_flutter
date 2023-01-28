@@ -68,6 +68,10 @@ class EpisodesModel {
   });
 
   factory EpisodesModel.fromJson(Map<String, dynamic> json) {
+    if (json['category'] != null) {
+      json['category'] = json['category'].cast<CategoriesModel>();
+    }
+
     return EpisodesModel(
       id: json['id'],
       created_at: json['created_at'],
