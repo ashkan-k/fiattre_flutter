@@ -67,17 +67,3 @@ class CategoriesModel {
 
 // Map<String, dynamic> toJson() => _$CategoriesModelToJson(this);
 }
-
-class CategoriesWithEpisodesModel extends CategoriesModel{
-  final List<dynamic>? episssodes;
-
-  CategoriesWithEpisodesModel({
-    this.episssodes,
-  });
-
-  factory CategoriesWithEpisodesModel.fromJson(Map<String, dynamic> json) {
-    return CategoriesWithEpisodesModel(
-      episssodes: json['episodes'],
-    );
-  }
-}

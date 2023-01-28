@@ -1,12 +1,6 @@
-import 'package:fiatre_app/api/models/categories_model.dart';
-import 'package:fiatre_app/api/models/categories_with_episodes_model.dart';
 import 'package:fiatre_app/api/ResponseModel.dart';
-import 'package:fiatre_app/api/services/episode_api_service.dart';
 import 'package:flutter/material.dart';
-
-import '../api/models/posters_model.dart';
 import '../api/models/sliders_model.dart';
-import '../api/services/poster_api_service.dart';
 import '../api/services/slider_api_service.dart';
 
 class SliderDataProvider extends ChangeNotifier{
