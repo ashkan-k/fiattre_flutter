@@ -69,7 +69,7 @@ class EpisodesModel {
 
   factory EpisodesModel.fromJson(Map<String, dynamic> json) {
     if (json['category'] != null) {
-      json['category'] = json['category'].cast<CategoriesModel>();
+      json['category'] = CategoriesModel.fromJson(json['category']);
     }
 
     return EpisodesModel(

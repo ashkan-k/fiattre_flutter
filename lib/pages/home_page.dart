@@ -402,13 +402,8 @@ class _HomePageState extends State<HomePage> {
                       List<CategoriesModel>? model = episodes_data_provider
                           .data as List<CategoriesModel>?;
 
-                      print('vvvvvvvvvvvvvvvvvvvvvvv');
-                      print(model![0].name);
-                      print(model![0].episodes![0].created_at);
-                      print(model![0].episodes![0].category['name']);
-
                       return Column(
-                        children: List.generate(10, (index) {
+                        children: List.generate(model!.length, (index) {
                           return Padding(
                             padding: const EdgeInsets.all(10),
                             child: Column(
@@ -454,75 +449,53 @@ class _HomePageState extends State<HomePage> {
                                   padding: const EdgeInsets.all(20),
                                   child: SizedBox(
                                     height: 260,
-                                    child: Consumer<EpisodeDataProvider>(
-                                      builder: (context, episodes_data_provider, child) {
-                                        switch (episodes_data_provider.state.status) {
-                                          case Status.LOADING:
-                                            return Center(
-                                              child: JumpingDotsProgressIndicator(
-                                                color: Colors.black,
-                                                fontSize: 80,
-                                                dotSpacing: 3,
-                                              ),
-                                            );
-                                          case Status.COMPLETED:
-                                            List<CategoriesModel>? model = episodes_data_provider
-                                                .data as List<CategoriesModel>?;
+                                    child: ListView.separated(
+                                        reverse: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index) {
+                                          var number = index + 1;
+                                          var item_id = model![index].id;
 
-                                            return ListView.separated(
-                                                reverse: true,
-                                                scrollDirection: Axis.horizontal,
-                                                itemBuilder: (context, index) {
-                                                  var number = index + 1;
-                                                  var item_id = model![index].id;
-
-                                                  return Padding(
-                                                    padding: const EdgeInsets.all(10),
-                                                    child: SizedBox(
-                                                      width: width * 0.35,
-                                                      child: Container(
-                                                          child: Column(
-                                                            children: [
-                                                              SizedBox(
-                                                                height: 210,
-                                                                child: ClipRRect(
-                                                                  borderRadius:
-                                                                  BorderRadius.circular(20),
-                                                                  child: Image.network(
-                                                                      baseApiService.apiUrl +
-                                                                          model![index]
-                                                                              .image
-                                                                              .toString(),
-                                                                      fit: BoxFit.fill),
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding: const EdgeInsets.only(top: 3),
-                                                                child: Text(
-                                                                    model![index].name.toString(),
-                                                                    style: TextStyle(
-                                                                        fontWeight: FontWeight.bold,
-                                                                        fontSize: 16,
-                                                                        color: Theme.of(context)
-                                                                            .iconTheme
-                                                                            .color)),
-                                                              ),
-                                                            ],
-                                                          )),
-                                                    ),
-                                                  );
-                                                },
-                                                separatorBuilder: (context, index) {
-                                                  return const Divider();
-                                                },
-                                                itemCount: model?.length ?? 0);
-                                          case Status.ERROR:
-                                            return Text(episodes_data_provider.state.message);
-                                          default:
-                                            return Container();
-                                        }
-                                      },
-                                    ),
+                                          return Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SizedBox(
+                                              width: width * 0.35,
+                                              child: Container(
+                                                  child: Column(
+                                                    children: [
+                                                      SizedBox(
+                                                        height: 210,
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                          BorderRadius.circular(20),
+                                                          child: Image.network(
+                                                              baseApiService.apiUrl +
+                                                                  model![index]
+                                                                      .image
+                                                                      .toString(),
+                                                              fit: BoxFit.fill),
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding: const EdgeInsets.only(top: 3),
+                                                        child: Text(
+                                                            model![index].name.toString(),
+                                                            style: TextStyle(
+                                                                fontWeight: FontWeight.bold,
+                                                                fontSize: 16,
+                                                                color: Theme.of(context)
+                                                                    .iconTheme
+                                                                    .color)),
+                                                      ),
+                                                    ],
+                                                  )),
+                                            ),
+                                          );
+                                        },
+                                        separatorBuilder: (context, index) {
+                                          return const Divider();
+                                        },
+                                        itemCount: model![index].episodes?.length ?? 0),
                                   ),
                                 )
                               ],
