@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     final categoryDataProviderLocation = Provider.of<CategoryDataProvider>(context, listen: false);
-    categoryDataProviderLocation.GetAllCategoriesWithEpisodes(2);
+    categoryDataProviderLocation.GetAllCategoriesWithEpisodes(1);
 
     final posterDataProvider = Provider.of<PosterDataProvider>(context, listen: false);
     posterDataProvider.GetPosters(1);
