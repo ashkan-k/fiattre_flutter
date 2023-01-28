@@ -52,9 +52,7 @@ class _HomePageState extends State<HomePage> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
-    final categoryDataProviderLocation = Provider.of<CategoryDataProvider>(context);
     final posterDataProvider = Provider.of<PosterDataProvider>(context);
-    final sliderDataProvider = Provider.of<SliderDataProvider>(context);
     final baseApiService = BaseApiService();
 
     var best_items_images = [
