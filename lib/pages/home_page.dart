@@ -435,7 +435,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       Row(
                                         children: [
-                                          Text('محبوب ترین ها',
+                                          Text(model![index].name.toString(),
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 22,
@@ -452,9 +452,8 @@ class _HomePageState extends State<HomePage> {
                                     child: ListView.separated(
                                         reverse: true,
                                         scrollDirection: Axis.horizontal,
-                                        itemBuilder: (context, index) {
-                                          var number = index + 1;
-                                          var item_id = model![index].id;
+                                        itemBuilder: (context, index2) {
+                                          var episode = model![index].episodes![index2];
 
                                           return Padding(
                                             padding: const EdgeInsets.all(10),
@@ -468,18 +467,13 @@ class _HomePageState extends State<HomePage> {
                                                         child: ClipRRect(
                                                           borderRadius:
                                                           BorderRadius.circular(20),
-                                                          child: Image.network(
-                                                              baseApiService.apiUrl +
-                                                                  model![index]
-                                                                      .image
-                                                                      .toString(),
-                                                              fit: BoxFit.fill),
+                                                          child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
                                                         ),
                                                       ),
                                                       Padding(
                                                         padding: const EdgeInsets.only(top: 3),
                                                         child: Text(
-                                                            model![index].name.toString(),
+                                                            episode.title.toString(),
                                                             style: TextStyle(
                                                                 fontWeight: FontWeight.bold,
                                                                 fontSize: 16,
