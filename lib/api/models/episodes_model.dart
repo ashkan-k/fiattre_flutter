@@ -2,9 +2,15 @@ import 'categories_model.dart';
 
 class EpisodesModel {
   final int? id;
-  final String? createdAt;
-  final String? updatedAt;
-  final int? imdbScore;
+  final String? created_at;
+  final String? updated_at;
+  final double? imdb_score;
+  final int? time;
+  final String? title;
+  final String? en_title;
+  final String? slug;
+  final String? episode;
+  final String? teacher;
   final String? genre;
   final String? director;
   final String? writer;
@@ -20,17 +26,25 @@ class EpisodesModel {
   final bool? is_suggested;
   final String? video;
   final String? video_mp4;
+  final String? description;
   final List<dynamic>? artists;
   final int? likes_count;
   final int? comments_count;
-  final CategoriesModel? category;
+  final int? view_count;
+  final dynamic? category;
 
   EpisodesModel({
     this.id,
-    this.createdAt,
-    this.updatedAt,
-    this.imdbScore,
+    this.created_at,
+    this.updated_at,
+    this.imdb_score,
     this.genre,
+    this.time,
+    this.title,
+    this.en_title,
+    this.slug,
+    this.episode,
+    this.teacher,
     this.director,
     this.writer,
     this.actors,
@@ -45,19 +59,27 @@ class EpisodesModel {
     this.is_suggested,
     this.video,
     this.video_mp4,
+    this.description,
     this.artists,
     this.likes_count,
     this.comments_count,
+    this.view_count,
     this.category,
   });
 
   factory EpisodesModel.fromJson(Map<String, dynamic> json) {
     return EpisodesModel(
       id: json['id'],
-      createdAt: json['createdAt'],
-      updatedAt: json['updatedAt'],
-      imdbScore: json['imdbScore'],
+      created_at: json['created_at'],
+      updated_at: json['updated_at'],
+      imdb_score: json['imdb_score'],
       genre: json['genre'],
+      time: json['time'],
+      title: json['title'],
+      en_title: json['en_title'],
+      slug: json['slug'],
+      episode: json['episode'],
+      teacher: json['teacher'],
       director: json['director'],
       writer: json['writer'],
       actors: json['actors'],
@@ -72,9 +94,11 @@ class EpisodesModel {
       is_suggested: json['is_suggested'],
       video: json['video'],
       video_mp4: json['video_mp4'],
+      description: json['description'],
       artists: json['artists'],
       likes_count: json['likes_count'],
       comments_count: json['comments_count'],
+      view_count: json['view_count'],
       category: json['category'],
     );
   }

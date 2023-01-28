@@ -399,11 +399,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     case Status.COMPLETED:
-                      List<CategoriesModel>? model = episodes_data_provider
-                          .data as List<CategoriesModel>?;
+                      List<CategoriesWithEpisodesModel>? model = episodes_data_provider
+                          .data as List<CategoriesWithEpisodesModel>?;
 
                       print('vvvvvvvvvvvvvvvvvvvvvvv');
-                      print(model![0]);
+                      print(model![0].name);
+                      print(model![0].episodes);
 
                       return Column(
                         children: List.generate(10, (index) {
