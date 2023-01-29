@@ -10,7 +10,7 @@ class CategoryDataProvider extends ChangeNotifier{
   late List<CategoriesModel> data;
   int location = 0;
 
-  GetAllCategoriesWithEpisodes([location]) async {
+  Future<List<CategoriesModel>> GetAllCategoriesWithEpisodes([location]) async {
     state = ResponseModel.loading('loading...');
     try{
       response = await episodeApiService.GetAllCategoriesWithEpisodesData(location);
@@ -24,9 +24,11 @@ class CategoryDataProvider extends ChangeNotifier{
       }
 
       notifyListeners();
+      return data;
     }catch(e){
       state = ResponseModel.loading('please check your connection...');
       notifyListeners();
+      return data;
     }
   }
 }

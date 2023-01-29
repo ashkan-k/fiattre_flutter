@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
   PageController pageController = PageController(initialPage: 0);
 
   late Future<List<PostersModel>> posters1;
+  late Future<List<PostersModel>> posters2;
 
   @override
   void initState() {
@@ -38,9 +39,7 @@ class _HomePageState extends State<HomePage> {
 
     final posterDataProvider = Provider.of<PosterDataProvider>(context, listen: false);
     posters1 = posterDataProvider.GetPosters(1);
-    print('cccccccccccccccccccccccc');
-    print(posters1);
-    posterDataProvider.GetPosters(2);
+    posters2 = posterDataProvider.GetPosters(2);
 
     final sliderDataProvider = Provider.of<SliderDataProvider>(context, listen: false);
     sliderDataProvider.GetSliders();
@@ -332,8 +331,41 @@ class _HomePageState extends State<HomePage> {
                 future: posters1,
                 builder: (context, snapshot) {
 
-                  switch (posterDataProvider.state.status) {
-                    case Status.LOADING:
+                    if (snapshot.hasData) {
+                      List<PostersModel>? model = snapshot.data;
+
+                      return Column(
+                        children: List.generate(model!.length, (index){
+                          return InkWell(
+                            onTap: () async {
+                              await HelpersProvider.LunchUrl(model[index].link.toString(), false);
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: SizedBox(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Container(
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                                              child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
+                      );
+                    }else{
                       return Center(
                         child: JumpingDotsProgressIndicator(
                           color: Colors.black,
@@ -341,49 +373,8 @@ class _HomePageState extends State<HomePage> {
                           dotSpacing: 3,
                         ),
                       );
-                    case Status.COMPLETED:
-                      if (snapshot.hasData) {
-                        List<PostersModel>? model = snapshot.data;
+                    }
 
-                        return Column(
-                          children: List.generate(model!.length, (index){
-                            return InkWell(
-                              onTap: () async {
-                                await HelpersProvider.LunchUrl(model[index].link.toString(), false);
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: SizedBox(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Container(
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          }),
-                        );
-                      }else{
-                        return Container();
-                      }
-                    case Status.ERROR:
-                      return Text(posterDataProvider.state.message);
-                    default:
-                      return Container();
-                  }
                 },
               ),
             ),
@@ -512,61 +503,54 @@ class _HomePageState extends State<HomePage> {
             ),
 
             SizedBox(
-              child: Consumer<PosterDataProvider>(
-                builder: (context, posterDataProvider, child) {
+              child: FutureBuilder(
+                future: posters2,
+                builder: (context, snapshot) {
 
-                  if(posterDataProvider.location == 2){
-                    switch (posterDataProvider.state.status) {
-                      case Status.LOADING:
-                        return Center(
-                          child: JumpingDotsProgressIndicator(
-                            color: Colors.black,
-                            fontSize: 80,
-                            dotSpacing: 3,
+                  if (snapshot.hasData) {
+                    List<PostersModel>? model = snapshot.data;
+
+                    return Column(
+                      children: List.generate(model!.length, (index){
+                        return InkWell(
+                          onTap: () async {
+                            await HelpersProvider.LunchUrl(model[index].link.toString(), false);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: SizedBox(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                                            child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         );
-                      case Status.COMPLETED:
-                        List<PostersModel>? model = posterDataProvider.data as List<PostersModel>?;
-
-                        return Column(
-                          children: List.generate(model!.length, (index){
-                            return InkWell(
-                              onTap: () async {
-                                await HelpersProvider.LunchUrl(model[index].link.toString(), false);
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: SizedBox(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Container(
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          }),
-                        );
-                      case Status.ERROR:
-                        return Text(posterDataProvider.state.message);
-                      default:
-                        return Container();
-                    }
+                      }),
+                    );
                   }else{
-                    return Container();
+                    return Center(
+                      child: JumpingDotsProgressIndicator(
+                        color: Colors.black,
+                        fontSize: 80,
+                        dotSpacing: 3,
+                      ),
+                    );
                   }
+
                 },
               ),
             ),

@@ -8,9 +8,8 @@ class PosterDataProvider extends ChangeNotifier{
   late ResponseModel state;
   var response;
   late List<PostersModel> data;
-  int location = 0;
 
-  GetPosters([location]) async {
+  Future<List<PostersModel>> GetPosters([location]) async {
     state = ResponseModel.loading('loading...');
     try{
       response = await posterApiService.GetPostersData(location);
@@ -18,15 +17,15 @@ class PosterDataProvider extends ChangeNotifier{
         Iterable l = response.data;
         data = List<PostersModel>.from(l.map((model)=> PostersModel.fromJson(model)));
         state = ResponseModel.completed(data);
-        return data;
       }else{
         state = ResponseModel.loading('something is wrong...');
       }
-
       notifyListeners();
+      return data;
     }catch(e){
       state = ResponseModel.loading('please check your connection...');
       notifyListeners();
+      return data;
     }
   }
 }
