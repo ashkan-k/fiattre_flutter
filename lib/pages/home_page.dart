@@ -502,6 +502,16 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
+              child: Container(
+                height: 1,
+                color: Theme.of(context)
+                    .iconTheme
+                    .color,
+              ),
+            ),
+
             SizedBox(
               child: FutureBuilder(
                 future: posters2,
