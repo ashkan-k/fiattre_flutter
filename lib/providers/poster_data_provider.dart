@@ -8,6 +8,7 @@ class PosterDataProvider extends ChangeNotifier{
   late ResponseModel state;
   var response;
   late List<PostersModel> data;
+  int location = 0;
 
   GetPosters([location]) async {
     state = ResponseModel.loading('loading...');
@@ -17,6 +18,7 @@ class PosterDataProvider extends ChangeNotifier{
         Iterable l = response.data;
         data = List<PostersModel>.from(l.map((model)=> PostersModel.fromJson(model)));
         state = ResponseModel.completed(data);
+        this.location = location;
       }else{
         state = ResponseModel.loading('something is wrong...');
       }

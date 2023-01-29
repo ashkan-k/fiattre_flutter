@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> {
 
     final posterDataProvider = Provider.of<PosterDataProvider>(context, listen: false);
     posterDataProvider.GetPosters(1);
+    posterDataProvider.GetPosters(2);
 
     final sliderDataProvider = Provider.of<SliderDataProvider>(context, listen: false);
     sliderDataProvider.GetSliders();
@@ -326,53 +327,57 @@ class _HomePageState extends State<HomePage> {
               child: Consumer<PosterDataProvider>(
                 builder: (context, posterDataProvider, child) {
 
-                  switch (posterDataProvider.state.status) {
-                    case Status.LOADING:
-                      return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ),
-                      );
-                    case Status.COMPLETED:
-                      List<PostersModel>? model = posterDataProvider.data as List<PostersModel>?;
+                  if(posterDataProvider.location == 2){
+                    switch (posterDataProvider.state.status) {
+                      case Status.LOADING:
+                        return Center(
+                          child: JumpingDotsProgressIndicator(
+                            color: Colors.black,
+                            fontSize: 80,
+                            dotSpacing: 3,
+                          ),
+                        );
+                      case Status.COMPLETED:
+                        List<PostersModel>? model = posterDataProvider.data as List<PostersModel>?;
 
-                      return Column(
-                        children: List.generate(model!.length, (index){
-                          return InkWell(
-                            onTap: () async {
-                              await HelpersProvider.LunchUrl(model[index].link.toString(), false);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: SizedBox(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Container(
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                                              child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
+                        return Column(
+                          children: List.generate(model!.length, (index){
+                            return InkWell(
+                              onTap: () async {
+                                await HelpersProvider.LunchUrl(model[index].link.toString(), false);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: SizedBox(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Container(
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          );
-                        }),
-                      );
-                    case Status.ERROR:
-                      return Text(posterDataProvider.state.message);
-                    default:
-                      return Container();
+                            );
+                          }),
+                        );
+                      case Status.ERROR:
+                        return Text(posterDataProvider.state.message);
+                      default:
+                        return Container();
+                    }
+                  }else{
+                    return Container();
                   }
                 },
               ),
@@ -495,6 +500,66 @@ class _HomePageState extends State<HomePage> {
                     }
                   }
                   else{
+                    return Container();
+                  }
+                },
+              ),
+            ),
+
+            SizedBox(
+              child: Consumer<PosterDataProvider>(
+                builder: (context, posterDataProvider, child) {
+
+                  if(posterDataProvider.location == 2){
+                    switch (posterDataProvider.state.status) {
+                      case Status.LOADING:
+                        return Center(
+                          child: JumpingDotsProgressIndicator(
+                            color: Colors.black,
+                            fontSize: 80,
+                            dotSpacing: 3,
+                          ),
+                        );
+                      case Status.COMPLETED:
+                        List<PostersModel>? model = posterDataProvider.data as List<PostersModel>?;
+
+                        return Column(
+                          children: List.generate(model!.length, (index){
+                            return InkWell(
+                              onTap: () async {
+                                await HelpersProvider.LunchUrl(model[index].link.toString(), false);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: SizedBox(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Container(
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          }),
+                        );
+                      case Status.ERROR:
+                        return Text(posterDataProvider.state.message);
+                      default:
+                        return Container();
+                    }
+                  }else{
                     return Container();
                   }
                 },
