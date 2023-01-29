@@ -27,6 +27,8 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   PageController pageController = PageController(initialPage: 0);
 
+  late Future<List<PostersModel>> posters1;
+
   @override
   void initState() {
     super.initState();
@@ -35,7 +37,9 @@ class _HomePageState extends State<HomePage> {
     categoryDataProviderLocation.GetAllCategoriesWithEpisodes(1);
 
     final posterDataProvider = Provider.of<PosterDataProvider>(context, listen: false);
-    posterDataProvider.GetPosters(1);
+    posters1 = posterDataProvider.GetPosters(1);
+    print('cccccccccccccccccccccccc');
+    print(posters1);
     posterDataProvider.GetPosters(2);
 
     final sliderDataProvider = Provider.of<SliderDataProvider>(context, listen: false);
@@ -324,21 +328,22 @@ class _HomePageState extends State<HomePage> {
             ),
 
             SizedBox(
-              child: Consumer<PosterDataProvider>(
-                builder: (context, posterDataProvider, child) {
+              child: FutureBuilder(
+                future: posters1,
+                builder: (context, snapshot) {
 
-                  if(posterDataProvider.location == 2){
-                    switch (posterDataProvider.state.status) {
-                      case Status.LOADING:
-                        return Center(
-                          child: JumpingDotsProgressIndicator(
-                            color: Colors.black,
-                            fontSize: 80,
-                            dotSpacing: 3,
-                          ),
-                        );
-                      case Status.COMPLETED:
-                        List<PostersModel>? model = posterDataProvider.data as List<PostersModel>?;
+                  switch (posterDataProvider.state.status) {
+                    case Status.LOADING:
+                      return Center(
+                        child: JumpingDotsProgressIndicator(
+                          color: Colors.black,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ),
+                      );
+                    case Status.COMPLETED:
+                      if (snapshot.hasData) {
+                        List<PostersModel>? model = snapshot.data;
 
                         return Column(
                           children: List.generate(model!.length, (index){
@@ -371,13 +376,13 @@ class _HomePageState extends State<HomePage> {
                             );
                           }),
                         );
-                      case Status.ERROR:
-                        return Text(posterDataProvider.state.message);
-                      default:
+                      }else{
                         return Container();
-                    }
-                  }else{
-                    return Container();
+                      }
+                    case Status.ERROR:
+                      return Text(posterDataProvider.state.message);
+                    default:
+                      return Container();
                   }
                 },
               ),

@@ -18,7 +18,7 @@ class PosterDataProvider extends ChangeNotifier{
         Iterable l = response.data;
         data = List<PostersModel>.from(l.map((model)=> PostersModel.fromJson(model)));
         state = ResponseModel.completed(data);
-        this.location = location;
+        return data;
       }else{
         state = ResponseModel.loading('something is wrong...');
       }
