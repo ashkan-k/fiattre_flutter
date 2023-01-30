@@ -823,7 +823,29 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // ##TODO Add special Categories here
+            // #TODO Add special Categories here
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Container(
+                height: height * 0.9,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                    BoxShadow(color: Color(0xFF303033), spreadRadius: 3)
+                  ]
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
+              child: Container(
+                height: 1,
+                color: Theme.of(context)
+                    .iconTheme
+                    .color,
+              ),
+            ),
 
             SizedBox(
               child: FutureBuilder(
