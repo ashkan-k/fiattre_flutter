@@ -831,7 +831,7 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
-                    BoxShadow(color: Color(0xFF303033), spreadRadius: 3)
+                    BoxShadow(color: Color(0xFF2C2C2F), spreadRadius: 3)
                   ]
                 ),
               ),
