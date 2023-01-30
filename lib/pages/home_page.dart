@@ -460,9 +460,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
                                 child: SizedBox(
-                                  height: 260,
+                                  height: height * 0.305,
                                   child: ListView.separated(
                                       reverse: true,
                                       scrollDirection: Axis.horizontal,
@@ -487,7 +487,7 @@ class _HomePageState extends State<HomePage> {
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 3),
                                                       child: Text(
-                                                          episode.title.toString(),
+                                                          episode.title.toString().substring(0, 18),
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 16,
@@ -573,9 +573,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
                                 child: SizedBox(
-                                  height: 260,
+                                  height: height * 0.305,
                                   child: ListView.separated(
                                       reverse: true,
                                       scrollDirection: Axis.horizontal,
@@ -600,7 +600,7 @@ class _HomePageState extends State<HomePage> {
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 3),
                                                       child: Text(
-                                                          episode.title.toString(),
+                                                          episode.title.toString().substring(0, 18),
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 16,
@@ -749,9 +749,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
                                 child: SizedBox(
-                                  height: 260,
+                                  height: height * 0.305,
                                   child: ListView.separated(
                                       reverse: true,
                                       scrollDirection: Axis.horizontal,
@@ -776,7 +776,7 @@ class _HomePageState extends State<HomePage> {
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 3),
                                                       child: Text(
-                                                          episode.title.toString(),
+                                                          episode.title.toString().substring(0, 18),
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 16,
@@ -813,10 +813,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-
-            // ##TODO Add special Categories here
-
-
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
               child: Container(
@@ -826,6 +822,8 @@ class _HomePageState extends State<HomePage> {
                     .color,
               ),
             ),
+
+            // ##TODO Add special Categories here
 
             SizedBox(
               child: FutureBuilder(
@@ -876,9 +874,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
                                 child: SizedBox(
-                                  height: 260,
+                                  height: height * 0.305,
                                   child: ListView.separated(
                                       reverse: true,
                                       scrollDirection: Axis.horizontal,
@@ -903,7 +901,7 @@ class _HomePageState extends State<HomePage> {
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 3),
                                                       child: Text(
-                                                          episode.title.toString(),
+                                                          episode.title.toString().substring(0, 18),
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 16,
@@ -939,6 +937,8 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
+
+            Padding(padding: const EdgeInsets.only(bottom: 30)),
 
             SizedBox(
               child: FutureBuilder(
@@ -1052,9 +1052,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
                                 child: SizedBox(
-                                  height: 260,
+                                  height: height * 0.305,
                                   child: ListView.separated(
                                       reverse: true,
                                       scrollDirection: Axis.horizontal,
@@ -1079,7 +1079,7 @@ class _HomePageState extends State<HomePage> {
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 3),
                                                       child: Text(
-                                                          episode.title.toString(),
+                                                          episode.title.toString().substring(0, 18),
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 16,
@@ -1228,9 +1228,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
                                 child: SizedBox(
-                                  height: 260,
+                                  height: height * 0.305,
                                   child: ListView.separated(
                                       reverse: true,
                                       scrollDirection: Axis.horizontal,
@@ -1255,7 +1255,7 @@ class _HomePageState extends State<HomePage> {
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 3),
                                                       child: Text(
-                                                          episode.title.toString(),
+                                                          episode.title.toString().substring(0, 18),
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 16,
@@ -1404,9 +1404,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
                                 child: SizedBox(
-                                  height: 260,
+                                  height: height * 0.305,
                                   child: ListView.separated(
                                       reverse: true,
                                       scrollDirection: Axis.horizontal,
@@ -1431,7 +1431,7 @@ class _HomePageState extends State<HomePage> {
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 3),
                                                       child: Text(
-                                                          episode.title.toString(),
+                                                          episode.title.toString().substring(0, 18),
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 16,
@@ -1517,9 +1517,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
                                 child: SizedBox(
-                                  height: 260,
+                                  height: height * 0.305,
                                   child: ListView.separated(
                                       reverse: true,
                                       scrollDirection: Axis.horizontal,
@@ -1544,7 +1544,7 @@ class _HomePageState extends State<HomePage> {
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 3),
                                                       child: Text(
-                                                          episode.title.toString(),
+                                                          episode.title.toString().substring(0, 18),
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 16,
@@ -1630,9 +1630,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
                                 child: SizedBox(
-                                  height: 260,
+                                  height: height * 0.305,
                                   child: ListView.separated(
                                       reverse: true,
                                       scrollDirection: Axis.horizontal,
@@ -1657,7 +1657,7 @@ class _HomePageState extends State<HomePage> {
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 3),
                                                       child: Text(
-                                                          episode.title.toString(),
+                                                          episode.title.toString().substring(0, 18),
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 16,
@@ -1743,9 +1743,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
                                 child: SizedBox(
-                                  height: 260,
+                                  height: height * 0.305,
                                   child: ListView.separated(
                                       reverse: true,
                                       scrollDirection: Axis.horizontal,
@@ -1770,7 +1770,7 @@ class _HomePageState extends State<HomePage> {
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 3),
                                                       child: Text(
-                                                          episode.title.toString(),
+                                                          episode.title.toString().substring(0, 18),
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 16,
@@ -1856,9 +1856,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
                                 child: SizedBox(
-                                  height: 260,
+                                  height: height * 0.305,
                                   child: ListView.separated(
                                       reverse: true,
                                       scrollDirection: Axis.horizontal,
@@ -1883,7 +1883,7 @@ class _HomePageState extends State<HomePage> {
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 3),
                                                       child: Text(
-                                                          episode.title.toString(),
+                                                          episode.title.toString().substring(0, 18),
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 16,
@@ -1969,9 +1969,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
                                 child: SizedBox(
-                                  height: 260,
+                                  height: height * 0.305,
                                   child: ListView.separated(
                                       reverse: true,
                                       scrollDirection: Axis.horizontal,
@@ -1996,7 +1996,7 @@ class _HomePageState extends State<HomePage> {
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 3),
                                                       child: Text(
-                                                          episode.title.toString(),
+                                                          episode.title.toString().substring(0, 18),
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 16,
