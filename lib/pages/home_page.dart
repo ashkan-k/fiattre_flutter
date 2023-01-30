@@ -938,7 +938,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            Padding(padding: const EdgeInsets.only(bottom: 30)),
+            Padding(padding: const EdgeInsets.only(bottom: 35)),
 
             SizedBox(
               child: FutureBuilder(
