@@ -36,6 +36,9 @@ class _HomePageState extends State<HomePage> {
   late Future<List<CategoriesModel>> categories_7;
   late Future<List<CategoriesModel>> categories_8;
   late Future<List<CategoriesModel>> categories_9;
+  late Future<List<CategoriesModel>> categories_10;
+  late Future<List<CategoriesModel>> categories_11;
+  late Future<List<CategoriesModel>> categories_12;
 
   late Future<List<PostersModel>> posters_1;
   late Future<List<PostersModel>> posters_2;
@@ -58,6 +61,9 @@ class _HomePageState extends State<HomePage> {
     categories_7 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(7);
     categories_8 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(8);
     categories_9 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(9);
+    categories_10 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(10);
+    categories_11 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(11);
+    categories_12 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(9);
 
     final posterDataProvider = Provider.of<PosterDataProvider>(context, listen: false);
     posters_1 = posterDataProvider.GetPosters(1);
@@ -808,6 +814,7 @@ class _HomePageState extends State<HomePage> {
             ),
 
 
+            // ##TODO Add special Categories here
 
 
             Padding(
@@ -1577,6 +1584,345 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               child: FutureBuilder(
                 future: categories_9,
+                builder: (context, snapshot) {
+                  if(snapshot.hasData){
+                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+
+                    return Column(
+                      children: List.generate(model!.length, (index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        print('go to all this category episodes');
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.arrow_back_ios,
+                                              color: Theme.of(context).buttonColor),
+                                          Icon(Icons.circle,
+                                              size: 10, color: Theme.of(context).buttonColor),
+                                          SizedBox(width: 15),
+                                          Text('مشاهده همه',
+                                              style: TextStyle(
+                                                  fontSize: 22,
+                                                  color: Theme.of(context).buttonColor)),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(model![index].name.toString(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 22,
+                                                color: Theme.of(context).iconTheme.color)),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: SizedBox(
+                                  height: 260,
+                                  child: ListView.separated(
+                                      reverse: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index2) {
+                                        var episode = model![index].episodes![index2];
+
+                                        return Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: SizedBox(
+                                            width: width * 0.35,
+                                            child: Container(
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 210,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                        BorderRadius.circular(20),
+                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 3),
+                                                      child: Text(
+                                                          episode.title.toString(),
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 16,
+                                                              color: Theme.of(context)
+                                                                  .iconTheme
+                                                                  .color)),
+                                                    ),
+                                                  ],
+                                                )),
+                                          ),
+                                        );
+                                      },
+                                      separatorBuilder: (context, index) {
+                                        return const Divider();
+                                      },
+                                      itemCount: model![index].episodes?.length ?? 0),
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },),
+                    );
+                  }
+                  else{
+                    return Center(
+                        child: JumpingDotsProgressIndicator(
+                          color: Colors.black,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
+                  }
+                },
+              ),
+            ),
+
+            SizedBox(
+              child: FutureBuilder(
+                future: categories_10,
+                builder: (context, snapshot) {
+                  if(snapshot.hasData){
+                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+
+                    return Column(
+                      children: List.generate(model!.length, (index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        print('go to all this category episodes');
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.arrow_back_ios,
+                                              color: Theme.of(context).buttonColor),
+                                          Icon(Icons.circle,
+                                              size: 10, color: Theme.of(context).buttonColor),
+                                          SizedBox(width: 15),
+                                          Text('مشاهده همه',
+                                              style: TextStyle(
+                                                  fontSize: 22,
+                                                  color: Theme.of(context).buttonColor)),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(model![index].name.toString(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 22,
+                                                color: Theme.of(context).iconTheme.color)),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: SizedBox(
+                                  height: 260,
+                                  child: ListView.separated(
+                                      reverse: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index2) {
+                                        var episode = model![index].episodes![index2];
+
+                                        return Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: SizedBox(
+                                            width: width * 0.35,
+                                            child: Container(
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 210,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                        BorderRadius.circular(20),
+                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 3),
+                                                      child: Text(
+                                                          episode.title.toString(),
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 16,
+                                                              color: Theme.of(context)
+                                                                  .iconTheme
+                                                                  .color)),
+                                                    ),
+                                                  ],
+                                                )),
+                                          ),
+                                        );
+                                      },
+                                      separatorBuilder: (context, index) {
+                                        return const Divider();
+                                      },
+                                      itemCount: model![index].episodes?.length ?? 0),
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },),
+                    );
+                  }
+                  else{
+                    return Center(
+                        child: JumpingDotsProgressIndicator(
+                          color: Colors.black,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
+                  }
+                },
+              ),
+            ),
+
+            SizedBox(
+              child: FutureBuilder(
+                future: categories_11,
+                builder: (context, snapshot) {
+                  if(snapshot.hasData){
+                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+
+                    return Column(
+                      children: List.generate(model!.length, (index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        print('go to all this category episodes');
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.arrow_back_ios,
+                                              color: Theme.of(context).buttonColor),
+                                          Icon(Icons.circle,
+                                              size: 10, color: Theme.of(context).buttonColor),
+                                          SizedBox(width: 15),
+                                          Text('مشاهده همه',
+                                              style: TextStyle(
+                                                  fontSize: 22,
+                                                  color: Theme.of(context).buttonColor)),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(model![index].name.toString(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 22,
+                                                color: Theme.of(context).iconTheme.color)),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: SizedBox(
+                                  height: 260,
+                                  child: ListView.separated(
+                                      reverse: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index2) {
+                                        var episode = model![index].episodes![index2];
+
+                                        return Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: SizedBox(
+                                            width: width * 0.35,
+                                            child: Container(
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 210,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                        BorderRadius.circular(20),
+                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 3),
+                                                      child: Text(
+                                                          episode.title.toString(),
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 16,
+                                                              color: Theme.of(context)
+                                                                  .iconTheme
+                                                                  .color)),
+                                                    ),
+                                                  ],
+                                                )),
+                                          ),
+                                        );
+                                      },
+                                      separatorBuilder: (context, index) {
+                                        return const Divider();
+                                      },
+                                      itemCount: model![index].episodes?.length ?? 0),
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },),
+                    );
+                  }
+                  else{
+                    return Center(
+                        child: JumpingDotsProgressIndicator(
+                          color: Colors.black,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
+                  }
+                },
+              ),
+            ),
+
+            SizedBox(
+              child: FutureBuilder(
+                future: categories_12,
                 builder: (context, snapshot) {
                   if(snapshot.hasData){
                     List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
