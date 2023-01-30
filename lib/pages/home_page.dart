@@ -33,6 +33,9 @@ class _HomePageState extends State<HomePage> {
   late Future<List<CategoriesModel>> categories_4;
   late Future<List<CategoriesModel>> categories_5;
   late Future<List<CategoriesModel>> categories_6;
+  late Future<List<CategoriesModel>> categories_7;
+  late Future<List<CategoriesModel>> categories_8;
+  late Future<List<CategoriesModel>> categories_9;
 
   late Future<List<PostersModel>> posters_1;
   late Future<List<PostersModel>> posters_2;
@@ -52,6 +55,9 @@ class _HomePageState extends State<HomePage> {
     categories_4 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(4);
     categories_5 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(5);
     categories_6 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(6);
+    categories_7 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(7);
+    categories_8 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(8);
+    categories_9 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(9);
 
     final posterDataProvider = Provider.of<PosterDataProvider>(context, listen: false);
     posters_1 = posterDataProvider.GetPosters(1);
@@ -512,69 +518,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
-              child: Container(
-                height: 1,
-                color: Theme.of(context)
-                    .iconTheme
-                    .color,
-              ),
-            ),
-
-            SizedBox(
-              child: FutureBuilder(
-                future: posters_2,
-                builder: (context, snapshot) {
-
-                  if (snapshot.hasData) {
-                    List<PostersModel>? model = snapshot.data;
-
-                    return Column(
-                      children: List.generate(model!.length, (index){
-                        return InkWell(
-                          onTap: () async {
-                            await HelpersProvider.LunchUrl(model[index].link.toString(), false);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: SizedBox(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                                            child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      }),
-                    );
-                  }else{
-                    return Center(
-                      child: JumpingDotsProgressIndicator(
-                        color: Colors.black,
-                        fontSize: 80,
-                        dotSpacing: 3,
-                      ),
-                    );
-                  }
-
-                },
-              ),
-            ),
-
             SizedBox(
               child: FutureBuilder(
                 future: categories_2,
@@ -700,7 +643,186 @@ class _HomePageState extends State<HomePage> {
 
             SizedBox(
               child: FutureBuilder(
+                future: posters_2,
+                builder: (context, snapshot) {
+
+                  if (snapshot.hasData) {
+                    List<PostersModel>? model = snapshot.data;
+
+                    return Column(
+                      children: List.generate(model!.length, (index){
+                        return InkWell(
+                          onTap: () async {
+                            await HelpersProvider.LunchUrl(model[index].link.toString(), false);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: SizedBox(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                                            child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
+                    );
+                  }else{
+                    return Center(
+                      child: JumpingDotsProgressIndicator(
+                        color: Colors.black,
+                        fontSize: 80,
+                        dotSpacing: 3,
+                      ),
+                    );
+                  }
+
+                },
+              ),
+            ),
+
+            SizedBox(
+              child: FutureBuilder(
                 future: categories_3,
+                builder: (context, snapshot) {
+                  if(snapshot.hasData){
+                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+
+                    return Column(
+                      children: List.generate(model!.length, (index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        print('go to all this category episodes');
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.arrow_back_ios,
+                                              color: Theme.of(context).buttonColor),
+                                          Icon(Icons.circle,
+                                              size: 10, color: Theme.of(context).buttonColor),
+                                          SizedBox(width: 15),
+                                          Text('مشاهده همه',
+                                              style: TextStyle(
+                                                  fontSize: 22,
+                                                  color: Theme.of(context).buttonColor)),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(model![index].name.toString(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 22,
+                                                color: Theme.of(context).iconTheme.color)),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: SizedBox(
+                                  height: 260,
+                                  child: ListView.separated(
+                                      reverse: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index2) {
+                                        var episode = model![index].episodes![index2];
+
+                                        return Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: SizedBox(
+                                            width: width * 0.35,
+                                            child: Container(
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 210,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                        BorderRadius.circular(20),
+                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 3),
+                                                      child: Text(
+                                                          episode.title.toString(),
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 16,
+                                                              color: Theme.of(context)
+                                                                  .iconTheme
+                                                                  .color)),
+                                                    ),
+                                                  ],
+                                                )),
+                                          ),
+                                        );
+                                      },
+                                      separatorBuilder: (context, index) {
+                                        return const Divider();
+                                      },
+                                      itemCount: model![index].episodes?.length ?? 0),
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },),
+                    );
+                  }
+                  else{
+                    return Center(
+                        child: JumpingDotsProgressIndicator(
+                          color: Colors.black,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
+                  }
+                },
+              ),
+            ),
+
+
+
+
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
+              child: Container(
+                height: 1,
+                color: Theme.of(context)
+                    .iconTheme
+                    .color,
+              ),
+            ),
+
+            SizedBox(
+              child: FutureBuilder(
+                future: categories_4,
                 builder: (context, snapshot) {
                   if(snapshot.hasData){
                     List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
@@ -876,235 +998,6 @@ class _HomePageState extends State<HomePage> {
 
             SizedBox(
               child: FutureBuilder(
-                future: posters_4,
-                builder: (context, snapshot) {
-
-                  if (snapshot.hasData) {
-                    List<PostersModel>? model = snapshot.data;
-
-                    return Column(
-                      children: List.generate(model!.length, (index){
-                        return InkWell(
-                          onTap: () async {
-                            await HelpersProvider.LunchUrl(model[index].link.toString(), false);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: SizedBox(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                                            child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      }),
-                    );
-                  }else{
-                    return Center(
-                      child: JumpingDotsProgressIndicator(
-                        color: Colors.black,
-                        fontSize: 80,
-                        dotSpacing: 3,
-                      ),
-                    );
-                  }
-
-                },
-              ),
-            ),
-
-            SizedBox(
-              child: FutureBuilder(
-                future: categories_4,
-                builder: (context, snapshot) {
-                  if(snapshot.hasData){
-                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
-
-                    return Column(
-                      children: List.generate(model!.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        print('go to all this category episodes');
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,
-                                              color: Theme.of(context).buttonColor),
-                                          Icon(Icons.circle,
-                                              size: 10, color: Theme.of(context).buttonColor),
-                                          SizedBox(width: 15),
-                                          Text('مشاهده همه',
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  color: Theme.of(context).buttonColor)),
-                                        ],
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(model![index].name.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 22,
-                                                color: Theme.of(context).iconTheme.color)),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(20),
-                                child: SizedBox(
-                                  height: 260,
-                                  child: ListView.separated(
-                                      reverse: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index2) {
-                                        var episode = model![index].episodes![index2];
-
-                                        return Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SizedBox(
-                                            width: width * 0.35,
-                                            child: Container(
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 210,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.circular(20),
-                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 3),
-                                                      child: Text(
-                                                          episode.title.toString(),
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 16,
-                                                              color: Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const Divider();
-                                      },
-                                      itemCount: model![index].episodes?.length ?? 0),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },),
-                    );
-                  }
-                  else{
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
-                  }
-                },
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
-              child: Container(
-                height: 1,
-                color: Theme.of(context)
-                    .iconTheme
-                    .color,
-              ),
-            ),
-
-            SizedBox(
-              child: FutureBuilder(
-                future: posters_5,
-                builder: (context, snapshot) {
-
-                  if (snapshot.hasData) {
-                    List<PostersModel>? model = snapshot.data;
-
-                    return Column(
-                      children: List.generate(model!.length, (index){
-                        return InkWell(
-                          onTap: () async {
-                            await HelpersProvider.LunchUrl(model[index].link.toString(), false);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: SizedBox(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                                            child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      }),
-                    );
-                  }else{
-                    return Center(
-                      child: JumpingDotsProgressIndicator(
-                        color: Colors.black,
-                        fontSize: 80,
-                        dotSpacing: 3,
-                      ),
-                    );
-                  }
-
-                },
-              ),
-            ),
-
-            SizedBox(
-              child: FutureBuilder(
                 future: categories_5,
                 builder: (context, snapshot) {
                   if(snapshot.hasData){
@@ -1216,19 +1109,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
-              child: Container(
-                height: 1,
-                color: Theme.of(context)
-                    .iconTheme
-                    .color,
-              ),
-            ),
-
             SizedBox(
               child: FutureBuilder(
-                future: posters_6,
+                future: posters_4,
                 builder: (context, snapshot) {
 
                   if (snapshot.hasData) {
@@ -1279,9 +1162,421 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
+              child: Container(
+                height: 1,
+                color: Theme.of(context)
+                    .iconTheme
+                    .color,
+              ),
+            ),
+
             SizedBox(
               child: FutureBuilder(
                 future: categories_6,
+                builder: (context, snapshot) {
+                  if(snapshot.hasData){
+                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+
+                    return Column(
+                      children: List.generate(model!.length, (index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        print('go to all this category episodes');
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.arrow_back_ios,
+                                              color: Theme.of(context).buttonColor),
+                                          Icon(Icons.circle,
+                                              size: 10, color: Theme.of(context).buttonColor),
+                                          SizedBox(width: 15),
+                                          Text('مشاهده همه',
+                                              style: TextStyle(
+                                                  fontSize: 22,
+                                                  color: Theme.of(context).buttonColor)),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(model![index].name.toString(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 22,
+                                                color: Theme.of(context).iconTheme.color)),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: SizedBox(
+                                  height: 260,
+                                  child: ListView.separated(
+                                      reverse: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index2) {
+                                        var episode = model![index].episodes![index2];
+
+                                        return Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: SizedBox(
+                                            width: width * 0.35,
+                                            child: Container(
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 210,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                        BorderRadius.circular(20),
+                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 3),
+                                                      child: Text(
+                                                          episode.title.toString(),
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 16,
+                                                              color: Theme.of(context)
+                                                                  .iconTheme
+                                                                  .color)),
+                                                    ),
+                                                  ],
+                                                )),
+                                          ),
+                                        );
+                                      },
+                                      separatorBuilder: (context, index) {
+                                        return const Divider();
+                                      },
+                                      itemCount: model![index].episodes?.length ?? 0),
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },),
+                    );
+                  }
+                  else{
+                    return Center(
+                        child: JumpingDotsProgressIndicator(
+                          color: Colors.black,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
+                  }
+                },
+              ),
+            ),
+
+            SizedBox(
+              child: FutureBuilder(
+                future: posters_5,
+                builder: (context, snapshot) {
+
+                  if (snapshot.hasData) {
+                    List<PostersModel>? model = snapshot.data;
+
+                    return Column(
+                      children: List.generate(model!.length, (index){
+                        return InkWell(
+                          onTap: () async {
+                            await HelpersProvider.LunchUrl(model[index].link.toString(), false);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: SizedBox(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                                            child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
+                    );
+                  }else{
+                    return Center(
+                      child: JumpingDotsProgressIndicator(
+                        color: Colors.black,
+                        fontSize: 80,
+                        dotSpacing: 3,
+                      ),
+                    );
+                  }
+
+                },
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
+              child: Container(
+                height: 1,
+                color: Theme.of(context)
+                    .iconTheme
+                    .color,
+              ),
+            ),
+
+            SizedBox(
+              child: FutureBuilder(
+                future: categories_7,
+                builder: (context, snapshot) {
+                  if(snapshot.hasData){
+                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+
+                    return Column(
+                      children: List.generate(model!.length, (index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        print('go to all this category episodes');
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.arrow_back_ios,
+                                              color: Theme.of(context).buttonColor),
+                                          Icon(Icons.circle,
+                                              size: 10, color: Theme.of(context).buttonColor),
+                                          SizedBox(width: 15),
+                                          Text('مشاهده همه',
+                                              style: TextStyle(
+                                                  fontSize: 22,
+                                                  color: Theme.of(context).buttonColor)),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(model![index].name.toString(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 22,
+                                                color: Theme.of(context).iconTheme.color)),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: SizedBox(
+                                  height: 260,
+                                  child: ListView.separated(
+                                      reverse: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index2) {
+                                        var episode = model![index].episodes![index2];
+
+                                        return Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: SizedBox(
+                                            width: width * 0.35,
+                                            child: Container(
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 210,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                        BorderRadius.circular(20),
+                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 3),
+                                                      child: Text(
+                                                          episode.title.toString(),
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 16,
+                                                              color: Theme.of(context)
+                                                                  .iconTheme
+                                                                  .color)),
+                                                    ),
+                                                  ],
+                                                )),
+                                          ),
+                                        );
+                                      },
+                                      separatorBuilder: (context, index) {
+                                        return const Divider();
+                                      },
+                                      itemCount: model![index].episodes?.length ?? 0),
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },),
+                    );
+                  }
+                  else{
+                    return Center(
+                        child: JumpingDotsProgressIndicator(
+                          color: Colors.black,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
+                  }
+                },
+              ),
+            ),
+
+            SizedBox(
+              child: FutureBuilder(
+                future: categories_8,
+                builder: (context, snapshot) {
+                  if(snapshot.hasData){
+                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+
+                    return Column(
+                      children: List.generate(model!.length, (index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        print('go to all this category episodes');
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.arrow_back_ios,
+                                              color: Theme.of(context).buttonColor),
+                                          Icon(Icons.circle,
+                                              size: 10, color: Theme.of(context).buttonColor),
+                                          SizedBox(width: 15),
+                                          Text('مشاهده همه',
+                                              style: TextStyle(
+                                                  fontSize: 22,
+                                                  color: Theme.of(context).buttonColor)),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(model![index].name.toString(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 22,
+                                                color: Theme.of(context).iconTheme.color)),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: SizedBox(
+                                  height: 260,
+                                  child: ListView.separated(
+                                      reverse: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index2) {
+                                        var episode = model![index].episodes![index2];
+
+                                        return Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: SizedBox(
+                                            width: width * 0.35,
+                                            child: Container(
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 210,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                        BorderRadius.circular(20),
+                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 3),
+                                                      child: Text(
+                                                          episode.title.toString(),
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 16,
+                                                              color: Theme.of(context)
+                                                                  .iconTheme
+                                                                  .color)),
+                                                    ),
+                                                  ],
+                                                )),
+                                          ),
+                                        );
+                                      },
+                                      separatorBuilder: (context, index) {
+                                        return const Divider();
+                                      },
+                                      itemCount: model![index].episodes?.length ?? 0),
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },),
+                    );
+                  }
+                  else{
+                    return Center(
+                        child: JumpingDotsProgressIndicator(
+                          color: Colors.black,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
+                  }
+                },
+              ),
+            ),
+
+            SizedBox(
+              child: FutureBuilder(
+                future: categories_9,
                 builder: (context, snapshot) {
                   if(snapshot.hasData){
                     List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
