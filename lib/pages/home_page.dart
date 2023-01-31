@@ -828,35 +828,39 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
-                  Container(
-                    height: height * 0.9,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(color: Color(0xFF2C2C2F), spreadRadius: 3)
-                        ]
-                    ),
-                  ),
-
-                  Center(
-                    child: Container(
-                      height: height * 0.3,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(color: Color(0xFF2C2C2F), spreadRadius: 3)
-                          ],
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color(0xFF272121),
-                              Color(0xFF67686c),
-                            ],
-                          )
+                  Stack(
+                    children: [
+                      Container(
+                        height: height * 1.1,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(color: Color(0xFF2C2C2F), spreadRadius: 3)
+                            ]
+                        ),
                       ),
-                    ),
-                  ),
+
+                      Center(
+                        child: Container(
+                          height: height * 0.4,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(color: Color(0xFF2C2C2F), spreadRadius: 3)
+                              ],
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color(0xFF67686c),
+                                  Color(0xFF272121),
+                                ],
+                              )
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               )
             ),
