@@ -24,15 +24,15 @@ class MyThemes {
     ),
     unselectedWidgetColor: Colors.white70,
     primaryColorLight: Color(0xFFfd0002),
-    scaffoldBackgroundColor: Colors.grey.shade900,
-    primaryColor: Colors.grey.shade900,
+    scaffoldBackgroundColor: Color(0xFF2f2f31),
+    primaryColor: Color(0xFF171516),
     secondaryHeaderColor: Colors.white,
     iconTheme: const IconThemeData(color: Colors.white),
     buttonColor: Color(0xFFfd0002),
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey.shade900,
       ),
-    accentColor: Color(0xFF2f2f31)
+      accentColor: Color(0xFF242426)
     // textSelectionTheme: const TextSelectionThemeData(
     //   cursorColor: Colors.red,
     //   selectionColor: Colors.green,

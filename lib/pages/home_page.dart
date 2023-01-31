@@ -943,7 +943,7 @@ class _HomePageState extends State<HomePage> {
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
                                 BoxShadow(
-                                    color: Color(0xFF2C2C2F), spreadRadius: 3)
+                                    color: Theme.of(context).accentColor, spreadRadius: 3)
                               ]),
                         ),
                         Stack(
@@ -955,15 +955,15 @@ class _HomePageState extends State<HomePage> {
                                     borderRadius: BorderRadius.circular(10),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Color(0xFF2C2C2F),
+                                          color: Theme.of(context).accentColor,
                                           spreadRadius: 3)
                                     ],
                                     gradient: LinearGradient(
                                       begin: Alignment.topCenter,
                                       end: Alignment.bottomCenter,
                                       colors: [
-                                        Color(0xFF67686c),
-                                        Color(0xFF272121),
+                                        Color(0xFF262020),
+                                        Color(0xFF69686d),
                                       ],
                                     )),
                               ),
