@@ -1021,9 +1021,9 @@ class _HomePageState extends State<HomePage> {
                                                 ),
                                               ],
                                             )),
-
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 10),
+                                          padding:
+                                              const EdgeInsets.only(top: 10),
                                           child: Directionality(
                                               textDirection: TextDirection.rtl,
                                               child: Row(
@@ -1032,7 +1032,7 @@ class _HomePageState extends State<HomePage> {
                                                     'تولید:',
                                                     style: TextStyle(
                                                         fontWeight:
-                                                        FontWeight.bold,
+                                                            FontWeight.bold,
                                                         fontSize: 20,
                                                         color: Theme.of(context)
                                                             .iconTheme
@@ -1043,7 +1043,7 @@ class _HomePageState extends State<HomePage> {
                                                     'اردیبهشت 1392',
                                                     style: TextStyle(
                                                         fontWeight:
-                                                        FontWeight.bold,
+                                                            FontWeight.bold,
                                                         fontSize: 20,
                                                         color: Theme.of(context)
                                                             .iconTheme
@@ -1052,15 +1052,22 @@ class _HomePageState extends State<HomePage> {
                                                 ],
                                               )),
                                         ),
-
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 10),
+                                          padding:
+                                              const EdgeInsets.only(top: 10),
                                           child: Directionality(
                                               textDirection: TextDirection.rtl,
                                               child: Row(
                                                 children: [
+                                                  Icon(
+                                                    Icons.remove_red_eye_outlined,
+                                                    color: Theme.of(context)
+                                                        .iconTheme
+                                                        .color,
+                                                    size: 30,
+                                                  ),
                                                   Text(
-                                                    'زمان:',
+                                                    ':',
                                                     style: TextStyle(
                                                         fontWeight:
                                                         FontWeight.bold,
@@ -1074,7 +1081,7 @@ class _HomePageState extends State<HomePage> {
                                                     '3496 بازدید',
                                                     style: TextStyle(
                                                         fontWeight:
-                                                        FontWeight.bold,
+                                                            FontWeight.bold,
                                                         fontSize: 20,
                                                         color: Theme.of(context)
                                                             .iconTheme
@@ -1083,15 +1090,22 @@ class _HomePageState extends State<HomePage> {
                                                 ],
                                               )),
                                         ),
-
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 10),
+                                          padding:
+                                              const EdgeInsets.only(top: 10),
                                           child: Directionality(
                                               textDirection: TextDirection.rtl,
                                               child: Row(
                                                 children: [
+                                                  Icon(
+                                                    Icons.favorite_outline_outlined,
+                                                    color: Theme.of(context)
+                                                        .iconTheme
+                                                        .color,
+                                                    size: 30,
+                                                  ),
                                                   Text(
-                                                    'زمان:',
+                                                    ':',
                                                     style: TextStyle(
                                                         fontWeight:
                                                         FontWeight.bold,
@@ -1105,7 +1119,7 @@ class _HomePageState extends State<HomePage> {
                                                     '8458 لایک',
                                                     style: TextStyle(
                                                         fontWeight:
-                                                        FontWeight.bold,
+                                                            FontWeight.bold,
                                                         fontSize: 20,
                                                         color: Theme.of(context)
                                                             .iconTheme
