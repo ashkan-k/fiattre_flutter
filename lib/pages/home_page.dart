@@ -51,7 +51,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    final categoryDataProviderLocation = Provider.of<CategoryDataProvider>(context, listen: false);
+    final categoryDataProviderLocation =
+        Provider.of<CategoryDataProvider>(context, listen: false);
     categories_1 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(1);
     categories_2 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(2);
     categories_3 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(3);
@@ -61,11 +62,15 @@ class _HomePageState extends State<HomePage> {
     categories_7 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(7);
     categories_8 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(8);
     categories_9 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(9);
-    categories_10 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(10);
-    categories_11 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(11);
-    categories_12 = categoryDataProviderLocation.GetAllCategoriesWithEpisodes(9);
+    categories_10 =
+        categoryDataProviderLocation.GetAllCategoriesWithEpisodes(10);
+    categories_11 =
+        categoryDataProviderLocation.GetAllCategoriesWithEpisodes(11);
+    categories_12 =
+        categoryDataProviderLocation.GetAllCategoriesWithEpisodes(9);
 
-    final posterDataProvider = Provider.of<PosterDataProvider>(context, listen: false);
+    final posterDataProvider =
+        Provider.of<PosterDataProvider>(context, listen: false);
     posters_1 = posterDataProvider.GetPosters(1);
     posters_2 = posterDataProvider.GetPosters(2);
     posters_3 = posterDataProvider.GetPosters(3);
@@ -73,7 +78,8 @@ class _HomePageState extends State<HomePage> {
     posters_5 = posterDataProvider.GetPosters(5);
     posters_6 = posterDataProvider.GetPosters(6);
 
-    final sliderDataProvider = Provider.of<SliderDataProvider>(context, listen: false);
+    final sliderDataProvider =
+        Provider.of<SliderDataProvider>(context, listen: false);
     sliderDataProvider.GetSliders();
   }
 
@@ -115,13 +121,11 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-
             SizedBox(
               height: height * 0.65,
               width: double.infinity,
-              child:  Consumer<SliderDataProvider>(
+              child: Consumer<SliderDataProvider>(
                 builder: (context, sliderDataProvider, child) {
-
                   switch (sliderDataProvider.state.status) {
                     case Status.LOADING:
                       return Center(
@@ -132,7 +136,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     case Status.COMPLETED:
-                      List<SlidersModel>? model = sliderDataProvider.data as List<SlidersModel>?;
+                      List<SlidersModel>? model =
+                          sliderDataProvider.data as List<SlidersModel>?;
 
                       AutoPlaySlider(model);
 
@@ -140,12 +145,16 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           PageView(
                             controller: pageController,
-                            children: List.generate(model!.length, (index){
+                            children: List.generate(model!.length, (index) {
                               return InkWell(
                                 onTap: () async {
-                                  await HelpersProvider.LunchUrl(model[index].link.toString(), false);
+                                  await HelpersProvider.LunchUrl(
+                                      model[index].link.toString(), false);
                                 },
-                                child: HelpersProvider.ShowImage(model[index].file_mobile.toString(), 'network', 0),
+                                child: HelpersProvider.ShowImage(
+                                    model[index].file_mobile.toString(),
+                                    'network',
+                                    0),
                               );
                             }),
                           ),
@@ -165,11 +174,11 @@ class _HomePageState extends State<HomePage> {
                                         .labelSmall
                                         ?.color)!,
                                     activeDotColor:
-                                    Theme.of(context).secondaryHeaderColor),
-                                onDotClicked: (index) => pageController.animateToPage(
-                                    index,
-                                    duration: Duration(milliseconds: 10),
-                                    curve: Curves.bounceOut),
+                                        Theme.of(context).secondaryHeaderColor),
+                                onDotClicked: (index) =>
+                                    pageController.animateToPage(index,
+                                        duration: Duration(milliseconds: 10),
+                                        curve: Curves.bounceOut),
                               ),
                             ),
                           )
@@ -214,7 +223,8 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         InkWell(
                           onTap: () async {
-                            await HelpersProvider.LunchUrl(best_items_images![0][0].toString(), false);
+                            await HelpersProvider.LunchUrl(
+                                best_items_images![0][0].toString(), false);
                           },
                           child: Container(
                             child: Column(
@@ -222,15 +232,17 @@ class _HomePageState extends State<HomePage> {
                                 Container(
                                   height: 200,
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                                    child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    child: Image.asset(
+                                        best_items_images![0][1].toString(),
+                                        fit: BoxFit.fill,
+                                        width: width / 2 - 20),
                                   ),
                                 ),
-
                                 Padding(
                                   padding: const EdgeInsets.only(top: 3),
-                                  child: Text(
-                                      'فیلم تئاتر',
+                                  child: Text('فیلم تئاتر',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 12,
@@ -244,7 +256,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                         InkWell(
                           onTap: () async {
-                            await HelpersProvider.LunchUrl(best_items_images![1][0].toString(), false);
+                            await HelpersProvider.LunchUrl(
+                                best_items_images![1][0].toString(), false);
                           },
                           child: Container(
                             child: Column(
@@ -252,15 +265,17 @@ class _HomePageState extends State<HomePage> {
                                 Container(
                                   height: 200,
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                                    child: Image.asset(best_items_images![1][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    child: Image.asset(
+                                        best_items_images![1][1].toString(),
+                                        fit: BoxFit.fill,
+                                        width: width / 2 - 20),
                                   ),
                                 ),
-
                                 Padding(
                                   padding: const EdgeInsets.only(top: 3),
-                                  child: Text(
-                                      'مستند تئاتر',
+                                  child: Text('مستند تئاتر',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 12,
@@ -276,7 +291,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
                   child: Row(
@@ -284,7 +298,8 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       InkWell(
                         onTap: () async {
-                          await HelpersProvider.LunchUrl(best_items_images![2][0].toString(), false);
+                          await HelpersProvider.LunchUrl(
+                              best_items_images![2][0].toString(), false);
                         },
                         child: Container(
                           child: Column(
@@ -292,21 +307,22 @@ class _HomePageState extends State<HomePage> {
                               Container(
                                 height: 200,
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                                  child: Image.asset(best_items_images![2][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  child: Image.asset(
+                                      best_items_images![2][1].toString(),
+                                      fit: BoxFit.fill,
+                                      width: width / 2 - 20),
                                 ),
                               ),
-
                               Padding(
                                 padding: const EdgeInsets.only(top: 3),
-                                child: Text(
-                                    'کار در تئاتر',
+                                child: Text('کار در تئاتر',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 12,
-                                        color: Theme.of(context)
-                                            .iconTheme
-                                            .color)),
+                                        color:
+                                            Theme.of(context).iconTheme.color)),
                               ),
                             ],
                           ),
@@ -314,7 +330,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                       InkWell(
                         onTap: () async {
-                          await HelpersProvider.LunchUrl(best_items_images![3][0].toString(), false);
+                          await HelpersProvider.LunchUrl(
+                              best_items_images![3][0].toString(), false);
                         },
                         child: Container(
                           child: Column(
@@ -322,21 +339,22 @@ class _HomePageState extends State<HomePage> {
                               Container(
                                 height: 200,
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                                  child: Image.asset(best_items_images![3][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  child: Image.asset(
+                                      best_items_images![3][1].toString(),
+                                      fit: BoxFit.fill,
+                                      width: width / 2 - 20),
                                 ),
                               ),
-
                               Padding(
                                 padding: const EdgeInsets.only(top: 3),
-                                child: Text(
-                                    'اکتورز استودیو',
+                                child: Text('اکتورز استودیو',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 12,
-                                        color: Theme.of(context)
-                                            .iconTheme
-                                            .color)),
+                                        color:
+                                            Theme.of(context).iconTheme.color)),
                               ),
                             ],
                           ),
@@ -349,12 +367,11 @@ class _HomePageState extends State<HomePage> {
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 40, bottom: 40, left: 20, right: 20),
+              padding: const EdgeInsets.only(
+                  top: 40, bottom: 40, left: 20, right: 20),
               child: Container(
                 height: 1,
-                color: Theme.of(context)
-                    .iconTheme
-                    .color,
+                color: Theme.of(context).iconTheme.color,
               ),
             ),
 
@@ -362,318 +379,34 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: posters_1,
                 builder: (context, snapshot) {
-
-                    if (snapshot.hasData) {
-                      List<PostersModel>? model = snapshot.data;
-
-                      return Column(
-                        children: List.generate(model!.length, (index){
-                          return InkWell(
-                            onTap: () async {
-                              await HelpersProvider.LunchUrl(model[index].link.toString(), false);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: SizedBox(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Container(
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                                              child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
-                        }),
-                      );
-                    }else{
-                      return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ),
-                      );
-                    }
-
-                },
-              ),
-            ),
-
-            SizedBox(
-              child: FutureBuilder(
-                future: categories_1,
-                builder: (context, snapshot) {
-                  if(snapshot.hasData){
-                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
-
-                    return Column(
-                      children: List.generate(model!.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        print('go to all this category episodes');
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,
-                                              color: Theme.of(context).buttonColor),
-                                          Icon(Icons.circle,
-                                              size: 10, color: Theme.of(context).buttonColor),
-                                          SizedBox(width: 15),
-                                          Text('مشاهده همه',
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  color: Theme.of(context).buttonColor)),
-                                        ],
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(model![index].name.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 22,
-                                                color: Theme.of(context).iconTheme.color)),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
-                                child: SizedBox(
-                                  height: height * 0.305,
-                                  child: ListView.separated(
-                                      reverse: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index2) {
-                                        var episode = model![index].episodes![index2];
-
-                                        return Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SizedBox(
-                                            width: width * 0.35,
-                                            child: Container(
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 210,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.circular(20),
-                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 3),
-                                                      child: Text(
-                                                          episode.title.toString().substring(0, 18),
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 16,
-                                                              color: Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const Divider();
-                                      },
-                                      itemCount: model![index].episodes?.length ?? 0),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },),
-                    );
-                  }
-                  else{
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                        color: Colors.black,
-                        fontSize: 80,
-                        dotSpacing: 3,
-                    ));
-                  }
-                },
-              ),
-            ),
-
-            SizedBox(
-              child: FutureBuilder(
-                future: categories_2,
-                builder: (context, snapshot) {
-                  if(snapshot.hasData){
-                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
-
-                    return Column(
-                      children: List.generate(model!.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        print('go to all this category episodes');
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,
-                                              color: Theme.of(context).buttonColor),
-                                          Icon(Icons.circle,
-                                              size: 10, color: Theme.of(context).buttonColor),
-                                          SizedBox(width: 15),
-                                          Text('مشاهده همه',
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  color: Theme.of(context).buttonColor)),
-                                        ],
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(model![index].name.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 22,
-                                                color: Theme.of(context).iconTheme.color)),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
-                                child: SizedBox(
-                                  height: height * 0.305,
-                                  child: ListView.separated(
-                                      reverse: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index2) {
-                                        var episode = model![index].episodes![index2];
-
-                                        return Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SizedBox(
-                                            width: width * 0.35,
-                                            child: Container(
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 210,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.circular(20),
-                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 3),
-                                                      child: Text(
-                                                          episode.title.toString().substring(0, 18),
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 16,
-                                                              color: Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const Divider();
-                                      },
-                                      itemCount: model![index].episodes?.length ?? 0),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },),
-                    );
-                  }
-                  else{
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
-                  }
-                },
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
-              child: Container(
-                height: 1,
-                color: Theme.of(context)
-                    .iconTheme
-                    .color,
-              ),
-            ),
-
-            SizedBox(
-              child: FutureBuilder(
-                future: posters_2,
-                builder: (context, snapshot) {
-
                   if (snapshot.hasData) {
                     List<PostersModel>? model = snapshot.data;
 
                     return Column(
-                      children: List.generate(model!.length, (index){
+                      children: List.generate(model!.length, (index) {
                         return InkWell(
                           onTap: () async {
-                            await HelpersProvider.LunchUrl(model[index].link.toString(), false);
+                            await HelpersProvider.LunchUrl(
+                                model[index].link.toString(), false);
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: SizedBox(
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Container(
                                     child: Column(
                                       children: [
                                         Container(
                                           child: ClipRRect(
-                                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                                            child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            child: Image.network(
+                                                model![index].image.toString(),
+                                                fit: BoxFit.fill,
+                                                width: width * 0.90),
                                           ),
                                         ),
                                       ],
@@ -686,7 +419,7 @@ class _HomePageState extends State<HomePage> {
                         );
                       }),
                     );
-                  }else{
+                  } else {
                     return Center(
                       child: JumpingDotsProgressIndicator(
                         color: Colors.black,
@@ -695,7 +428,354 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   }
+                },
+              ),
+            ),
 
+            SizedBox(
+              child: FutureBuilder(
+                future: categories_1,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List<CategoriesModel>? model =
+                        snapshot.data as List<CategoriesModel>?;
+
+                    return Column(
+                      children: List.generate(
+                        model!.length,
+                        (index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 30, left: 30),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          print(
+                                              'go to all this category episodes');
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.arrow_back_ios,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            Icon(Icons.circle,
+                                                size: 10,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            SizedBox(width: 15),
+                                            Text('مشاهده همه',
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Theme.of(context)
+                                                        .buttonColor)),
+                                          ],
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(model![index].name.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                  color: Theme.of(context)
+                                                      .iconTheme
+                                                      .color)),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20, bottom: 0),
+                                  child: SizedBox(
+                                    height: height * 0.305,
+                                    child: ListView.separated(
+                                        reverse: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index2) {
+                                          var episode =
+                                              model![index].episodes![index2];
+
+                                          return Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SizedBox(
+                                              width: width * 0.35,
+                                              child: Container(
+                                                  child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 210,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                          baseApiService
+                                                                  .apiUrl +
+                                                              episode.image
+                                                                  .toString(),
+                                                          fit: BoxFit.fill),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 3),
+                                                    child: Text(
+                                                        episode.title
+                                                            .toString()
+                                                            .substring(0, 18),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 16,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .iconTheme
+                                                                .color)),
+                                                  ),
+                                                ],
+                                              )),
+                                            ),
+                                          );
+                                        },
+                                        separatorBuilder: (context, index) {
+                                          return const Divider();
+                                        },
+                                        itemCount:
+                                            model![index].episodes?.length ??
+                                                0),
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  } else {
+                    return Center(
+                        child: JumpingDotsProgressIndicator(
+                      color: Colors.black,
+                      fontSize: 80,
+                      dotSpacing: 3,
+                    ));
+                  }
+                },
+              ),
+            ),
+
+            SizedBox(
+              child: FutureBuilder(
+                future: categories_2,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List<CategoriesModel>? model =
+                        snapshot.data as List<CategoriesModel>?;
+
+                    return Column(
+                      children: List.generate(
+                        model!.length,
+                        (index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 30, left: 30),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          print(
+                                              'go to all this category episodes');
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.arrow_back_ios,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            Icon(Icons.circle,
+                                                size: 10,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            SizedBox(width: 15),
+                                            Text('مشاهده همه',
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Theme.of(context)
+                                                        .buttonColor)),
+                                          ],
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(model![index].name.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                  color: Theme.of(context)
+                                                      .iconTheme
+                                                      .color)),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20, bottom: 0),
+                                  child: SizedBox(
+                                    height: height * 0.305,
+                                    child: ListView.separated(
+                                        reverse: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index2) {
+                                          var episode =
+                                              model![index].episodes![index2];
+
+                                          return Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SizedBox(
+                                              width: width * 0.35,
+                                              child: Container(
+                                                  child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 210,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                          baseApiService
+                                                                  .apiUrl +
+                                                              episode.image
+                                                                  .toString(),
+                                                          fit: BoxFit.fill),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 3),
+                                                    child: Text(
+                                                        episode.title
+                                                            .toString()
+                                                            .substring(0, 18),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 16,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .iconTheme
+                                                                .color)),
+                                                  ),
+                                                ],
+                                              )),
+                                            ),
+                                          );
+                                        },
+                                        separatorBuilder: (context, index) {
+                                          return const Divider();
+                                        },
+                                        itemCount:
+                                            model![index].episodes?.length ??
+                                                0),
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  } else {
+                    return Center(
+                        child: JumpingDotsProgressIndicator(
+                      color: Colors.black,
+                      fontSize: 80,
+                      dotSpacing: 3,
+                    ));
+                  }
+                },
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 20, bottom: 40, left: 20, right: 20),
+              child: Container(
+                height: 1,
+                color: Theme.of(context).iconTheme.color,
+              ),
+            ),
+
+            SizedBox(
+              child: FutureBuilder(
+                future: posters_2,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List<PostersModel>? model = snapshot.data;
+
+                    return Column(
+                      children: List.generate(model!.length, (index) {
+                        return InkWell(
+                          onTap: () async {
+                            await HelpersProvider.LunchUrl(
+                                model[index].link.toString(), false);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: SizedBox(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            child: Image.network(
+                                                model![index].image.toString(),
+                                                fit: BoxFit.fill,
+                                                width: width * 0.90),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
+                    );
+                  } else {
+                    return Center(
+                      child: JumpingDotsProgressIndicator(
+                        color: Colors.black,
+                        fontSize: 80,
+                        dotSpacing: 3,
+                      ),
+                    );
+                  }
                 },
               ),
             ),
@@ -704,174 +784,217 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: categories_3,
                 builder: (context, snapshot) {
-                  if(snapshot.hasData){
-                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+                  if (snapshot.hasData) {
+                    List<CategoriesModel>? model =
+                        snapshot.data as List<CategoriesModel>?;
 
                     return Column(
-                      children: List.generate(model!.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        print('go to all this category episodes');
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,
-                                              color: Theme.of(context).buttonColor),
-                                          Icon(Icons.circle,
-                                              size: 10, color: Theme.of(context).buttonColor),
-                                          SizedBox(width: 15),
-                                          Text('مشاهده همه',
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  color: Theme.of(context).buttonColor)),
-                                        ],
+                      children: List.generate(
+                        model!.length,
+                        (index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 30, left: 30),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          print(
+                                              'go to all this category episodes');
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.arrow_back_ios,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            Icon(Icons.circle,
+                                                size: 10,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            SizedBox(width: 15),
+                                            Text('مشاهده همه',
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Theme.of(context)
+                                                        .buttonColor)),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(model![index].name.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 22,
-                                                color: Theme.of(context).iconTheme.color)),
-                                      ],
-                                    )
-                                  ],
+                                      Row(
+                                        children: [
+                                          Text(model![index].name.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                  color: Theme.of(context)
+                                                      .iconTheme
+                                                      .color)),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
-                                child: SizedBox(
-                                  height: height * 0.305,
-                                  child: ListView.separated(
-                                      reverse: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index2) {
-                                        var episode = model![index].episodes![index2];
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20, bottom: 0),
+                                  child: SizedBox(
+                                    height: height * 0.305,
+                                    child: ListView.separated(
+                                        reverse: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index2) {
+                                          var episode =
+                                              model![index].episodes![index2];
 
-                                        return Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SizedBox(
-                                            width: width * 0.35,
-                                            child: Container(
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 210,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.circular(20),
-                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
-                                                      ),
+                                          return Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SizedBox(
+                                              width: width * 0.35,
+                                              child: Container(
+                                                  child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 210,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                          baseApiService
+                                                                  .apiUrl +
+                                                              episode.image
+                                                                  .toString(),
+                                                          fit: BoxFit.fill),
                                                     ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 3),
-                                                      child: Text(
-                                                          episode.title.toString().substring(0, 18),
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 16,
-                                                              color: Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const Divider();
-                                      },
-                                      itemCount: model![index].episodes?.length ?? 0),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 3),
+                                                    child: Text(
+                                                        episode.title
+                                                            .toString()
+                                                            .substring(0, 18),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 16,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .iconTheme
+                                                                .color)),
+                                                  ),
+                                                ],
+                                              )),
+                                            ),
+                                          );
+                                        },
+                                        separatorBuilder: (context, index) {
+                                          return const Divider();
+                                        },
+                                        itemCount:
+                                            model![index].episodes?.length ??
+                                                0),
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     );
-                  }
-                  else{
+                  } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                      color: Colors.black,
+                      fontSize: 80,
+                      dotSpacing: 3,
+                    ));
                   }
                 },
               ),
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
+              padding: const EdgeInsets.only(
+                  top: 20, bottom: 40, left: 20, right: 20),
               child: Container(
                 height: 1,
-                color: Theme.of(context)
-                    .iconTheme
-                    .color,
+                color: Theme.of(context).iconTheme.color,
               ),
             ),
 
             // #TODO Add special Categories here
             Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                        height: height * 1.1,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(color: Color(0xFF2C2C2F), spreadRadius: 3)
-                            ]
-                        ),
-                      ),
-
-                      Center(
-                        child: Container(
-                          height: height * 0.4,
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Stack(
+                      children: [
+                        Container(
+                          height: height * 1.1,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
-                                BoxShadow(color: Color(0xFF2C2C2F), spreadRadius: 3)
-                              ],
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Color(0xFF67686c),
-                                  Color(0xFF272121),
-                                ],
-                              )
-                          ),
+                                BoxShadow(
+                                    color: Color(0xFF2C2C2F), spreadRadius: 3)
+                              ]),
                         ),
-                      ),
-                    ],
-                  )
-                ],
-              )
-            ),
+                        Stack(
+                          children: [
+                            Center(
+                              child: Container(
+                                height: height * 0.4,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Color(0xFF2C2C2F),
+                                          spreadRadius: 3)
+                                    ],
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Color(0xFF67686c),
+                                        Color(0xFF272121),
+                                      ],
+                                    )),
+                              ),
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.all(25),
+                              child: Center(
+                                child: Container(
+                                  height: height * 0.450,
+                                  width: width,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                    child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )
+                  ],
+                )),
 
             Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
+              padding: const EdgeInsets.only(
+                  top: 20, bottom: 40, left: 20, right: 20),
               child: Container(
                 height: 1,
-                color: Theme.of(context)
-                    .iconTheme
-                    .color,
+                color: Theme.of(context).iconTheme.color,
               ),
             ),
 
@@ -879,110 +1002,138 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: categories_4,
                 builder: (context, snapshot) {
-                  if(snapshot.hasData){
-                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+                  if (snapshot.hasData) {
+                    List<CategoriesModel>? model =
+                        snapshot.data as List<CategoriesModel>?;
 
                     return Column(
-                      children: List.generate(model!.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        print('go to all this category episodes');
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,
-                                              color: Theme.of(context).buttonColor),
-                                          Icon(Icons.circle,
-                                              size: 10, color: Theme.of(context).buttonColor),
-                                          SizedBox(width: 15),
-                                          Text('مشاهده همه',
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  color: Theme.of(context).buttonColor)),
-                                        ],
+                      children: List.generate(
+                        model!.length,
+                        (index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 30, left: 30),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          print(
+                                              'go to all this category episodes');
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.arrow_back_ios,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            Icon(Icons.circle,
+                                                size: 10,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            SizedBox(width: 15),
+                                            Text('مشاهده همه',
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Theme.of(context)
+                                                        .buttonColor)),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(model![index].name.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 22,
-                                                color: Theme.of(context).iconTheme.color)),
-                                      ],
-                                    )
-                                  ],
+                                      Row(
+                                        children: [
+                                          Text(model![index].name.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                  color: Theme.of(context)
+                                                      .iconTheme
+                                                      .color)),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
-                                child: SizedBox(
-                                  height: height * 0.305,
-                                  child: ListView.separated(
-                                      reverse: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index2) {
-                                        var episode = model![index].episodes![index2];
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20, bottom: 0),
+                                  child: SizedBox(
+                                    height: height * 0.305,
+                                    child: ListView.separated(
+                                        reverse: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index2) {
+                                          var episode =
+                                              model![index].episodes![index2];
 
-                                        return Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SizedBox(
-                                            width: width * 0.35,
-                                            child: Container(
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 210,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.circular(20),
-                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
-                                                      ),
+                                          return Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SizedBox(
+                                              width: width * 0.35,
+                                              child: Container(
+                                                  child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 210,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                          baseApiService
+                                                                  .apiUrl +
+                                                              episode.image
+                                                                  .toString(),
+                                                          fit: BoxFit.fill),
                                                     ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 3),
-                                                      child: Text(
-                                                          episode.title.toString().substring(0, 18),
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 16,
-                                                              color: Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const Divider();
-                                      },
-                                      itemCount: model![index].episodes?.length ?? 0),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 3),
+                                                    child: Text(
+                                                        episode.title
+                                                            .toString()
+                                                            .substring(0, 18),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 16,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .iconTheme
+                                                                .color)),
+                                                  ),
+                                                ],
+                                              )),
+                                            ),
+                                          );
+                                        },
+                                        separatorBuilder: (context, index) {
+                                          return const Divider();
+                                        },
+                                        itemCount:
+                                            model![index].episodes?.length ??
+                                                0),
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     );
-                  }
-                  else{
+                  } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                      color: Colors.black,
+                      fontSize: 80,
+                      dotSpacing: 3,
+                    ));
                   }
                 },
               ),
@@ -994,29 +1145,34 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: posters_3,
                 builder: (context, snapshot) {
-
                   if (snapshot.hasData) {
                     List<PostersModel>? model = snapshot.data;
 
                     return Column(
-                      children: List.generate(model!.length, (index){
+                      children: List.generate(model!.length, (index) {
                         return InkWell(
                           onTap: () async {
-                            await HelpersProvider.LunchUrl(model[index].link.toString(), false);
+                            await HelpersProvider.LunchUrl(
+                                model[index].link.toString(), false);
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: SizedBox(
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Container(
                                     child: Column(
                                       children: [
                                         Container(
                                           child: ClipRRect(
-                                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                                            child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            child: Image.network(
+                                                model![index].image.toString(),
+                                                fit: BoxFit.fill,
+                                                width: width * 0.90),
                                           ),
                                         ),
                                       ],
@@ -1029,7 +1185,7 @@ class _HomePageState extends State<HomePage> {
                         );
                       }),
                     );
-                  }else{
+                  } else {
                     return Center(
                       child: JumpingDotsProgressIndicator(
                         color: Colors.black,
@@ -1038,18 +1194,16 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   }
-
                 },
               ),
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
+              padding: const EdgeInsets.only(
+                  top: 20, bottom: 40, left: 20, right: 20),
               child: Container(
                 height: 1,
-                color: Theme.of(context)
-                    .iconTheme
-                    .color,
+                color: Theme.of(context).iconTheme.color,
               ),
             ),
 
@@ -1057,110 +1211,138 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: categories_5,
                 builder: (context, snapshot) {
-                  if(snapshot.hasData){
-                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+                  if (snapshot.hasData) {
+                    List<CategoriesModel>? model =
+                        snapshot.data as List<CategoriesModel>?;
 
                     return Column(
-                      children: List.generate(model!.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        print('go to all this category episodes');
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,
-                                              color: Theme.of(context).buttonColor),
-                                          Icon(Icons.circle,
-                                              size: 10, color: Theme.of(context).buttonColor),
-                                          SizedBox(width: 15),
-                                          Text('مشاهده همه',
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  color: Theme.of(context).buttonColor)),
-                                        ],
+                      children: List.generate(
+                        model!.length,
+                        (index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 30, left: 30),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          print(
+                                              'go to all this category episodes');
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.arrow_back_ios,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            Icon(Icons.circle,
+                                                size: 10,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            SizedBox(width: 15),
+                                            Text('مشاهده همه',
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Theme.of(context)
+                                                        .buttonColor)),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(model![index].name.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 22,
-                                                color: Theme.of(context).iconTheme.color)),
-                                      ],
-                                    )
-                                  ],
+                                      Row(
+                                        children: [
+                                          Text(model![index].name.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                  color: Theme.of(context)
+                                                      .iconTheme
+                                                      .color)),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
-                                child: SizedBox(
-                                  height: height * 0.305,
-                                  child: ListView.separated(
-                                      reverse: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index2) {
-                                        var episode = model![index].episodes![index2];
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20, bottom: 0),
+                                  child: SizedBox(
+                                    height: height * 0.305,
+                                    child: ListView.separated(
+                                        reverse: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index2) {
+                                          var episode =
+                                              model![index].episodes![index2];
 
-                                        return Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SizedBox(
-                                            width: width * 0.35,
-                                            child: Container(
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 210,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.circular(20),
-                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
-                                                      ),
+                                          return Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SizedBox(
+                                              width: width * 0.35,
+                                              child: Container(
+                                                  child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 210,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                          baseApiService
+                                                                  .apiUrl +
+                                                              episode.image
+                                                                  .toString(),
+                                                          fit: BoxFit.fill),
                                                     ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 3),
-                                                      child: Text(
-                                                          episode.title.toString().substring(0, 18),
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 16,
-                                                              color: Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const Divider();
-                                      },
-                                      itemCount: model![index].episodes?.length ?? 0),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 3),
+                                                    child: Text(
+                                                        episode.title
+                                                            .toString()
+                                                            .substring(0, 18),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 16,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .iconTheme
+                                                                .color)),
+                                                  ),
+                                                ],
+                                              )),
+                                            ),
+                                          );
+                                        },
+                                        separatorBuilder: (context, index) {
+                                          return const Divider();
+                                        },
+                                        itemCount:
+                                            model![index].episodes?.length ??
+                                                0),
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     );
-                  }
-                  else{
+                  } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                      color: Colors.black,
+                      fontSize: 80,
+                      dotSpacing: 3,
+                    ));
                   }
                 },
               ),
@@ -1170,29 +1352,34 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: posters_4,
                 builder: (context, snapshot) {
-
                   if (snapshot.hasData) {
                     List<PostersModel>? model = snapshot.data;
 
                     return Column(
-                      children: List.generate(model!.length, (index){
+                      children: List.generate(model!.length, (index) {
                         return InkWell(
                           onTap: () async {
-                            await HelpersProvider.LunchUrl(model[index].link.toString(), false);
+                            await HelpersProvider.LunchUrl(
+                                model[index].link.toString(), false);
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: SizedBox(
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Container(
                                     child: Column(
                                       children: [
                                         Container(
                                           child: ClipRRect(
-                                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                                            child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            child: Image.network(
+                                                model![index].image.toString(),
+                                                fit: BoxFit.fill,
+                                                width: width * 0.90),
                                           ),
                                         ),
                                       ],
@@ -1205,7 +1392,7 @@ class _HomePageState extends State<HomePage> {
                         );
                       }),
                     );
-                  }else{
+                  } else {
                     return Center(
                       child: JumpingDotsProgressIndicator(
                         color: Colors.black,
@@ -1214,18 +1401,16 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   }
-
                 },
               ),
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
+              padding: const EdgeInsets.only(
+                  top: 20, bottom: 40, left: 20, right: 20),
               child: Container(
                 height: 1,
-                color: Theme.of(context)
-                    .iconTheme
-                    .color,
+                color: Theme.of(context).iconTheme.color,
               ),
             ),
 
@@ -1233,110 +1418,138 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: categories_6,
                 builder: (context, snapshot) {
-                  if(snapshot.hasData){
-                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+                  if (snapshot.hasData) {
+                    List<CategoriesModel>? model =
+                        snapshot.data as List<CategoriesModel>?;
 
                     return Column(
-                      children: List.generate(model!.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        print('go to all this category episodes');
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,
-                                              color: Theme.of(context).buttonColor),
-                                          Icon(Icons.circle,
-                                              size: 10, color: Theme.of(context).buttonColor),
-                                          SizedBox(width: 15),
-                                          Text('مشاهده همه',
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  color: Theme.of(context).buttonColor)),
-                                        ],
+                      children: List.generate(
+                        model!.length,
+                        (index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 30, left: 30),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          print(
+                                              'go to all this category episodes');
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.arrow_back_ios,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            Icon(Icons.circle,
+                                                size: 10,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            SizedBox(width: 15),
+                                            Text('مشاهده همه',
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Theme.of(context)
+                                                        .buttonColor)),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(model![index].name.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 22,
-                                                color: Theme.of(context).iconTheme.color)),
-                                      ],
-                                    )
-                                  ],
+                                      Row(
+                                        children: [
+                                          Text(model![index].name.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                  color: Theme.of(context)
+                                                      .iconTheme
+                                                      .color)),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
-                                child: SizedBox(
-                                  height: height * 0.305,
-                                  child: ListView.separated(
-                                      reverse: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index2) {
-                                        var episode = model![index].episodes![index2];
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20, bottom: 0),
+                                  child: SizedBox(
+                                    height: height * 0.305,
+                                    child: ListView.separated(
+                                        reverse: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index2) {
+                                          var episode =
+                                              model![index].episodes![index2];
 
-                                        return Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SizedBox(
-                                            width: width * 0.35,
-                                            child: Container(
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 210,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.circular(20),
-                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
-                                                      ),
+                                          return Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SizedBox(
+                                              width: width * 0.35,
+                                              child: Container(
+                                                  child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 210,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                          baseApiService
+                                                                  .apiUrl +
+                                                              episode.image
+                                                                  .toString(),
+                                                          fit: BoxFit.fill),
                                                     ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 3),
-                                                      child: Text(
-                                                          episode.title.toString().substring(0, 18),
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 16,
-                                                              color: Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const Divider();
-                                      },
-                                      itemCount: model![index].episodes?.length ?? 0),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 3),
+                                                    child: Text(
+                                                        episode.title
+                                                            .toString()
+                                                            .substring(0, 18),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 16,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .iconTheme
+                                                                .color)),
+                                                  ),
+                                                ],
+                                              )),
+                                            ),
+                                          );
+                                        },
+                                        separatorBuilder: (context, index) {
+                                          return const Divider();
+                                        },
+                                        itemCount:
+                                            model![index].episodes?.length ??
+                                                0),
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     );
-                  }
-                  else{
+                  } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                      color: Colors.black,
+                      fontSize: 80,
+                      dotSpacing: 3,
+                    ));
                   }
                 },
               ),
@@ -1346,29 +1559,34 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: posters_5,
                 builder: (context, snapshot) {
-
                   if (snapshot.hasData) {
                     List<PostersModel>? model = snapshot.data;
 
                     return Column(
-                      children: List.generate(model!.length, (index){
+                      children: List.generate(model!.length, (index) {
                         return InkWell(
                           onTap: () async {
-                            await HelpersProvider.LunchUrl(model[index].link.toString(), false);
+                            await HelpersProvider.LunchUrl(
+                                model[index].link.toString(), false);
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: SizedBox(
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Container(
                                     child: Column(
                                       children: [
                                         Container(
                                           child: ClipRRect(
-                                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                                            child: Image.network(model![index].image.toString(), fit: BoxFit.fill, width: width * 0.90),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            child: Image.network(
+                                                model![index].image.toString(),
+                                                fit: BoxFit.fill,
+                                                width: width * 0.90),
                                           ),
                                         ),
                                       ],
@@ -1381,7 +1599,7 @@ class _HomePageState extends State<HomePage> {
                         );
                       }),
                     );
-                  }else{
+                  } else {
                     return Center(
                       child: JumpingDotsProgressIndicator(
                         color: Colors.black,
@@ -1390,18 +1608,16 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   }
-
                 },
               ),
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 40, left: 20, right: 20),
+              padding: const EdgeInsets.only(
+                  top: 20, bottom: 40, left: 20, right: 20),
               child: Container(
                 height: 1,
-                color: Theme.of(context)
-                    .iconTheme
-                    .color,
+                color: Theme.of(context).iconTheme.color,
               ),
             ),
 
@@ -1409,110 +1625,138 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: categories_7,
                 builder: (context, snapshot) {
-                  if(snapshot.hasData){
-                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+                  if (snapshot.hasData) {
+                    List<CategoriesModel>? model =
+                        snapshot.data as List<CategoriesModel>?;
 
                     return Column(
-                      children: List.generate(model!.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        print('go to all this category episodes');
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,
-                                              color: Theme.of(context).buttonColor),
-                                          Icon(Icons.circle,
-                                              size: 10, color: Theme.of(context).buttonColor),
-                                          SizedBox(width: 15),
-                                          Text('مشاهده همه',
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  color: Theme.of(context).buttonColor)),
-                                        ],
+                      children: List.generate(
+                        model!.length,
+                        (index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 30, left: 30),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          print(
+                                              'go to all this category episodes');
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.arrow_back_ios,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            Icon(Icons.circle,
+                                                size: 10,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            SizedBox(width: 15),
+                                            Text('مشاهده همه',
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Theme.of(context)
+                                                        .buttonColor)),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(model![index].name.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 22,
-                                                color: Theme.of(context).iconTheme.color)),
-                                      ],
-                                    )
-                                  ],
+                                      Row(
+                                        children: [
+                                          Text(model![index].name.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                  color: Theme.of(context)
+                                                      .iconTheme
+                                                      .color)),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
-                                child: SizedBox(
-                                  height: height * 0.305,
-                                  child: ListView.separated(
-                                      reverse: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index2) {
-                                        var episode = model![index].episodes![index2];
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20, bottom: 0),
+                                  child: SizedBox(
+                                    height: height * 0.305,
+                                    child: ListView.separated(
+                                        reverse: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index2) {
+                                          var episode =
+                                              model![index].episodes![index2];
 
-                                        return Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SizedBox(
-                                            width: width * 0.35,
-                                            child: Container(
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 210,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.circular(20),
-                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
-                                                      ),
+                                          return Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SizedBox(
+                                              width: width * 0.35,
+                                              child: Container(
+                                                  child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 210,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                          baseApiService
+                                                                  .apiUrl +
+                                                              episode.image
+                                                                  .toString(),
+                                                          fit: BoxFit.fill),
                                                     ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 3),
-                                                      child: Text(
-                                                          episode.title.toString().substring(0, 18),
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 16,
-                                                              color: Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const Divider();
-                                      },
-                                      itemCount: model![index].episodes?.length ?? 0),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 3),
+                                                    child: Text(
+                                                        episode.title
+                                                            .toString()
+                                                            .substring(0, 18),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 16,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .iconTheme
+                                                                .color)),
+                                                  ),
+                                                ],
+                                              )),
+                                            ),
+                                          );
+                                        },
+                                        separatorBuilder: (context, index) {
+                                          return const Divider();
+                                        },
+                                        itemCount:
+                                            model![index].episodes?.length ??
+                                                0),
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     );
-                  }
-                  else{
+                  } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                      color: Colors.black,
+                      fontSize: 80,
+                      dotSpacing: 3,
+                    ));
                   }
                 },
               ),
@@ -1522,110 +1766,138 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: categories_8,
                 builder: (context, snapshot) {
-                  if(snapshot.hasData){
-                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+                  if (snapshot.hasData) {
+                    List<CategoriesModel>? model =
+                        snapshot.data as List<CategoriesModel>?;
 
                     return Column(
-                      children: List.generate(model!.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        print('go to all this category episodes');
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,
-                                              color: Theme.of(context).buttonColor),
-                                          Icon(Icons.circle,
-                                              size: 10, color: Theme.of(context).buttonColor),
-                                          SizedBox(width: 15),
-                                          Text('مشاهده همه',
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  color: Theme.of(context).buttonColor)),
-                                        ],
+                      children: List.generate(
+                        model!.length,
+                        (index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 30, left: 30),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          print(
+                                              'go to all this category episodes');
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.arrow_back_ios,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            Icon(Icons.circle,
+                                                size: 10,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            SizedBox(width: 15),
+                                            Text('مشاهده همه',
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Theme.of(context)
+                                                        .buttonColor)),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(model![index].name.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 22,
-                                                color: Theme.of(context).iconTheme.color)),
-                                      ],
-                                    )
-                                  ],
+                                      Row(
+                                        children: [
+                                          Text(model![index].name.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                  color: Theme.of(context)
+                                                      .iconTheme
+                                                      .color)),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
-                                child: SizedBox(
-                                  height: height * 0.305,
-                                  child: ListView.separated(
-                                      reverse: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index2) {
-                                        var episode = model![index].episodes![index2];
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20, bottom: 0),
+                                  child: SizedBox(
+                                    height: height * 0.305,
+                                    child: ListView.separated(
+                                        reverse: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index2) {
+                                          var episode =
+                                              model![index].episodes![index2];
 
-                                        return Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SizedBox(
-                                            width: width * 0.35,
-                                            child: Container(
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 210,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.circular(20),
-                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
-                                                      ),
+                                          return Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SizedBox(
+                                              width: width * 0.35,
+                                              child: Container(
+                                                  child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 210,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                          baseApiService
+                                                                  .apiUrl +
+                                                              episode.image
+                                                                  .toString(),
+                                                          fit: BoxFit.fill),
                                                     ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 3),
-                                                      child: Text(
-                                                          episode.title.toString().substring(0, 18),
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 16,
-                                                              color: Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const Divider();
-                                      },
-                                      itemCount: model![index].episodes?.length ?? 0),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 3),
+                                                    child: Text(
+                                                        episode.title
+                                                            .toString()
+                                                            .substring(0, 18),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 16,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .iconTheme
+                                                                .color)),
+                                                  ),
+                                                ],
+                                              )),
+                                            ),
+                                          );
+                                        },
+                                        separatorBuilder: (context, index) {
+                                          return const Divider();
+                                        },
+                                        itemCount:
+                                            model![index].episodes?.length ??
+                                                0),
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     );
-                  }
-                  else{
+                  } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                      color: Colors.black,
+                      fontSize: 80,
+                      dotSpacing: 3,
+                    ));
                   }
                 },
               ),
@@ -1635,110 +1907,138 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: categories_9,
                 builder: (context, snapshot) {
-                  if(snapshot.hasData){
-                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+                  if (snapshot.hasData) {
+                    List<CategoriesModel>? model =
+                        snapshot.data as List<CategoriesModel>?;
 
                     return Column(
-                      children: List.generate(model!.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        print('go to all this category episodes');
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,
-                                              color: Theme.of(context).buttonColor),
-                                          Icon(Icons.circle,
-                                              size: 10, color: Theme.of(context).buttonColor),
-                                          SizedBox(width: 15),
-                                          Text('مشاهده همه',
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  color: Theme.of(context).buttonColor)),
-                                        ],
+                      children: List.generate(
+                        model!.length,
+                        (index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 30, left: 30),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          print(
+                                              'go to all this category episodes');
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.arrow_back_ios,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            Icon(Icons.circle,
+                                                size: 10,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            SizedBox(width: 15),
+                                            Text('مشاهده همه',
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Theme.of(context)
+                                                        .buttonColor)),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(model![index].name.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 22,
-                                                color: Theme.of(context).iconTheme.color)),
-                                      ],
-                                    )
-                                  ],
+                                      Row(
+                                        children: [
+                                          Text(model![index].name.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                  color: Theme.of(context)
+                                                      .iconTheme
+                                                      .color)),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
-                                child: SizedBox(
-                                  height: height * 0.305,
-                                  child: ListView.separated(
-                                      reverse: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index2) {
-                                        var episode = model![index].episodes![index2];
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20, bottom: 0),
+                                  child: SizedBox(
+                                    height: height * 0.305,
+                                    child: ListView.separated(
+                                        reverse: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index2) {
+                                          var episode =
+                                              model![index].episodes![index2];
 
-                                        return Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SizedBox(
-                                            width: width * 0.35,
-                                            child: Container(
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 210,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.circular(20),
-                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
-                                                      ),
+                                          return Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SizedBox(
+                                              width: width * 0.35,
+                                              child: Container(
+                                                  child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 210,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                          baseApiService
+                                                                  .apiUrl +
+                                                              episode.image
+                                                                  .toString(),
+                                                          fit: BoxFit.fill),
                                                     ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 3),
-                                                      child: Text(
-                                                          episode.title.toString().substring(0, 18),
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 16,
-                                                              color: Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const Divider();
-                                      },
-                                      itemCount: model![index].episodes?.length ?? 0),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 3),
+                                                    child: Text(
+                                                        episode.title
+                                                            .toString()
+                                                            .substring(0, 18),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 16,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .iconTheme
+                                                                .color)),
+                                                  ),
+                                                ],
+                                              )),
+                                            ),
+                                          );
+                                        },
+                                        separatorBuilder: (context, index) {
+                                          return const Divider();
+                                        },
+                                        itemCount:
+                                            model![index].episodes?.length ??
+                                                0),
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     );
-                  }
-                  else{
+                  } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                      color: Colors.black,
+                      fontSize: 80,
+                      dotSpacing: 3,
+                    ));
                   }
                 },
               ),
@@ -1748,110 +2048,138 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: categories_10,
                 builder: (context, snapshot) {
-                  if(snapshot.hasData){
-                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+                  if (snapshot.hasData) {
+                    List<CategoriesModel>? model =
+                        snapshot.data as List<CategoriesModel>?;
 
                     return Column(
-                      children: List.generate(model!.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        print('go to all this category episodes');
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,
-                                              color: Theme.of(context).buttonColor),
-                                          Icon(Icons.circle,
-                                              size: 10, color: Theme.of(context).buttonColor),
-                                          SizedBox(width: 15),
-                                          Text('مشاهده همه',
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  color: Theme.of(context).buttonColor)),
-                                        ],
+                      children: List.generate(
+                        model!.length,
+                        (index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 30, left: 30),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          print(
+                                              'go to all this category episodes');
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.arrow_back_ios,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            Icon(Icons.circle,
+                                                size: 10,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            SizedBox(width: 15),
+                                            Text('مشاهده همه',
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Theme.of(context)
+                                                        .buttonColor)),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(model![index].name.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 22,
-                                                color: Theme.of(context).iconTheme.color)),
-                                      ],
-                                    )
-                                  ],
+                                      Row(
+                                        children: [
+                                          Text(model![index].name.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                  color: Theme.of(context)
+                                                      .iconTheme
+                                                      .color)),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
-                                child: SizedBox(
-                                  height: height * 0.305,
-                                  child: ListView.separated(
-                                      reverse: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index2) {
-                                        var episode = model![index].episodes![index2];
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20, bottom: 0),
+                                  child: SizedBox(
+                                    height: height * 0.305,
+                                    child: ListView.separated(
+                                        reverse: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index2) {
+                                          var episode =
+                                              model![index].episodes![index2];
 
-                                        return Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SizedBox(
-                                            width: width * 0.35,
-                                            child: Container(
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 210,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.circular(20),
-                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
-                                                      ),
+                                          return Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SizedBox(
+                                              width: width * 0.35,
+                                              child: Container(
+                                                  child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 210,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                          baseApiService
+                                                                  .apiUrl +
+                                                              episode.image
+                                                                  .toString(),
+                                                          fit: BoxFit.fill),
                                                     ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 3),
-                                                      child: Text(
-                                                          episode.title.toString().substring(0, 18),
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 16,
-                                                              color: Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const Divider();
-                                      },
-                                      itemCount: model![index].episodes?.length ?? 0),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 3),
+                                                    child: Text(
+                                                        episode.title
+                                                            .toString()
+                                                            .substring(0, 18),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 16,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .iconTheme
+                                                                .color)),
+                                                  ),
+                                                ],
+                                              )),
+                                            ),
+                                          );
+                                        },
+                                        separatorBuilder: (context, index) {
+                                          return const Divider();
+                                        },
+                                        itemCount:
+                                            model![index].episodes?.length ??
+                                                0),
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     );
-                  }
-                  else{
+                  } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                      color: Colors.black,
+                      fontSize: 80,
+                      dotSpacing: 3,
+                    ));
                   }
                 },
               ),
@@ -1861,110 +2189,138 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: categories_11,
                 builder: (context, snapshot) {
-                  if(snapshot.hasData){
-                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+                  if (snapshot.hasData) {
+                    List<CategoriesModel>? model =
+                        snapshot.data as List<CategoriesModel>?;
 
                     return Column(
-                      children: List.generate(model!.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        print('go to all this category episodes');
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,
-                                              color: Theme.of(context).buttonColor),
-                                          Icon(Icons.circle,
-                                              size: 10, color: Theme.of(context).buttonColor),
-                                          SizedBox(width: 15),
-                                          Text('مشاهده همه',
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  color: Theme.of(context).buttonColor)),
-                                        ],
+                      children: List.generate(
+                        model!.length,
+                        (index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 30, left: 30),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          print(
+                                              'go to all this category episodes');
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.arrow_back_ios,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            Icon(Icons.circle,
+                                                size: 10,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            SizedBox(width: 15),
+                                            Text('مشاهده همه',
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Theme.of(context)
+                                                        .buttonColor)),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(model![index].name.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 22,
-                                                color: Theme.of(context).iconTheme.color)),
-                                      ],
-                                    )
-                                  ],
+                                      Row(
+                                        children: [
+                                          Text(model![index].name.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                  color: Theme.of(context)
+                                                      .iconTheme
+                                                      .color)),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
-                                child: SizedBox(
-                                  height: height * 0.305,
-                                  child: ListView.separated(
-                                      reverse: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index2) {
-                                        var episode = model![index].episodes![index2];
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20, bottom: 0),
+                                  child: SizedBox(
+                                    height: height * 0.305,
+                                    child: ListView.separated(
+                                        reverse: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index2) {
+                                          var episode =
+                                              model![index].episodes![index2];
 
-                                        return Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SizedBox(
-                                            width: width * 0.35,
-                                            child: Container(
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 210,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.circular(20),
-                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
-                                                      ),
+                                          return Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SizedBox(
+                                              width: width * 0.35,
+                                              child: Container(
+                                                  child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 210,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                          baseApiService
+                                                                  .apiUrl +
+                                                              episode.image
+                                                                  .toString(),
+                                                          fit: BoxFit.fill),
                                                     ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 3),
-                                                      child: Text(
-                                                          episode.title.toString().substring(0, 18),
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 16,
-                                                              color: Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const Divider();
-                                      },
-                                      itemCount: model![index].episodes?.length ?? 0),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 3),
+                                                    child: Text(
+                                                        episode.title
+                                                            .toString()
+                                                            .substring(0, 18),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 16,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .iconTheme
+                                                                .color)),
+                                                  ),
+                                                ],
+                                              )),
+                                            ),
+                                          );
+                                        },
+                                        separatorBuilder: (context, index) {
+                                          return const Divider();
+                                        },
+                                        itemCount:
+                                            model![index].episodes?.length ??
+                                                0),
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     );
-                  }
-                  else{
+                  } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                      color: Colors.black,
+                      fontSize: 80,
+                      dotSpacing: 3,
+                    ));
                   }
                 },
               ),
@@ -1974,123 +2330,149 @@ class _HomePageState extends State<HomePage> {
               child: FutureBuilder(
                 future: categories_12,
                 builder: (context, snapshot) {
-                  if(snapshot.hasData){
-                    List<CategoriesModel>? model = snapshot.data as List<CategoriesModel>?;
+                  if (snapshot.hasData) {
+                    List<CategoriesModel>? model =
+                        snapshot.data as List<CategoriesModel>?;
 
                     return Column(
-                      children: List.generate(model!.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        print('go to all this category episodes');
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_back_ios,
-                                              color: Theme.of(context).buttonColor),
-                                          Icon(Icons.circle,
-                                              size: 10, color: Theme.of(context).buttonColor),
-                                          SizedBox(width: 15),
-                                          Text('مشاهده همه',
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  color: Theme.of(context).buttonColor)),
-                                        ],
+                      children: List.generate(
+                        model!.length,
+                        (index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 30, left: 30),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          print(
+                                              'go to all this category episodes');
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.arrow_back_ios,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            Icon(Icons.circle,
+                                                size: 10,
+                                                color: Theme.of(context)
+                                                    .buttonColor),
+                                            SizedBox(width: 15),
+                                            Text('مشاهده همه',
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Theme.of(context)
+                                                        .buttonColor)),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(model![index].name.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 22,
-                                                color: Theme.of(context).iconTheme.color)),
-                                      ],
-                                    )
-                                  ],
+                                      Row(
+                                        children: [
+                                          Text(model![index].name.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                  color: Theme.of(context)
+                                                      .iconTheme
+                                                      .color)),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
-                                child: SizedBox(
-                                  height: height * 0.305,
-                                  child: ListView.separated(
-                                      reverse: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index2) {
-                                        var episode = model![index].episodes![index2];
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20, bottom: 0),
+                                  child: SizedBox(
+                                    height: height * 0.305,
+                                    child: ListView.separated(
+                                        reverse: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index2) {
+                                          var episode =
+                                              model![index].episodes![index2];
 
-                                        return Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SizedBox(
-                                            width: width * 0.35,
-                                            child: Container(
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 210,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                        BorderRadius.circular(20),
-                                                        child: Image.network(baseApiService.apiUrl + episode.image.toString(), fit: BoxFit.fill),
-                                                      ),
+                                          return Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SizedBox(
+                                              width: width * 0.35,
+                                              child: Container(
+                                                  child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 210,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                          baseApiService
+                                                                  .apiUrl +
+                                                              episode.image
+                                                                  .toString(),
+                                                          fit: BoxFit.fill),
                                                     ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 3),
-                                                      child: Text(
-                                                          episode.title.toString().substring(0, 18),
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 16,
-                                                              color: Theme.of(context)
-                                                                  .iconTheme
-                                                                  .color)),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const Divider();
-                                      },
-                                      itemCount: model![index].episodes?.length ?? 0),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 3),
+                                                    child: Text(
+                                                        episode.title
+                                                            .toString()
+                                                            .substring(0, 18),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 16,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .iconTheme
+                                                                .color)),
+                                                  ),
+                                                ],
+                                              )),
+                                            ),
+                                          );
+                                        },
+                                        separatorBuilder: (context, index) {
+                                          return const Divider();
+                                        },
+                                        itemCount:
+                                            model![index].episodes?.length ??
+                                                0),
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     );
-                  }
-                  else{
+                  } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                      color: Colors.black,
+                      fontSize: 80,
+                      dotSpacing: 3,
+                    ));
                   }
                 },
               ),
             ),
-
           ],
         ),
       ),
     );
   }
 
-  void AutoPlaySlider(data)
-  {
+  void AutoPlaySlider(data) {
     Timer.periodic(Duration(seconds: 5), (Timer timer) {
       if (currentIndex <= data.length) {
         pageController.animateToPage(
