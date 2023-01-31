@@ -842,6 +842,10 @@ class _HomePageState extends State<HomePage> {
                     child: Container(
                       height: height * 0.3,
                       decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(color: Color(0xFF2C2C2F), spreadRadius: 3)
+                          ],
                           gradient: LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
