@@ -972,7 +972,7 @@ class _HomePageState extends State<HomePage> {
                             Padding(
                               padding: const EdgeInsets.all(25),
                               child: Center(
-                                child: Container(
+                                child: SizedBox(
                                   height: height * 0.450,
                                   width: width,
                                   child: ClipRRect(
