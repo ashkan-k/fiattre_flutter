@@ -1150,9 +1150,7 @@ class _HomePageState extends State<HomePage> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20,
-                                            color: Theme.of(context)
-                                                .iconTheme
-                                                .color),
+                                            color: Theme.of(context).buttonColor),
                                       ),
                                     ),
                                   )
