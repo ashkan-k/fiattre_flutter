@@ -989,6 +989,8 @@ class _HomePageState extends State<HomePage> {
                               padding: EdgeInsets.only(
                                   top: height * 0.510, right: 25),
                               child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   Align(
                                     alignment: Alignment.bottomRight,
@@ -1060,7 +1062,8 @@ class _HomePageState extends State<HomePage> {
                                               child: Row(
                                                 children: [
                                                   Icon(
-                                                    Icons.remove_red_eye_outlined,
+                                                    Icons
+                                                        .remove_red_eye_outlined,
                                                     color: Theme.of(context)
                                                         .iconTheme
                                                         .color,
@@ -1070,7 +1073,7 @@ class _HomePageState extends State<HomePage> {
                                                     ':',
                                                     style: TextStyle(
                                                         fontWeight:
-                                                        FontWeight.bold,
+                                                            FontWeight.bold,
                                                         fontSize: 20,
                                                         color: Theme.of(context)
                                                             .iconTheme
@@ -1098,7 +1101,8 @@ class _HomePageState extends State<HomePage> {
                                               child: Row(
                                                 children: [
                                                   Icon(
-                                                    Icons.favorite_outline_outlined,
+                                                    Icons
+                                                        .favorite_outline_outlined,
                                                     color: Theme.of(context)
                                                         .iconTheme
                                                         .color,
@@ -1108,7 +1112,7 @@ class _HomePageState extends State<HomePage> {
                                                     ':',
                                                     style: TextStyle(
                                                         fontWeight:
-                                                        FontWeight.bold,
+                                                            FontWeight.bold,
                                                         fontSize: 20,
                                                         color: Theme.of(context)
                                                             .iconTheme
@@ -1129,6 +1133,27 @@ class _HomePageState extends State<HomePage> {
                                               )),
                                         ),
                                       ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8)),
+                                          backgroundColor:
+                                              Theme.of(context).buttonColor),
+                                      child: Text(
+                                        'پیشنهاد شگفت انگیز',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color),
+                                      ),
                                     ),
                                   )
                                 ],
