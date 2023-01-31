@@ -986,171 +986,178 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(
-                                  top: height * 0.510, right: 25),
+                              padding: EdgeInsets.only(top: height * 0.510),
                               child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
-                                  Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: Column(
-                                      children: [
-                                        Directionality(
-                                            textDirection: TextDirection.rtl,
-                                            child: Row(
-                                              children: [
-                                                Text(
-                                                  'زمان:',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 20,
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 25),
+                                    child: Align(
+                                      alignment: Alignment.bottomRight,
+                                      child: Column(
+                                        children: [
+                                          Directionality(
+                                              textDirection: TextDirection.rtl,
+                                              child: Row(
+                                                children: [
+                                                  Text(
+                                                    'زمان:',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 20,
+                                                        color: Theme.of(context)
+                                                            .iconTheme
+                                                            .color),
+                                                  ),
+                                                  const SizedBox(width: 15),
+                                                  Text(
+                                                    '142 دقیقه',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 20,
+                                                        color: Theme.of(context)
+                                                            .iconTheme
+                                                            .color),
+                                                  ),
+                                                ],
+                                              )),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 10),
+                                            child: Directionality(
+                                                textDirection: TextDirection.rtl,
+                                                child: Row(
+                                                  children: [
+                                                    Text(
+                                                      'تولید:',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20,
+                                                          color: Theme.of(context)
+                                                              .iconTheme
+                                                              .color),
+                                                    ),
+                                                    const SizedBox(width: 15),
+                                                    Text(
+                                                      'اردیبهشت 1392',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20,
+                                                          color: Theme.of(context)
+                                                              .iconTheme
+                                                              .color),
+                                                    ),
+                                                  ],
+                                                )),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 10),
+                                            child: Directionality(
+                                                textDirection: TextDirection.rtl,
+                                                child: Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons
+                                                          .remove_red_eye_outlined,
                                                       color: Theme.of(context)
                                                           .iconTheme
-                                                          .color),
-                                                ),
-                                                const SizedBox(width: 15),
-                                                Text(
-                                                  '142 دقیقه',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 20,
+                                                          .color,
+                                                      size: 30,
+                                                    ),
+                                                    Text(
+                                                      ':',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20,
+                                                          color: Theme.of(context)
+                                                              .iconTheme
+                                                              .color),
+                                                    ),
+                                                    const SizedBox(width: 15),
+                                                    Text(
+                                                      '3496 بازدید',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20,
+                                                          color: Theme.of(context)
+                                                              .iconTheme
+                                                              .color),
+                                                    ),
+                                                  ],
+                                                )),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 10),
+                                            child: Directionality(
+                                                textDirection: TextDirection.rtl,
+                                                child: Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons
+                                                          .favorite_outline_outlined,
                                                       color: Theme.of(context)
                                                           .iconTheme
-                                                          .color),
-                                                ),
-                                              ],
-                                            )),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 10),
-                                          child: Directionality(
-                                              textDirection: TextDirection.rtl,
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    'تولید:',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 20,
-                                                        color: Theme.of(context)
-                                                            .iconTheme
-                                                            .color),
-                                                  ),
-                                                  const SizedBox(width: 15),
-                                                  Text(
-                                                    'اردیبهشت 1392',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 20,
-                                                        color: Theme.of(context)
-                                                            .iconTheme
-                                                            .color),
-                                                  ),
-                                                ],
-                                              )),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 10),
-                                          child: Directionality(
-                                              textDirection: TextDirection.rtl,
-                                              child: Row(
-                                                children: [
-                                                  Icon(
-                                                    Icons
-                                                        .remove_red_eye_outlined,
-                                                    color: Theme.of(context)
-                                                        .iconTheme
-                                                        .color,
-                                                    size: 30,
-                                                  ),
-                                                  Text(
-                                                    ':',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 20,
-                                                        color: Theme.of(context)
-                                                            .iconTheme
-                                                            .color),
-                                                  ),
-                                                  const SizedBox(width: 15),
-                                                  Text(
-                                                    '3496 بازدید',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 20,
-                                                        color: Theme.of(context)
-                                                            .iconTheme
-                                                            .color),
-                                                  ),
-                                                ],
-                                              )),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 10),
-                                          child: Directionality(
-                                              textDirection: TextDirection.rtl,
-                                              child: Row(
-                                                children: [
-                                                  Icon(
-                                                    Icons
-                                                        .favorite_outline_outlined,
-                                                    color: Theme.of(context)
-                                                        .iconTheme
-                                                        .color,
-                                                    size: 30,
-                                                  ),
-                                                  Text(
-                                                    ':',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 20,
-                                                        color: Theme.of(context)
-                                                            .iconTheme
-                                                            .color),
-                                                  ),
-                                                  const SizedBox(width: 15),
-                                                  Text(
-                                                    '8458 لایک',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 20,
-                                                        color: Theme.of(context)
-                                                            .iconTheme
-                                                            .color),
-                                                  ),
-                                                ],
-                                              )),
-                                        ),
-                                      ],
+                                                          .color,
+                                                      size: 30,
+                                                    ),
+                                                    Text(
+                                                      ':',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20,
+                                                          color: Theme.of(context)
+                                                              .iconTheme
+                                                              .color),
+                                                    ),
+                                                    const SizedBox(width: 15),
+                                                    Text(
+                                                      '8458 لایک',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20,
+                                                          color: Theme.of(context)
+                                                              .iconTheme
+                                                              .color),
+                                                    ),
+                                                  ],
+                                                )),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
+
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 20),
-                                    child: ElevatedButton(
-                                      onPressed: () {},
-                                      style: ElevatedButton.styleFrom(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(8)),
-                                          backgroundColor:
-                                              Theme.of(context).buttonColor),
-                                      child: Text(
-                                        'پیشنهاد شگفت انگیز',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20,
-                                            color: Theme.of(context).buttonColor),
+                                    padding: const EdgeInsets.all(25),
+                                    child: Center(
+                                      child: SizedBox(
+                                        height: height * 0.07,
+                                        width: width,
+                                        child: ElevatedButton(
+                                          onPressed: () {},
+                                          style: ElevatedButton.styleFrom(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                  BorderRadius.circular(12)),
+                                              backgroundColor: Theme.of(context).primaryColor),
+                                          child: Text(
+                                            'پیشنهاد شگفت انگیز',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 23,
+                                                color: Theme.of(context).buttonColor),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   )
