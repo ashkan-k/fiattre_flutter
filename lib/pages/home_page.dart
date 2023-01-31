@@ -968,7 +968,6 @@ class _HomePageState extends State<HomePage> {
                                     )),
                               ),
                             ),
-
                             Padding(
                               padding: const EdgeInsets.all(25),
                               child: Center(
@@ -976,16 +975,155 @@ class _HomePageState extends State<HomePage> {
                                   height: height * 0.450,
                                   width: width,
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                                    child: Image.asset(best_items_images![0][1].toString(), fit: BoxFit.fill, width: width / 2 - 20),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    child: Image.asset(
+                                        best_items_images![0][1].toString(),
+                                        fit: BoxFit.fill,
+                                        width: width / 2 - 20),
                                   ),
                                 ),
                               ),
                             ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  top: height * 0.510, right: 25),
+                              child: Column(
+                                children: [
+                                  Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: Column(
+                                      children: [
+                                        Directionality(
+                                            textDirection: TextDirection.rtl,
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  'زمان:',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20,
+                                                      color: Theme.of(context)
+                                                          .iconTheme
+                                                          .color),
+                                                ),
+                                                const SizedBox(width: 15),
+                                                Text(
+                                                  '142 دقیقه',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20,
+                                                      color: Theme.of(context)
+                                                          .iconTheme
+                                                          .color),
+                                                ),
+                                              ],
+                                            )),
+
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 10),
+                                          child: Directionality(
+                                              textDirection: TextDirection.rtl,
+                                              child: Row(
+                                                children: [
+                                                  Text(
+                                                    'تولید:',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                        FontWeight.bold,
+                                                        fontSize: 20,
+                                                        color: Theme.of(context)
+                                                            .iconTheme
+                                                            .color),
+                                                  ),
+                                                  const SizedBox(width: 15),
+                                                  Text(
+                                                    'اردیبهشت 1392',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                        FontWeight.bold,
+                                                        fontSize: 20,
+                                                        color: Theme.of(context)
+                                                            .iconTheme
+                                                            .color),
+                                                  ),
+                                                ],
+                                              )),
+                                        ),
+
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 10),
+                                          child: Directionality(
+                                              textDirection: TextDirection.rtl,
+                                              child: Row(
+                                                children: [
+                                                  Text(
+                                                    'زمان:',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                        FontWeight.bold,
+                                                        fontSize: 20,
+                                                        color: Theme.of(context)
+                                                            .iconTheme
+                                                            .color),
+                                                  ),
+                                                  const SizedBox(width: 15),
+                                                  Text(
+                                                    '3496 بازدید',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                        FontWeight.bold,
+                                                        fontSize: 20,
+                                                        color: Theme.of(context)
+                                                            .iconTheme
+                                                            .color),
+                                                  ),
+                                                ],
+                                              )),
+                                        ),
+
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 10),
+                                          child: Directionality(
+                                              textDirection: TextDirection.rtl,
+                                              child: Row(
+                                                children: [
+                                                  Text(
+                                                    'زمان:',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                        FontWeight.bold,
+                                                        fontSize: 20,
+                                                        color: Theme.of(context)
+                                                            .iconTheme
+                                                            .color),
+                                                  ),
+                                                  const SizedBox(width: 15),
+                                                  Text(
+                                                    '8458 لایک',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                        FontWeight.bold,
+                                                        fontSize: 20,
+                                                        color: Theme.of(context)
+                                                            .iconTheme
+                                                            .color),
+                                                  ),
+                                                ],
+                                              )),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
                           ],
                         ),
                       ],
-                    )
+                    ),
                   ],
                 )),
 
