@@ -1094,8 +1094,7 @@ class _HomePageState extends State<HomePage> {
                                                 )),
                                           ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 10),
+                                            padding: const EdgeInsets.only(top: 10),
                                             child: Directionality(
                                                 textDirection: TextDirection.rtl,
                                                 child: Row(
@@ -1160,7 +1159,119 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                     ),
-                                  )
+                                  ),
+
+                                   Padding(
+                                    padding: const EdgeInsets.all(25),
+                                    child: Center(
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          SizedBox(
+                                            height: height * 0.06,
+                                            width: width / 2,
+                                            child: ElevatedButton(
+                                              onPressed: () {},
+                                              style: ElevatedButton.styleFrom(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                      BorderRadius.circular(12)),
+                                                  backgroundColor: Theme.of(context).unselectedWidgetColor),
+                                              child: Text(
+                                                'کاندیدای اسکار بهترین فیلمنامه',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 18,
+                                                    color: Theme.of(context)
+                                                        .iconTheme
+                                                        .color),
+                                              ),
+                                            ),
+                                          ),
+
+                                          SizedBox(
+                                            height: height * 0.06,
+                                            width: width / 2,
+                                            child: ElevatedButton(
+                                              onPressed: () {},
+                                              style: ElevatedButton.styleFrom(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                      BorderRadius.circular(12)),
+                                                  backgroundColor: Theme.of(context).unselectedWidgetColor),
+                                              child: Text(
+                                                'کاندیدای اسکار بهترین فیلمنامه',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 18,
+                                                    color: Theme.of(context)
+                                                        .iconTheme
+                                                        .color),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  
+                                  Padding(
+                                    padding: const EdgeInsets.all(25),
+                                    child: Center(
+                                      child: Column(
+                                        children: [
+                                          Directionality(
+                                              textDirection: TextDirection.rtl,
+                                              child: Text(
+                                                'خلاصه داستان:',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                    FontWeight.bold,
+                                                    fontSize: 25,
+                                                    color: Theme.of(context)
+                                                        .iconTheme
+                                                        .color),
+                                              )),
+
+                                          Padding(
+                                            padding:
+                                            const EdgeInsets.only(top: 10),
+                                            child: Directionality(
+                                                textDirection: TextDirection.rtl,
+                                                child: Text(
+                                                  'تولید:',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                      FontWeight.bold,
+                                                      fontSize: 20,
+                                                      color: Theme.of(context)
+                                                          .iconTheme
+                                                          .color),
+                                                ),),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+
+                                  Padding(
+                                    padding: const EdgeInsets.all(25),
+                                    child: Center(
+                                      child: SizedBox(
+                                        height: height * 0.07,
+                                        width: width,
+                                        child: ElevatedButton(
+                                          onPressed: () {},
+                                          style: ElevatedButton.styleFrom(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                  BorderRadius.circular(12)),
+                                              backgroundColor: Theme.of(context).primaryColor),
+                                          child: Icon(CustomIcon, color: Theme.of(context).unselectedWidgetColor,),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             )

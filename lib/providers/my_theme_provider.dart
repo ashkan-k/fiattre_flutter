@@ -22,7 +22,7 @@ class MyThemes {
       labelSmall: GoogleFonts.ubuntu(color: Colors.white54, fontSize: 13),
       titleSmall: GoogleFonts.ubuntu(color: Colors.black, fontSize: 12),
     ),
-    unselectedWidgetColor: Colors.white70,
+    unselectedWidgetColor: Color(0xFF585659),
     primaryColorLight: Color(0xFFfd0002),
     scaffoldBackgroundColor: Color(0xFF2f2f31),
     primaryColor: Color(0xFF171516),
