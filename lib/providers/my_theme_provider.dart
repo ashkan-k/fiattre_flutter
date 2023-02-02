@@ -32,7 +32,8 @@ class MyThemes {
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey.shade900,
       ),
-      accentColor: Color(0xFF242426)
+      accentColor: Color(0xFF242426),
+    primaryIconTheme: const IconThemeData(color: Color(0xFF252324)),
     // textSelectionTheme: const TextSelectionThemeData(
     //   cursorColor: Colors.red,
     //   selectionColor: Colors.green,
@@ -59,7 +60,8 @@ class MyThemes {
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey,
       ),
-    accentColor: Color(0xFF2f2f31)
+    accentColor: Color(0xFF2f2f31),
+    primaryIconTheme: const IconThemeData(color: Color(0xFF2f2f31)),
 
     // colorScheme: const ColorScheme.light()
   );
