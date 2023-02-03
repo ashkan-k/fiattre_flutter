@@ -1170,7 +1170,7 @@ class _HomePageState extends State<HomePage> {
                                         children: [
                                           SizedBox(
                                             height: height * 0.06,
-                                            width: width / 2,
+                                            width: width / 2 - 50,
                                             child: ElevatedButton(
                                               onPressed: () {},
                                               style: ElevatedButton.styleFrom(
@@ -1192,7 +1192,7 @@ class _HomePageState extends State<HomePage> {
 
                                           SizedBox(
                                             height: height * 0.06,
-                                            width: width / 2,
+                                            width: width / 2 - 50,
                                             child: ElevatedButton(
                                               onPressed: () {},
                                               style: ElevatedButton.styleFrom(
@@ -1240,7 +1240,7 @@ class _HomePageState extends State<HomePage> {
                                             child: Directionality(
                                                 textDirection: TextDirection.rtl,
                                                 child: Text(
-                                                  'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. ',
+                                                  'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. '.substring(0, 150),
                                                   style: TextStyle(
                                                       fontWeight:
                                                       FontWeight.bold,
