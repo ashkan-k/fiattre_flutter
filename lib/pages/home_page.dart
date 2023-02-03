@@ -27,6 +27,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   PageController pageController = PageController(initialPage: 0);
+  PageController specialCategoriesPageController = PageController(initialPage: 0);
 
   late Future<List<CategoriesModel>> categories_1;
   late Future<List<CategoriesModel>> categories_2;
@@ -152,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                                   await HelpersProvider.LunchUrl(
                                       model[index].link.toString(), false);
                                 },
-                                child: HelpersProvider.ShowImage(
+                                child: HelpersProvider.ShowImageClipRRect(
                                     model[index].file_mobile.toString(),
                                     'network',
                                     0),
@@ -932,6 +933,356 @@ class _HomePageState extends State<HomePage> {
             ),
 
             // #TODO Add special Categories here
+
+            SizedBox(
+              height: height * 1.450,
+              width: double.infinity,
+              child: PageView(
+                controller: specialCategoriesPageController,
+                children: List.generate(3, (index) {
+                  return  Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          Stack(
+                            children: [
+                              Container(
+                                height: height * 1.450,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Theme.of(context).accentColor, spreadRadius: 3)
+                                    ]),
+                              ),
+                              Stack(
+                                children: [
+                                  Center(
+                                    child: Container(
+                                      height: height * 0.4,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: Theme.of(context).accentColor,
+                                                spreadRadius: 3)
+                                          ],
+                                          gradient: LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Color(0xFF262020),
+                                              Color(0xFF69686d),
+                                            ],
+                                          )),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(25),
+                                    child: Center(
+                                      child: SizedBox(
+                                        height: height * 0.450,
+                                        width: width,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                          child: Image.asset(
+                                              best_items_images![0][1].toString(),
+                                              fit: BoxFit.fill,
+                                              width: width / 2 - 20),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: height * 0.510),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(right: 25),
+                                          child: Align(
+                                            alignment: Alignment.bottomRight,
+                                            child: Column(
+                                              children: [
+                                                Directionality(
+                                                    textDirection: TextDirection.rtl,
+                                                    child: Row(
+                                                      children: [
+                                                        Text(
+                                                          'زمان:',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                              FontWeight.bold,
+                                                              fontSize: 20,
+                                                              color: Theme.of(context)
+                                                                  .iconTheme
+                                                                  .color),
+                                                        ),
+                                                        const SizedBox(width: 15),
+                                                        Text(
+                                                          '142 دقیقه',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                              FontWeight.bold,
+                                                              fontSize: 20,
+                                                              color: Theme.of(context)
+                                                                  .iconTheme
+                                                                  .color),
+                                                        ),
+                                                      ],
+                                                    )),
+                                                Padding(
+                                                  padding:
+                                                  const EdgeInsets.only(top: 10),
+                                                  child: Directionality(
+                                                      textDirection: TextDirection.rtl,
+                                                      child: Row(
+                                                        children: [
+                                                          Text(
+                                                            'تولید:',
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                FontWeight.bold,
+                                                                fontSize: 20,
+                                                                color: Theme.of(context)
+                                                                    .iconTheme
+                                                                    .color),
+                                                          ),
+                                                          const SizedBox(width: 15),
+                                                          Text(
+                                                            'اردیبهشت 1392',
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                FontWeight.bold,
+                                                                fontSize: 20,
+                                                                color: Theme.of(context)
+                                                                    .iconTheme
+                                                                    .color),
+                                                          ),
+                                                        ],
+                                                      )),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                  const EdgeInsets.only(top: 10),
+                                                  child: Directionality(
+                                                      textDirection: TextDirection.rtl,
+                                                      child: Row(
+                                                        children: [
+                                                          Icon(
+                                                            Icons
+                                                                .remove_red_eye_outlined,
+                                                            color: Theme.of(context)
+                                                                .iconTheme
+                                                                .color,
+                                                            size: 30,
+                                                          ),
+                                                          Text(
+                                                            ':',
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                FontWeight.bold,
+                                                                fontSize: 20,
+                                                                color: Theme.of(context)
+                                                                    .iconTheme
+                                                                    .color),
+                                                          ),
+                                                          const SizedBox(width: 15),
+                                                          Text(
+                                                            '3496 بازدید',
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                FontWeight.bold,
+                                                                fontSize: 20,
+                                                                color: Theme.of(context)
+                                                                    .iconTheme
+                                                                    .color),
+                                                          ),
+                                                        ],
+                                                      )),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(top: 10),
+                                                  child: Directionality(
+                                                      textDirection: TextDirection.rtl,
+                                                      child: Row(
+                                                        children: [
+                                                          Icon(
+                                                            Icons
+                                                                .favorite_outline_outlined,
+                                                            color: Theme.of(context)
+                                                                .iconTheme
+                                                                .color,
+                                                            size: 30,
+                                                          ),
+                                                          Text(
+                                                            ':',
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                FontWeight.bold,
+                                                                fontSize: 20,
+                                                                color: Theme.of(context)
+                                                                    .iconTheme
+                                                                    .color),
+                                                          ),
+                                                          const SizedBox(width: 15),
+                                                          Text(
+                                                            '8458 لایک',
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                FontWeight.bold,
+                                                                fontSize: 20,
+                                                                color: Theme.of(context)
+                                                                    .iconTheme
+                                                                    .color),
+                                                          ),
+                                                        ],
+                                                      )),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+
+                                        Padding(
+                                          padding: const EdgeInsets.all(25),
+                                          child: Center(
+                                            child: SizedBox(
+                                              height: height * 0.07,
+                                              width: width,
+                                              child: ElevatedButton(
+                                                onPressed: () {},
+                                                style: ElevatedButton.styleFrom(
+                                                    shape: RoundedRectangleBorder(
+                                                        borderRadius:
+                                                        BorderRadius.circular(12)),
+                                                    backgroundColor: Theme.of(context).primaryColor),
+                                                child: Text(
+                                                  'پیشنهاد شگفت انگیز',
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 18,
+                                                      color: Theme.of(context).buttonColor),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+
+                                        Padding(
+                                          padding: const EdgeInsets.all(25),
+                                          child: SizedBox(
+                                            height: height * 0.06,
+                                            child: ListView.separated(
+                                                reverse: true,
+                                                scrollDirection: Axis.horizontal,
+                                                itemBuilder: (context, index2) {
+                                                  // var episode = model![index].episodes![index2];
+
+                                                  return Padding(
+                                                    padding: const EdgeInsets.only(right: 10),
+                                                    child: SizedBox(
+                                                      height: height * 0.06,
+                                                      width: width / 2 - 20,
+                                                      child: ElevatedButton(
+                                                        onPressed: () {},
+                                                        style: ElevatedButton.styleFrom(
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                BorderRadius.circular(12)),
+                                                            backgroundColor: Theme.of(context).unselectedWidgetColor),
+                                                        child: Text(
+                                                          'کاندیدای اسکار بهترین فیلمنامه',
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 15,
+                                                              color: Theme.of(context)
+                                                                  .iconTheme
+                                                                  .color),
+                                                          textAlign: TextAlign.center,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                                separatorBuilder: (context, index) {
+                                                  return const Divider();
+                                                },
+                                                itemCount:3),
+                                          ),
+                                        ),
+
+                                        Padding(
+                                          padding: const EdgeInsets.all(25),
+                                          child: Center(
+                                            child: Column(
+                                              children: [
+                                                Directionality(
+                                                    textDirection: TextDirection.rtl,
+                                                    child: Text(
+                                                      'خلاصه داستان:',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                          FontWeight.bold,
+                                                          fontSize: 25,
+                                                          color: Theme.of(context)
+                                                              .iconTheme
+                                                              .color),
+                                                    )),
+
+                                                Padding(
+                                                  padding:
+                                                  const EdgeInsets.only(top: 10),
+                                                  child: Directionality(
+                                                    textDirection: TextDirection.rtl,
+                                                    child: Text(
+                                                      'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. '.substring(0, 280),
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                          FontWeight.bold,
+                                                          fontSize: 18,
+                                                          color: Theme.of(context)
+                                                              .iconTheme
+                                                              .color),
+                                                    ),),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+
+                                        Padding(
+                                          padding: const EdgeInsets.all(25),
+                                          child: Center(
+                                            child: SizedBox(
+                                              height: height * 0.07,
+                                              width: width,
+                                              child: ElevatedButton(
+                                                onPressed: () {},
+                                                style: ElevatedButton.styleFrom(
+                                                    shape: RoundedRectangleBorder(
+                                                        borderRadius:
+                                                        BorderRadius.circular(12)),
+                                                    backgroundColor: Theme.of(context).primaryColor),
+                                                child: Icon(CustomIcons.keyboard_arrow_down, color: Theme.of(context).unselectedWidgetColor, size: 40),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ));
+                }),
+              ),
+            ),
+
             Padding(
                 padding: const EdgeInsets.all(20),
                 child: Column(
@@ -977,7 +1328,7 @@ class _HomePageState extends State<HomePage> {
                                   width: width,
                                   child: ClipRRect(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
+                                    BorderRadius.all(Radius.circular(10)),
                                     child: Image.asset(
                                         best_items_images![0][1].toString(),
                                         fit: BoxFit.fill,
@@ -1005,7 +1356,7 @@ class _HomePageState extends State<HomePage> {
                                                     'زمان:',
                                                     style: TextStyle(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                        FontWeight.bold,
                                                         fontSize: 20,
                                                         color: Theme.of(context)
                                                             .iconTheme
@@ -1016,7 +1367,7 @@ class _HomePageState extends State<HomePage> {
                                                     '142 دقیقه',
                                                     style: TextStyle(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                        FontWeight.bold,
                                                         fontSize: 20,
                                                         color: Theme.of(context)
                                                             .iconTheme
@@ -1026,7 +1377,7 @@ class _HomePageState extends State<HomePage> {
                                               )),
                                           Padding(
                                             padding:
-                                                const EdgeInsets.only(top: 10),
+                                            const EdgeInsets.only(top: 10),
                                             child: Directionality(
                                                 textDirection: TextDirection.rtl,
                                                 child: Row(
@@ -1035,7 +1386,7 @@ class _HomePageState extends State<HomePage> {
                                                       'تولید:',
                                                       style: TextStyle(
                                                           fontWeight:
-                                                              FontWeight.bold,
+                                                          FontWeight.bold,
                                                           fontSize: 20,
                                                           color: Theme.of(context)
                                                               .iconTheme
@@ -1046,7 +1397,7 @@ class _HomePageState extends State<HomePage> {
                                                       'اردیبهشت 1392',
                                                       style: TextStyle(
                                                           fontWeight:
-                                                              FontWeight.bold,
+                                                          FontWeight.bold,
                                                           fontSize: 20,
                                                           color: Theme.of(context)
                                                               .iconTheme
@@ -1057,7 +1408,7 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsets.only(top: 10),
+                                            const EdgeInsets.only(top: 10),
                                             child: Directionality(
                                                 textDirection: TextDirection.rtl,
                                                 child: Row(
@@ -1074,7 +1425,7 @@ class _HomePageState extends State<HomePage> {
                                                       ':',
                                                       style: TextStyle(
                                                           fontWeight:
-                                                              FontWeight.bold,
+                                                          FontWeight.bold,
                                                           fontSize: 20,
                                                           color: Theme.of(context)
                                                               .iconTheme
@@ -1085,7 +1436,7 @@ class _HomePageState extends State<HomePage> {
                                                       '3496 بازدید',
                                                       style: TextStyle(
                                                           fontWeight:
-                                                              FontWeight.bold,
+                                                          FontWeight.bold,
                                                           fontSize: 20,
                                                           color: Theme.of(context)
                                                               .iconTheme
@@ -1112,7 +1463,7 @@ class _HomePageState extends State<HomePage> {
                                                       ':',
                                                       style: TextStyle(
                                                           fontWeight:
-                                                              FontWeight.bold,
+                                                          FontWeight.bold,
                                                           fontSize: 20,
                                                           color: Theme.of(context)
                                                               .iconTheme
@@ -1123,7 +1474,7 @@ class _HomePageState extends State<HomePage> {
                                                       '8458 لایک',
                                                       style: TextStyle(
                                                           fontWeight:
-                                                              FontWeight.bold,
+                                                          FontWeight.bold,
                                                           fontSize: 20,
                                                           color: Theme.of(context)
                                                               .iconTheme
@@ -1162,7 +1513,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
 
-                                   Padding(
+                                  Padding(
                                     padding: const EdgeInsets.all(25),
                                     child: SizedBox(
                                       height: height * 0.06,
@@ -1204,7 +1555,7 @@ class _HomePageState extends State<HomePage> {
                                           itemCount:3),
                                     ),
                                   ),
-                                  
+
                                   Padding(
                                     padding: const EdgeInsets.all(25),
                                     child: Center(
@@ -1227,17 +1578,17 @@ class _HomePageState extends State<HomePage> {
                                             padding:
                                             const EdgeInsets.only(top: 10),
                                             child: Directionality(
-                                                textDirection: TextDirection.rtl,
-                                                child: Text(
-                                                  'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. '.substring(0, 280),
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                      FontWeight.bold,
-                                                      fontSize: 18,
-                                                      color: Theme.of(context)
-                                                          .iconTheme
-                                                          .color),
-                                                ),),
+                                              textDirection: TextDirection.rtl,
+                                              child: Text(
+                                                'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. '.substring(0, 280),
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                    FontWeight.bold,
+                                                    fontSize: 18,
+                                                    color: Theme.of(context)
+                                                        .iconTheme
+                                                        .color),
+                                              ),),
                                           ),
                                         ],
                                       ),

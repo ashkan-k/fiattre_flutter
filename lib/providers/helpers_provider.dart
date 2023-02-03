@@ -13,7 +13,7 @@ class HelpersProvider extends ChangeNotifier
     }
   }
 
-  static Widget ShowImage(String image, String type, double border) {
+  static Widget ShowImageClipRRect(String image, String type, double border) {
     if(type == 'asset'){
       return ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(border)),
