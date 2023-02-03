@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:html/parser.dart';
 
 class HelpersProvider extends ChangeNotifier
 {
@@ -29,5 +30,12 @@ class HelpersProvider extends ChangeNotifier
           image: NetworkImage(image),
           fit: BoxFit.fill,
         ));
+  }
+
+  static String ParseHtmlString(String htmlString) {
+    final document = parse(htmlString);
+    final String parsedString = parse(document.body!.text).documentElement!.text;
+
+    return parsedString;
   }
 }

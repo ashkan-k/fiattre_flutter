@@ -1255,7 +1255,7 @@ class _HomePageState extends State<HomePage> {
                                                           child: Directionality(
                                                             textDirection: TextDirection.rtl,
                                                             child: Text(
-                                                          episode.description.toString().substring(0, 280 >= episode.description!.length ? episode.description!.length : 280),
+                                                              HelpersProvider.ParseHtmlString(episode.description.toString().substring(0, 280 >= episode.description!.length ? episode.description!.length : 280)),
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight.bold,
