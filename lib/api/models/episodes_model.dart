@@ -32,6 +32,7 @@ class EpisodesModel {
   final int? comments_count;
   final int? view_count;
   final dynamic? category;
+  final List<String>? awards_list;
 
   EpisodesModel({
     this.id,
@@ -65,11 +66,15 @@ class EpisodesModel {
     this.comments_count,
     this.view_count,
     this.category,
+    this.awards_list,
   });
 
   factory EpisodesModel.fromJson(Map<String, dynamic> json) {
     if (json['category'] != null) {
       json['category'] = CategoriesModel.fromJson(json['category']);
+    }
+    if (json['awards_list'] != []) {
+      json['awards_list'] = List<String>.from(json['awards_list'].map((model)=> model.toString()));
     }
 
     return EpisodesModel(
@@ -104,6 +109,7 @@ class EpisodesModel {
       comments_count: json['comments_count'],
       view_count: json['view_count'],
       category: json['category'],
+      awards_list: json['awards_list'],
     );
   }
 }

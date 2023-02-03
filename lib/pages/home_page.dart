@@ -1198,8 +1198,6 @@ class _HomePageState extends State<HomePage> {
                                                         reverse: true,
                                                         scrollDirection: Axis.horizontal,
                                                         itemBuilder: (context, index2) {
-                                                          // var episode = model![index].episodes![index2];
-
                                                           return Padding(
                                                             padding: const EdgeInsets.only(right: 10),
                                                             child: SizedBox(
@@ -1213,7 +1211,7 @@ class _HomePageState extends State<HomePage> {
                                                                         BorderRadius.circular(12)),
                                                                     backgroundColor: Theme.of(context).unselectedWidgetColor),
                                                                 child: Text(
-                                                                  'کاندیدای اسکار بهترین فیلمنامه',
+                                                                  episode.awards_list![index2].toString(),
                                                                   style: TextStyle(
                                                                       fontWeight: FontWeight.bold,
                                                                       fontSize: 15,
@@ -1229,7 +1227,7 @@ class _HomePageState extends State<HomePage> {
                                                         separatorBuilder: (context, index) {
                                                           return const Divider();
                                                         },
-                                                        itemCount:3),
+                                                        itemCount:episode.awards_list?.length ?? 0),
                                                   ),
                                                 ),
 
@@ -1325,7 +1323,11 @@ class _HomePageState extends State<HomePage> {
                       width: width / 2 - 30,
                       child: ElevatedButton(
                         onPressed: () {
-                          specialCategoriesPageController.previousPage(duration: Duration(milliseconds: 350), curve: Curves.easeIn);
+                          try{
+                            specialCategoriesPageController.previousPage(duration: Duration(milliseconds: 350), curve: Curves.easeIn);
+                          }catch(exception){
+
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
@@ -1344,7 +1346,11 @@ class _HomePageState extends State<HomePage> {
                       width: width / 2 - 30,
                       child: ElevatedButton(
                         onPressed: () {
-                          specialCategoriesPageController.nextPage(duration: Duration(milliseconds: 350), curve: Curves.easeIn);
+                          try{
+                            specialCategoriesPageController.nextPage(duration: Duration(milliseconds: 350), curve: Curves.easeIn);
+                          }catch(exception){
+
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
