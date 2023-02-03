@@ -1154,7 +1154,7 @@ class _HomePageState extends State<HomePage> {
                                             'پیشنهاد شگفت انگیز',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 23,
+                                                fontSize: 18,
                                                 color: Theme.of(context).buttonColor),
                                           ),
                                         ),
@@ -1164,55 +1164,44 @@ class _HomePageState extends State<HomePage> {
 
                                    Padding(
                                     padding: const EdgeInsets.all(25),
-                                    child: Center(
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          SizedBox(
-                                            height: height * 0.06,
-                                            width: width / 2 - 50,
-                                            child: ElevatedButton(
-                                              onPressed: () {},
-                                              style: ElevatedButton.styleFrom(
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                      BorderRadius.circular(12)),
-                                                  backgroundColor: Theme.of(context).unselectedWidgetColor),
-                                              child: Text(
-                                                'کاندیدای اسکار بهترین فیلمنامه',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 18,
-                                                    color: Theme.of(context)
-                                                        .iconTheme
-                                                        .color),
-                                              ),
-                                            ),
-                                          ),
+                                    child: SizedBox(
+                                      height: height * 0.06,
+                                      child: ListView.separated(
+                                          reverse: true,
+                                          scrollDirection: Axis.horizontal,
+                                          itemBuilder: (context, index2) {
+                                            // var episode = model![index].episodes![index2];
 
-                                          SizedBox(
-                                            height: height * 0.06,
-                                            width: width / 2 - 50,
-                                            child: ElevatedButton(
-                                              onPressed: () {},
-                                              style: ElevatedButton.styleFrom(
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                      BorderRadius.circular(12)),
-                                                  backgroundColor: Theme.of(context).unselectedWidgetColor),
-                                              child: Text(
-                                                'کاندیدای اسکار بهترین فیلمنامه',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 18,
-                                                    color: Theme.of(context)
-                                                        .iconTheme
-                                                        .color),
+                                            return Padding(
+                                              padding: const EdgeInsets.only(right: 10),
+                                              child: SizedBox(
+                                                height: height * 0.06,
+                                                width: width / 2 - 20,
+                                                child: ElevatedButton(
+                                                  onPressed: () {},
+                                                  style: ElevatedButton.styleFrom(
+                                                      shape: RoundedRectangleBorder(
+                                                          borderRadius:
+                                                          BorderRadius.circular(12)),
+                                                      backgroundColor: Theme.of(context).unselectedWidgetColor),
+                                                  child: Text(
+                                                    'کاندیدای اسکار بهترین فیلمنامه',
+                                                    style: TextStyle(
+                                                        fontWeight: FontWeight.bold,
+                                                        fontSize: 15,
+                                                        color: Theme.of(context)
+                                                            .iconTheme
+                                                            .color),
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                ),
                                               ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                            );
+                                          },
+                                          separatorBuilder: (context, index) {
+                                            return const Divider();
+                                          },
+                                          itemCount:3),
                                     ),
                                   ),
                                   
@@ -1240,7 +1229,7 @@ class _HomePageState extends State<HomePage> {
                                             child: Directionality(
                                                 textDirection: TextDirection.rtl,
                                                 child: Text(
-                                                  'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. '.substring(0, 250),
+                                                  'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. '.substring(0, 280),
                                                   style: TextStyle(
                                                       fontWeight:
                                                       FontWeight.bold,
