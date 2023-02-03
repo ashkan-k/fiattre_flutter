@@ -1041,7 +1041,7 @@ class _HomePageState extends State<HomePage> {
                                                                 ),
                                                                 const SizedBox(width: 15),
                                                                 Text(
-                                                                  '142 دقیقه',
+                                                                  '${episode.time ?? '---'} دقیقه',
                                                                   style: TextStyle(
                                                                       fontWeight:
                                                                       FontWeight.bold,
@@ -1071,7 +1071,7 @@ class _HomePageState extends State<HomePage> {
                                                                   ),
                                                                   const SizedBox(width: 15),
                                                                   Text(
-                                                                    'اردیبهشت 1392',
+                                                                    '${episode.construction_year ?? '---'}',
                                                                     style: TextStyle(
                                                                         fontWeight:
                                                                         FontWeight.bold,
@@ -1110,7 +1110,7 @@ class _HomePageState extends State<HomePage> {
                                                                   ),
                                                                   const SizedBox(width: 15),
                                                                   Text(
-                                                                    '3496 بازدید',
+                                                                    '${episode.view_count ?? '---'} بازدید',
                                                                     style: TextStyle(
                                                                         fontWeight:
                                                                         FontWeight.bold,
@@ -1148,7 +1148,7 @@ class _HomePageState extends State<HomePage> {
                                                                   ),
                                                                   const SizedBox(width: 15),
                                                                   Text(
-                                                                    '8458 لایک',
+                                                                    '${episode.likes_count ?? '---'} لایک',
                                                                     style: TextStyle(
                                                                         fontWeight:
                                                                         FontWeight.bold,
@@ -1179,7 +1179,7 @@ class _HomePageState extends State<HomePage> {
                                                                 BorderRadius.circular(12)),
                                                             backgroundColor: Theme.of(context).primaryColor),
                                                         child: Text(
-                                                          'پیشنهاد شگفت انگیز',
+                                                          episode.title.toString(),
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 18,
@@ -1257,7 +1257,7 @@ class _HomePageState extends State<HomePage> {
                                                           child: Directionality(
                                                             textDirection: TextDirection.rtl,
                                                             child: Text(
-                                                              'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. '.substring(0, 280),
+                                                          episode.description.toString().substring(0, 280 >= episode.description!.length ? episode.description!.length : 280),
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight.bold,
