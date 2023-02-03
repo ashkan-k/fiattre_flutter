@@ -1,5 +1,6 @@
 import 'package:fiatre_app/pages/layouts/main_wrapper.dart';
 import 'package:fiatre_app/providers/category_data_provider.dart';
+import 'package:fiatre_app/providers/episode_data_provider.dart';
 import 'package:fiatre_app/providers/my_theme_provider.dart';
 import 'package:fiatre_app/providers/poster_data_provider.dart';
 import 'package:fiatre_app/providers/slider_data_provider.dart';
@@ -23,6 +24,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => CategoryDataProvider()),
         ChangeNotifierProvider(create: (context) => PosterDataProvider()),
         ChangeNotifierProvider(create: (context) => SliderDataProvider()),
+        ChangeNotifierProvider(create: (context) => EpisodeDataProvider()),
       ],
       child: const FiatreApp(),
     )
