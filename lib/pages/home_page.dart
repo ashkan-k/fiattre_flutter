@@ -1268,7 +1268,7 @@ class _HomePageState extends State<HomePage> {
                                                   borderRadius:
                                                   BorderRadius.circular(12)),
                                               backgroundColor: Theme.of(context).primaryColor),
-                                          child: Icon(CustomIcons.keyboard_arrow_down, color: Theme.of(context).unselectedWidgetColor,),
+                                          child: Icon(CustomIcons.keyboard_arrow_down, color: Theme.of(context).unselectedWidgetColor, size: 40),
                                         ),
                                       ),
                                     ),
@@ -1291,7 +1291,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     SizedBox(
                       height: height * 0.06,
-                      width: width / 2,
+                      width: width / 2 - 30,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
@@ -1308,7 +1308,7 @@ class _HomePageState extends State<HomePage> {
 
                     SizedBox(
                       height: height * 0.06,
-                      width: width / 2,
+                      width: width / 2 - 30,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
