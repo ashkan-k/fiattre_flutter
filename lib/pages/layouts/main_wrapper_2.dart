@@ -1,8 +1,10 @@
+import 'package:fiatre_app/config/my_flutter_app_icons.dart';
 import 'package:fiatre_app/pages/components/my_app_bar.dart';
 import 'package:fiatre_app/pages/home_page.dart';
 import 'package:fiatre_app/pages/test.dart';
 import 'package:flutter/material.dart';
 import 'package:bottom_bar_page_transition/bottom_bar_page_transition.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainWrapper extends StatefulWidget {
   const MainWrapper({Key? key}) : super(key: key);
@@ -26,10 +28,12 @@ class _MainWrapperState extends State<MainWrapper> {
   List<IconData> bottom_app_bar_icons = [
     Icons.home_outlined,
     Icons.add_business_outlined,
-    Icons.gamepad,
+    FontAwesomeIcons.gamepad,
     Icons.search_outlined,
     Icons.person_outline
   ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,13 +74,14 @@ class _MainWrapperState extends State<MainWrapper> {
 
   Widget _getBottomBar() {
     return Directionality(textDirection: TextDirection.rtl, child: BottomNavigationBar(
+        backgroundColor: Theme.of(context).primaryIconTheme.color,
         currentIndex: _currentPageIndex,
         onTap: (index) {
           _currentPageIndex = index;
           setState(() {});
         },
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: Theme.of(context).primaryColor,
+        unselectedItemColor: Theme.of(context).iconTheme.color,
         type: BottomNavigationBarType.fixed,
         items: List.generate(
             bottom_app_bar_names.length,
