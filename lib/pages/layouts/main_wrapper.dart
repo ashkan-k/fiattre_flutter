@@ -23,6 +23,8 @@ class _MainWrapperState extends State<MainWrapper> {
       HomePage(),
       TestPage(),
       TestPage(),
+      TestPage(),
+      TestPage(),
     ];
   }
 
@@ -90,6 +92,12 @@ class _MainWrapperState extends State<MainWrapper> {
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.gamecontroller),
         title: ("بازی و سرگرمی"),
+        activeColorPrimary: CupertinoColors.black,
+        inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(CupertinoIcons.search),
+        title: ("جستجو"),
         activeColorPrimary: CupertinoColors.black,
         inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
       ),
