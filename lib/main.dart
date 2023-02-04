@@ -49,10 +49,10 @@ class FiatreApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: const [
-            Locale('en', ''), // English, no country code
-            Locale('fa', ''), // Persian, no country code
+            Locale('en', 'EN'), // English, no country code
+            Locale('fa', 'IR'), // Persian, no country code
           ],
-          locale: Locale('en', ''),
+          locale: Locale('en', 'EN'),
           debugShowCheckedModeBanner: false,
           title: 'فیاتر',
           home: MainWrapper(),

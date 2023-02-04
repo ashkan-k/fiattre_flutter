@@ -35,6 +35,9 @@ class _MainWrapperState extends State<MainWrapper> {
 
   @override
   Widget build(BuildContext context) {
+
+    Color? backgroundColor = Theme.of(context).primaryIconTheme.color;
+
     return PersistentTabView(
       onItemSelected: (value) {
         print('bbbbbbbbbbbbbbbbbbbbbb');
@@ -46,14 +49,14 @@ class _MainWrapperState extends State<MainWrapper> {
       items: _navBarsItems(),
       popAllScreensOnTapAnyTabs: true,
       confineInSafeArea: true,
-      backgroundColor: Color(0xFF252324), // Default is Colors.white.
+      backgroundColor: (backgroundColor)!, // Default is Colors.white.
       handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset: true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
       stateManagement: true, // Default is true.
       hideNavigationBarWhenKeyboardShows: true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(12),
-        colorBehindNavBar: Color(0xFF252324),
+        colorBehindNavBar: (backgroundColor)!,
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
