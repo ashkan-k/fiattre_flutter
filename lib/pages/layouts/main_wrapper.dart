@@ -77,19 +77,25 @@ class _MainWrapperState extends State<MainWrapper> {
     return [
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.home),
-        title: ("Home"),
+        title: ("خانه"),
         activeColorPrimary: CupertinoColors.black,
         inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.settings),
-        title: ("Settings"),
+        icon: Icon(Icons.add_business_outlined),
+        title: ("دسته بندی"),
         activeColorPrimary: CupertinoColors.black,
         inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.settings),
-        title: ("Settings"),
+        icon: Icon(CupertinoIcons.gamecontroller),
+        title: ("بازی و سرگرمی"),
+        activeColorPrimary: CupertinoColors.black,
+        inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(CupertinoIcons.person),
+        title: ("حساب من"),
         activeColorPrimary: CupertinoColors.black,
         inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
       ),
