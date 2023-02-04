@@ -38,17 +38,20 @@ class _MainWrapperState extends State<MainWrapper> {
   @override
   Widget build(BuildContext context) {
 
-    Color? backgroundColor = Theme.of(context).appBarTheme.backgroundColor;
+    Color? backgroundColor = Theme.of(context).scaffoldBackgroundColor;
+    Color? activeTabColor = Theme.of(context).iconTheme.color;
 
     return PersistentTabView(
       onItemSelected: (value) {
         print('bbbbbbbbbbbbbbbbbbbbbb');
         print(value);
+
+        setState(() {});
       },
       context,
       controller: _controller,
       screens: _buildScreens(),
-      items: _navBarsItems(),
+      items: _navBarsItems((activeTabColor)!),
       popAllScreensOnTapAnyTabs: true,
       confineInSafeArea: true,
       backgroundColor: (backgroundColor)!, // Default is Colors.white.
@@ -75,36 +78,36 @@ class _MainWrapperState extends State<MainWrapper> {
     );
   }
 
-  List<PersistentBottomNavBarItem> _navBarsItems() {
+  List<PersistentBottomNavBarItem> _navBarsItems(activeTabColor) {
     return [
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.home),
         title: ("خانه"),
-        activeColorPrimary: CupertinoColors.black,
+        activeColorPrimary: (activeTabColor)!,
         inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.add_business_outlined),
         title: ("دسته بندی"),
-        activeColorPrimary: CupertinoColors.black,
+        activeColorPrimary: (activeTabColor)!,
         inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.gamecontroller),
         title: ("بازی و سرگرمی"),
-        activeColorPrimary: CupertinoColors.black,
+        activeColorPrimary: (activeTabColor)!,
         inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.search),
         title: ("جستجو"),
-        activeColorPrimary: CupertinoColors.black,
+        activeColorPrimary: (activeTabColor)!,
         inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.person),
         title: ("حساب من"),
-        activeColorPrimary: CupertinoColors.black,
+        activeColorPrimary: (activeTabColor)!,
         inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
       ),
     ].reversed.toList();

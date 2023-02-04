@@ -141,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                     case Status.LOADING:
                       return Center(
                         child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
+                          color: (Theme.of(context).iconTheme.color)!,
                           fontSize: 80,
                           dotSpacing: 3,
                         ),
@@ -433,7 +433,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                       child: JumpingDotsProgressIndicator(
-                        color: Colors.black,
+                        color: (Theme.of(context).iconTheme.color)!,
                         fontSize: 80,
                         dotSpacing: 3,
                       ),
@@ -575,7 +575,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: Colors.black,
+                      color: (Theme.of(context).iconTheme.color)!,
                       fontSize: 80,
                       dotSpacing: 3,
                     ));
@@ -716,7 +716,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: Colors.black,
+                      color: (Theme.of(context).iconTheme.color)!,
                       fontSize: 80,
                       dotSpacing: 3,
                     ));
@@ -781,7 +781,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                       child: JumpingDotsProgressIndicator(
-                        color: Colors.black,
+                        color: (Theme.of(context).iconTheme.color)!,
                         fontSize: 80,
                         dotSpacing: 3,
                       ),
@@ -923,7 +923,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: Colors.black,
+                      color: (Theme.of(context).iconTheme.color)!,
                       fontSize: 80,
                       dotSpacing: 3,
                     ));
@@ -1306,7 +1306,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                          color: Colors.black,
+                          color: (Theme.of(context).iconTheme.color)!,
                           fontSize: 80,
                           dotSpacing: 3,
                         ));
@@ -1508,7 +1508,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: Colors.black,
+                      color: (Theme.of(context).iconTheme.color)!,
                       fontSize: 80,
                       dotSpacing: 3,
                     ));
@@ -1566,7 +1566,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                       child: JumpingDotsProgressIndicator(
-                        color: Colors.black,
+                        color: (Theme.of(context).iconTheme.color)!,
                         fontSize: 80,
                         dotSpacing: 3,
                       ),
@@ -1717,7 +1717,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: Colors.black,
+                      color: (Theme.of(context).iconTheme.color)!,
                       fontSize: 80,
                       dotSpacing: 3,
                     ));
@@ -1773,7 +1773,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                       child: JumpingDotsProgressIndicator(
-                        color: Colors.black,
+                        color: (Theme.of(context).iconTheme.color)!,
                         fontSize: 80,
                         dotSpacing: 3,
                       ),
@@ -1924,7 +1924,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: Colors.black,
+                      color: (Theme.of(context).iconTheme.color)!,
                       fontSize: 80,
                       dotSpacing: 3,
                     ));
@@ -1980,7 +1980,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                       child: JumpingDotsProgressIndicator(
-                        color: Colors.black,
+                        color: (Theme.of(context).iconTheme.color)!,
                         fontSize: 80,
                         dotSpacing: 3,
                       ),
@@ -2131,7 +2131,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: Colors.black,
+                      color: (Theme.of(context).iconTheme.color)!,
                       fontSize: 80,
                       dotSpacing: 3,
                     ));
@@ -2272,7 +2272,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: Colors.black,
+                      color: (Theme.of(context).iconTheme.color)!,
                       fontSize: 80,
                       dotSpacing: 3,
                     ));
@@ -2413,7 +2413,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: Colors.black,
+                      color: (Theme.of(context).iconTheme.color)!,
                       fontSize: 80,
                       dotSpacing: 3,
                     ));
@@ -2554,7 +2554,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: Colors.black,
+                      color: (Theme.of(context).iconTheme.color)!,
                       fontSize: 80,
                       dotSpacing: 3,
                     ));
@@ -2695,7 +2695,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: Colors.black,
+                      color: (Theme.of(context).iconTheme.color)!,
                       fontSize: 80,
                       dotSpacing: 3,
                     ));
@@ -2836,7 +2836,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: Colors.black,
+                      color: (Theme.of(context).iconTheme.color)!,
                       fontSize: 80,
                       dotSpacing: 3,
                     ));

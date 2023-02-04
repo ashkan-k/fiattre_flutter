@@ -57,7 +57,7 @@ class MyThemes {
     primaryColor: Colors.white,
     secondaryHeaderColor: Color(0xFF1a1a1c),
     iconTheme: const IconThemeData(color: Color(0xFF1a1a1c), opacity: 0.8),
-    bottomAppBarColor: Colors.black38,
+    bottomAppBarColor: Colors.black45,
     buttonColor: Color(0xFFfd0002),
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey,
