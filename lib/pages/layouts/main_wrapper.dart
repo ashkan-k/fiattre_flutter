@@ -45,8 +45,6 @@ class _MainWrapperState extends State<MainWrapper> {
       onItemSelected: (value) {
         print('bbbbbbbbbbbbbbbbbbbbbb');
         print(value);
-
-        setState(() {});
       },
       context,
       controller: _controller,
