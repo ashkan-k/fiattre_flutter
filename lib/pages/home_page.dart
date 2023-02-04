@@ -944,7 +944,7 @@ class _HomePageState extends State<HomePage> {
             // #TODO Add special Categories here
 
             SizedBox(
-              height: height * 1.5,
+              height: height * 1.4,
               width: double.infinity,
               child: FutureBuilder(
                 future: special_episodes,
@@ -953,7 +953,7 @@ class _HomePageState extends State<HomePage> {
                     List<EpisodesModel>? model = snapshot.data as List<EpisodesModel>?;
 
                     return SizedBox(
-                      height: height * 1.5,
+                      height: height * 1.4,
                       width: double.infinity,
                       child: PageView(
                         controller: specialCategoriesPageController,
@@ -967,7 +967,7 @@ class _HomePageState extends State<HomePage> {
                                   Stack(
                                     children: [
                                       Container(
-                                        height: height * 1.450,
+                                        height: height * 1.350,
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(10),
                                             boxShadow: [
@@ -1231,41 +1231,44 @@ class _HomePageState extends State<HomePage> {
                                                   ),
                                                 ),
 
-                                                Padding(
-                                                  padding: const EdgeInsets.all(25),
-                                                  child: Center(
-                                                    child: Column(
-                                                      children: [
-                                                        Directionality(
-                                                            textDirection: TextDirection.rtl,
-                                                            child: Text(
-                                                              'خلاصه داستان:',
-                                                              style: TextStyle(
-                                                                  fontWeight:
-                                                                  FontWeight.bold,
-                                                                  fontSize: 25,
-                                                                  color: Theme.of(context)
-                                                                      .iconTheme
-                                                                      .color),
-                                                            )),
+                                                SizedBox(
+                                                  height: height * 0.270,
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.all(25),
+                                                    child: Center(
+                                                      child: Column(
+                                                        children: [
+                                                          Directionality(
+                                                              textDirection: TextDirection.rtl,
+                                                              child: Text(
+                                                                'خلاصه داستان:',
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                    FontWeight.bold,
+                                                                    fontSize: 25,
+                                                                    color: Theme.of(context)
+                                                                        .iconTheme
+                                                                        .color),
+                                                              )),
 
-                                                        Padding(
-                                                          padding:
-                                                          const EdgeInsets.only(top: 10),
-                                                          child: Directionality(
-                                                            textDirection: TextDirection.rtl,
-                                                            child: Text(
-                                                              HelpersProvider.ParseHtmlString(episode.description.toString().substring(0, 280 >= episode.description!.length ? episode.description!.length : 280)),
-                                                              style: TextStyle(
-                                                                  fontWeight:
-                                                                  FontWeight.bold,
-                                                                  fontSize: 18,
-                                                                  color: Theme.of(context)
-                                                                      .iconTheme
-                                                                      .color),
-                                                            ),),
-                                                        ),
-                                                      ],
+                                                          Padding(
+                                                            padding:
+                                                            const EdgeInsets.only(top: 10),
+                                                            child: Directionality(
+                                                              textDirection: TextDirection.rtl,
+                                                              child: Text(
+                                                                HelpersProvider.ParseHtmlString(episode.description.toString().substring(0, 288 >= episode.description!.length ? episode.description!.length : 288)),
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                    FontWeight.bold,
+                                                                    fontSize: 18,
+                                                                    color: Theme.of(context)
+                                                                        .iconTheme
+                                                                        .color),
+                                                              ),),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
