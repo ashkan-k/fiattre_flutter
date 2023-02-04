@@ -28,6 +28,7 @@ class MyThemes {
     primaryColor: Color(0xFF171516),
     secondaryHeaderColor: Colors.white,
     iconTheme: const IconThemeData(color: Colors.white),
+    bottomAppBarColor: CupertinoColors.systemGrey,
     buttonColor: Color(0xFFfd0002),
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey.shade900,
@@ -56,6 +57,7 @@ class MyThemes {
     primaryColor: Colors.white,
     secondaryHeaderColor: Color(0xFF1a1a1c),
     iconTheme: const IconThemeData(color: Color(0xFF1a1a1c), opacity: 0.8),
+    bottomAppBarColor: CupertinoColors.systemFill,
     buttonColor: Color(0xFFfd0002),
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey,

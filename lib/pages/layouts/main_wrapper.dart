@@ -2,9 +2,11 @@ import 'package:fiatre_app/config/my_flutter_app_icons.dart';
 import 'package:fiatre_app/pages/components/my_app_bar.dart';
 import 'package:fiatre_app/pages/home_page.dart';
 import 'package:fiatre_app/pages/test.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bottom_bar_page_transition/bottom_bar_page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class MainWrapper extends StatefulWidget {
   const MainWrapper({Key? key}) : super(key: key);
@@ -14,78 +16,80 @@ class MainWrapper extends StatefulWidget {
 }
 
 class _MainWrapperState extends State<MainWrapper> {
-  int _currentPageIndex = 0;
+  late PersistentTabController _controller;
 
+  List<Widget> _buildScreens() {
+    return [
+      HomePage(),
+      TestPage(),
+      TestPage(),
+    ];
+  }
 
-  static const List<String> bottom_app_bar_names = [
-    'خانه',
-    'دسته بندی',
-    'بازی و سرگرمی',
-    'جستجو',
-    'حساب من',
-  ];
-
-  List<IconData> bottom_app_bar_icons = [
-    Icons.home_outlined,
-    Icons.add_business_outlined,
-    FontAwesomeIcons.gamepad,
-    Icons.search_outlined,
-    Icons.person_outline
-  ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller = PersistentTabController(initialIndex: 0);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BottomBarPageTransition(
-        builder: (_, index) => _getBody(index),
-        currentIndex: _currentPageIndex,
-        totalLength: bottom_app_bar_names.length,
+    return PersistentTabView(
+      onItemSelected: (value) {
+        print('bbbbbbbbbbbbbbbbbbbbbb');
+        print(value);
+      },
+      context,
+      controller: _controller,
+      screens: _buildScreens(),
+      items: _navBarsItems(),
+      popAllScreensOnTapAnyTabs: true,
+      confineInSafeArea: true,
+      backgroundColor: Color(0xFF252324), // Default is Colors.white.
+      handleAndroidBackButtonPress: true, // Default is true.
+      resizeToAvoidBottomInset: true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+      stateManagement: true, // Default is true.
+      hideNavigationBarWhenKeyboardShows: true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+      decoration: NavBarDecoration(
+        borderRadius: BorderRadius.circular(12),
+        colorBehindNavBar: Color(0xFF252324),
       ),
-      bottomNavigationBar: _getBottomBar(),
+      popAllScreensOnTapOfSelectedTab: true,
+      popActionScreens: PopActionScreensType.all,
+      itemAnimationProperties: ItemAnimationProperties( // Navigation Bar's items animation properties.
+        duration: Duration(milliseconds: 200),
+        curve: Curves.ease,
+      ),
+      screenTransitionAnimation: ScreenTransitionAnimation( // Screen transition animation on change of selected tab.
+        animateTabTransition: true,
+        curve: Curves.ease,
+        duration: Duration(milliseconds: 200),
+      ),
+      navBarStyle: NavBarStyle.style3, // Choose the nav bar style with this property.
     );
   }
 
-  Widget _getBody(int index) {
-    Widget currentPage;
-
-    switch(index){
-      case 0:
-        currentPage = HomePage();
-        break;
-      case 1:
-        currentPage = TestPage();
-        break;
-      default:
-        currentPage = HomePage();
-        break;
-    }
-
-    return CustomScrollView(
-      //key:_keys[index] //add keys to avoid initiate child widget after animation ends
-      slivers: <Widget>[
-        SliverFillRemaining(
-          child: currentPage,
-        ),
-      ],
-    );
-  }
-
-  Widget _getBottomBar() {
-    return Directionality(textDirection: TextDirection.rtl, child: BottomNavigationBar(
-      backgroundColor: Theme.of(context).primaryIconTheme.color,
-        currentIndex: _currentPageIndex,
-        onTap: (index) {
-          _currentPageIndex = index;
-          setState(() {});
-        },
-        selectedItemColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Theme.of(context).iconTheme.color,
-        type: BottomNavigationBarType.fixed,
-        items: List.generate(
-            bottom_app_bar_names.length,
-                (index) => BottomNavigationBarItem(
-                icon: Icon(bottom_app_bar_icons[index]),
-                label: bottom_app_bar_names[index]
-            ))));
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: Icon(CupertinoIcons.home),
+        title: ("Home"),
+        activeColorPrimary: CupertinoColors.black,
+        inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(CupertinoIcons.settings),
+        title: ("Settings"),
+        activeColorPrimary: CupertinoColors.black,
+        inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(CupertinoIcons.settings),
+        title: ("Settings"),
+        activeColorPrimary: CupertinoColors.black,
+        inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
+      ),
+    ];
   }
 }
