@@ -16,7 +16,7 @@ import 'package:progress_indicators/progress_indicators.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../api/models/sliders_model.dart';
-import '../my_flutter_app_icons.dart';
+import '../config/my_flutter_app_icons.dart';
 import '../providers/poster_data_provider.dart';
 import '../providers/slider_data_provider.dart';
 
