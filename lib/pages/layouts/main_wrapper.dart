@@ -20,11 +20,11 @@ class _MainWrapperState extends State<MainWrapper> {
 
   List<Widget> _buildScreens() {
     return [
+      TestPage(),
+      TestPage(),
+      TestPage(),
+      TestPage(),
       HomePage(),
-      TestPage(),
-      TestPage(),
-      TestPage(),
-      TestPage(),
     ];
   }
 
@@ -32,13 +32,13 @@ class _MainWrapperState extends State<MainWrapper> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = PersistentTabController(initialIndex: 0);
+    _controller = PersistentTabController(initialIndex: 4);
   }
 
   @override
   Widget build(BuildContext context) {
 
-    Color? backgroundColor = Theme.of(context).primaryIconTheme.color;
+    Color? backgroundColor = Theme.of(context).appBarTheme.backgroundColor;
 
     return PersistentTabView(
       onItemSelected: (value) {
@@ -107,6 +107,6 @@ class _MainWrapperState extends State<MainWrapper> {
         activeColorPrimary: CupertinoColors.black,
         inactiveColorPrimary: Theme.of(context).bottomAppBarColor,
       ),
-    ];
+    ].reversed.toList();
   }
 }
