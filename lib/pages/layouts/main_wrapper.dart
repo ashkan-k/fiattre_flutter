@@ -33,8 +33,6 @@ class _MainWrapperState extends State<MainWrapper> {
     Icons.person_outline
   ];
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
