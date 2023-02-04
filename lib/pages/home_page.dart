@@ -1328,9 +1328,7 @@ class _HomePageState extends State<HomePage> {
                         onPressed: () {
                           try{
                             specialCategoriesPageController.previousPage(duration: Duration(milliseconds: 350), curve: Curves.easeIn);
-                          }catch(exception){
-
-                          }
+                          }catch(exception){}
                         },
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
@@ -1351,9 +1349,7 @@ class _HomePageState extends State<HomePage> {
                         onPressed: () {
                           try{
                             specialCategoriesPageController.nextPage(duration: Duration(milliseconds: 350), curve: Curves.easeIn);
-                          }catch(exception){
-
-                          }
+                          }catch(exception){}
                         },
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
