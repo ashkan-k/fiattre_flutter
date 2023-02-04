@@ -20,8 +20,6 @@ class EpisodeDataProvider extends ChangeNotifier{
       if (response.statusCode == 200){
         Iterable l = response.data;
         data = List<EpisodesModel>.from(l.map((model)=> EpisodesModel.fromJson(model)));
-        print('cfccccccccccccccccc');
-        print(data);
         state = ResponseModel.completed(data);
         this.location = location;
       }else{
@@ -31,8 +29,6 @@ class EpisodeDataProvider extends ChangeNotifier{
       notifyListeners();
       return data;
     }catch(e){
-      print('cfccccccccccccccccc');
-      print(e.toString());
       state = ResponseModel.loading('please check your connection...');
       notifyListeners();
       return data;
