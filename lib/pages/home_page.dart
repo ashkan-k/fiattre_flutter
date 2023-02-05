@@ -19,6 +19,7 @@ import '../api/models/sliders_model.dart';
 import '../config/my_flutter_app_icons.dart';
 import '../providers/poster_data_provider.dart';
 import '../providers/slider_data_provider.dart';
+import 'episode_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -517,44 +518,49 @@ class _HomePageState extends State<HomePage> {
 
                                           return Padding(
                                             padding: const EdgeInsets.all(10),
-                                            child: SizedBox(
-                                              width: width * 0.35,
-                                              child: Container(
-                                                  child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 210,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                          baseApiService
-                                                                  .apiUrl +
-                                                              episode.image
-                                                                  .toString(),
-                                                          fit: BoxFit.fill),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.id)));
+                                              },
+                                              child: SizedBox(
+                                                width: width * 0.35,
+                                                child: Container(
+                                                    child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 210,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                20),
+                                                        child: Image.network(
+                                                            baseApiService
+                                                                    .apiUrl +
+                                                                episode.image
+                                                                    .toString(),
+                                                            fit: BoxFit.fill),
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 3),
-                                                    child: Text(
-                                                        episode.title
-                                                            .toString()
-                                                            .substring(0, 18),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 16,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .iconTheme
-                                                                .color)),
-                                                  ),
-                                                ],
-                                              )),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 3),
+                                                      child: Text(
+                                                          episode.title
+                                                              .toString()
+                                                              .substring(0, 18),
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight.bold,
+                                                              fontSize: 16,
+                                                              color: Theme.of(
+                                                                      context)
+                                                                  .iconTheme
+                                                                  .color)),
+                                                    ),
+                                                  ],
+                                                )),
+                                              ),
                                             ),
                                           );
                                         },
