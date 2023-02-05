@@ -64,6 +64,8 @@ class HelpersProvider extends ChangeNotifier {
         await prefs.setStringList(name, value);
         break;
     }
+
+    this.data = value;
   }
 
   void GetSharedPreference(String name, type) async {

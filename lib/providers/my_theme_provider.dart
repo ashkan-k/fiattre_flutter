@@ -13,8 +13,8 @@ class MyThemeProvider extends ChangeNotifier {
     themeMode = themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
     helpersProvider.RemoveSharedPreference('user_theme_is_dark');
     helpersProvider.SetSharedPreference('user_theme_is_dark', bool, isDarkMode);
-    helpersProvider.GetSharedPreference('user_theme_is_dark', bool);
     print(helpersProvider.data);
+    print(isDarkMode);
     notifyListeners();
   }
 
