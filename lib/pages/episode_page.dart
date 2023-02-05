@@ -86,18 +86,86 @@ class _EpisodePageState extends State<EpisodePage> {
                                 ),
 
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 30),
+                                  padding: EdgeInsets.only(top: height * 0.030),
                                   child: Row(
                                     children: [
-                                      Icon(
-                                        Icons
-                                            .remove_red_eye_outlined,
-                                        color: Colors.amber,
-                                        size: 30,
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons
+                                                .remove_red_eye_outlined,
+                                            color: Colors.amber,
+                                            size: 30,
+                                          ),
+                                          const SizedBox(width: 5),
+                                          Text(
+                                            ':',
+                                            style: TextStyle(
+                                                fontWeight:
+                                                FontWeight.bold,
+                                                fontSize: 20,
+                                                color: Theme.of(context)
+                                                    .iconTheme
+                                                    .color),
+                                          ),
+                                          const SizedBox(width: 5),
+                                          Text(
+                                            '${episode.view_count ?? '---'} بازدید',
+                                            style: TextStyle(
+                                                fontWeight:
+                                                FontWeight.bold,
+                                                fontSize: 20,
+                                                color: Theme.of(context)
+                                                    .iconTheme
+                                                    .color),
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(width: 5),
+
+                                      const SizedBox(width: 15),
+
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons
+                                                .favorite_outline_outlined,
+                                            color: Colors.red,
+                                            size: 30,
+                                          ),
+                                          const SizedBox(width: 5),
+                                          Text(
+                                            ':',
+                                            style: TextStyle(
+                                                fontWeight:
+                                                FontWeight.bold,
+                                                fontSize: 20,
+                                                color: Theme.of(context)
+                                                    .iconTheme
+                                                    .color),
+                                          ),
+                                          const SizedBox(width: 5),
+                                          Text(
+                                            '${episode.likes_count ?? '---'} لایک',
+                                            style: TextStyle(
+                                                fontWeight:
+                                                FontWeight.bold,
+                                                fontSize: 20,
+                                                color: Theme.of(context)
+                                                    .iconTheme
+                                                    .color),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: EdgeInsets.only(top: height * 0.020),
+                                  child: Row(
+                                    children: [
                                       Text(
-                                        ':',
+                                        'کارگردان :',
                                         style: TextStyle(
                                             fontWeight:
                                             FontWeight.bold,
@@ -108,7 +176,7 @@ class _EpisodePageState extends State<EpisodePage> {
                                       ),
                                       const SizedBox(width: 5),
                                       Text(
-                                        '${episode.view_count ?? '---'} بازدید',
+                                        '${episode.director ?? '---'}',
                                         style: TextStyle(
                                             fontWeight:
                                             FontWeight.bold,
@@ -119,7 +187,186 @@ class _EpisodePageState extends State<EpisodePage> {
                                       ),
                                     ],
                                   ),
-                                )
+                                ),
+
+                                Padding(
+                                  padding: EdgeInsets.only(top: height * 0.020),
+                                  child: Row(
+                                    children: [
+                                      Text('نویسنده :', style: TextStyle(
+                                          fontWeight:
+                                          FontWeight.bold,
+                                          fontSize: 20,
+                                          color: Theme.of(context)
+                                              .iconTheme
+                                              .color),
+                                      ),
+                                      const SizedBox(width: 5),
+                                      Text(
+                                        '${episode.writer ?? '---'}',
+                                        style: TextStyle(
+                                            fontWeight:
+                                            FontWeight.bold,
+                                            fontSize: 20,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: EdgeInsets.only(top: height * 0.020),
+                                  child: Row(
+                                    children: [
+                                      Text('دسته بندی :', style: TextStyle(
+                                          fontWeight:
+                                          FontWeight.bold,
+                                          fontSize: 20,
+                                          color: Theme.of(context)
+                                              .iconTheme
+                                              .color),
+                                      ),
+                                      const SizedBox(width: 5),
+                                      Text(
+                                        '${episode.category.name ?? '---'}',
+                                        style: TextStyle(
+                                            fontWeight:
+                                            FontWeight.bold,
+                                            fontSize: 20,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: EdgeInsets.only(top: height * 0.020),
+                                  child: Row(
+                                    children: [
+                                      Text('سال ساخت :', style: TextStyle(
+                                          fontWeight:
+                                          FontWeight.bold,
+                                          fontSize: 20,
+                                          color: Theme.of(context)
+                                              .iconTheme
+                                              .color),
+                                      ),
+                                      const SizedBox(width: 5),
+                                      Text(
+                                        '${episode.construction_year ?? '---'}',
+                                        style: TextStyle(
+                                            fontWeight:
+                                            FontWeight.bold,
+                                            fontSize: 20,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: EdgeInsets.only(top: height * 0.020),
+                                  child: Row(
+                                    children: [
+                                      Text('محصول کشور :', style: TextStyle(
+                                          fontWeight:
+                                          FontWeight.bold,
+                                          fontSize: 20,
+                                          color: Theme.of(context)
+                                              .iconTheme
+                                              .color),
+                                      ),
+                                      const SizedBox(width: 5),
+                                      Text(
+                                        '${episode.country ?? '---'}',
+                                        style: TextStyle(
+                                            fontWeight:
+                                            FontWeight.bold,
+                                            fontSize: 20,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: EdgeInsets.only(top: height * 0.020),
+                                  child: Row(
+                                    children: [
+                                      Text('ژانر :', style: TextStyle(
+                                          fontWeight:
+                                          FontWeight.bold,
+                                          fontSize: 20,
+                                          color: Theme.of(context)
+                                              .iconTheme
+                                              .color),
+                                      ),
+                                      const SizedBox(width: 5),
+                                      Text(
+                                        '${episode.genre ?? '---'}',
+                                        style: TextStyle(
+                                            fontWeight:
+                                            FontWeight.bold,
+                                            fontSize: 20,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+
+
+
+
+                                Padding(
+                                  padding: EdgeInsets.only(top: height * 0.060),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Center(
+                                        child: SizedBox(
+                                          height: height * 0.080,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                    BorderRadius.circular(12)),
+                                                backgroundColor: Theme.of(context).iconTheme.color),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  '${episode.genre ?? '---'}',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                      FontWeight.bold,
+                                                      fontSize: 20,
+                                                      color: Theme.of(context).accentColor,
+                                                )),
+
+                                                SizedBox(width: 20),
+
+                                                Icon(Icons.play_circle, color: Theme.of(context).buttonColor),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                           )
