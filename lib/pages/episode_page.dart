@@ -47,18 +47,40 @@ class _EpisodePageState extends State<EpisodePage> {
                   dotSpacing: 3,
                 ),
               );
-            case Status.COMPLETED: EpisodesModel? model = episodeDataProvider.single_data as EpisodesModel?;
+            case Status.COMPLETED: EpisodesModel? episode = episodeDataProvider.single_data as EpisodesModel?;
 
               return SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: height * 0.65,
-                      width: double.infinity,
-                      child: HelpersProvider.ShowImageClipRRect(
-                          model!.cover.toString(), 'network', 0),
-                    )
-                  ],
+                child: Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Column(
+                    children: [
+                      Stack(
+                        children: [
+                          SizedBox(
+                            height: height * 0.65,
+                            width: double.infinity,
+                            child: HelpersProvider.ShowImageClipRRect(
+                                episode!.cover.toString(), 'network', 0),
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 80, right: 20),
+                            child: Text(
+                                episode.title
+                                    .toString().substring(0, 18),
+                                style: TextStyle(
+                                    fontWeight:
+                                    FontWeight.bold,
+                                    fontSize: 25,
+                                    color: Theme.of(
+                                        context)
+                                        .iconTheme
+                                        .color)),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               );
             case Status.ERROR:
