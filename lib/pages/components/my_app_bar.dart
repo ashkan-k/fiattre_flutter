@@ -5,11 +5,12 @@ import 'package:flutter/cupertino.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final AppBar appBar = AppBar();
+  bool showThemeSwitcher = false;
+
+  MyAppBar(this.showThemeSwitcher);
 
   @override
   Widget build(BuildContext context) {
-    MyThemeProvider themeProvider = MyThemeProvider();
-
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -34,7 +35,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
 
             Center(
-              child: ThemeSwitcher(),
+              child: showThemeSwitcher ? ThemeSwitcher() : Container(),
             ),
 
             Padding(

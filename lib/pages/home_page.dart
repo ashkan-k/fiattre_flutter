@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
     ];
 
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: MyAppBar(true),
       body: SingleChildScrollView(
         child: Column(
           children: [
