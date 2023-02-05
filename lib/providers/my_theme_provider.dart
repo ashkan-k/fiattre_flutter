@@ -1,14 +1,30 @@
+import 'package:fiatre_app/providers/helpers_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyThemeProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.dark;
+  HelpersProvider helpersProvider = HelpersProvider();
 
   bool get isDarkMode => themeMode == ThemeMode.dark;
 
   void SetTheme() {
     themeMode = themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
+    helpersProvider.RemoveSharedPreference('user_theme_is_dark');
+    helpersProvider.SetSharedPreference('user_theme_is_dark', bool, isDarkMode);
+    helpersProvider.GetSharedPreference('user_theme_is_dark', bool);
+    print(helpersProvider.data);
+    notifyListeners();
+  }
+
+  void CheckCurrentTheme()
+  {
+    print('vvvvvvvvvvvvvvvvvvvvvvv');
+    helpersProvider.GetSharedPreference('user_theme_is_dark', bool);
+    print(helpersProvider.data);
+    bool is_dark_theme = helpersProvider.data ?? false;
+    themeMode = is_dark_theme ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
   }
 }
