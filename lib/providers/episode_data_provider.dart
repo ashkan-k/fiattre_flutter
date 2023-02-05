@@ -11,7 +11,29 @@ class EpisodeDataProvider extends ChangeNotifier{
   late ResponseModel state;
   var response;
   late List<EpisodesModel> data;
+  late EpisodesModel single_data;
   int location = 0;
+
+  Future<EpisodesModel> GetEpisode(String episode_slug) async {
+    state = ResponseModel.loading('loading...');
+    try{
+      response = await episodeApiService.GetEpisodeData(episode_slug);
+      if (response.statusCode == 200){
+        single_data = EpisodesModel.fromJson(response.data);
+        state = ResponseModel.completed(single_data);
+        this.location = location;
+      }else{
+        state = ResponseModel.loading('something is wrong...');
+      }
+
+      notifyListeners();
+      return single_data;
+    }catch(e){
+      state = ResponseModel.loading('please check your connection...');
+      notifyListeners();
+      return single_data;
+    }
+  }
 
   Future<List<EpisodesModel>> GetSpecialEpisodes() async {
     state = ResponseModel.loading('loading...');

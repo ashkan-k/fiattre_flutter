@@ -1,26 +1,32 @@
+import 'package:fiatre_app/api/models/episodes_model.dart';
 import 'package:flutter/material.dart';
-
+import 'package:progress_indicators/progress_indicators.dart';
+import 'package:provider/provider.dart';
+import '../api/ResponseModel.dart';
+import '../providers/episode_data_provider.dart';
+import '../providers/helpers_provider.dart';
 import 'components/my_app_bar.dart';
 
 class EpisodePage extends StatefulWidget {
-  int? episodeId;
-  EpisodePage(this.episodeId, {Key? key}) : super(key: key);
+  String? episodeSlug;
+
+  EpisodePage(this.episodeSlug, {Key? key}) : super(key: key);
 
   @override
-  State<EpisodePage> createState() => _EpisodePageState(this.episodeId);
+  State<EpisodePage> createState() => _EpisodePageState(this.episodeSlug);
 }
 
 class _EpisodePageState extends State<EpisodePage> {
-  int? episodeId;
+  String? episodeSlug;
 
-  _EpisodePageState(this.episodeId);
+  _EpisodePageState(this.episodeSlug);
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    print('bbbbbbbbbbbbbbbbbbbb');
-    print(this.episodeId);
+    final episodeDataProvider =
+        Provider.of<EpisodeDataProvider>(context, listen: false);
+    episodeDataProvider.GetEpisode(episodeSlug!);
   }
 
   @override
@@ -30,16 +36,37 @@ class _EpisodePageState extends State<EpisodePage> {
 
     return Scaffold(
       appBar: MyAppBar(false),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: height * 0.65,
-              width: double.infinity,
-              child: Center(child: Text('vvvvvvvvvvvv')),
-            ),
-          ],
-        ),
+      body: Consumer<EpisodeDataProvider>(
+        builder: (context, episodeDataProvider, child) {
+          switch (episodeDataProvider.state.status) {
+            case Status.LOADING:
+              return Center(
+                child: JumpingDotsProgressIndicator(
+                  color: (Theme.of(context).iconTheme.color)!,
+                  fontSize: 80,
+                  dotSpacing: 3,
+                ),
+              );
+            case Status.COMPLETED: EpisodesModel? model = episodeDataProvider.single_data as EpisodesModel?;
+
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: height * 0.65,
+                      width: double.infinity,
+                      child: HelpersProvider.ShowImageClipRRect(
+                          model!.cover.toString(), 'network', 0),
+                    )
+                  ],
+                ),
+              );
+            case Status.ERROR:
+              return Text(episodeDataProvider.state.message);
+            default:
+              return Container();
+          }
+        },
       ),
     );
   }

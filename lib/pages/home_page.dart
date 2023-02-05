@@ -1,9 +1,7 @@
 import 'dart:async';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fiatre_app/api/ResponseModel.dart';
 import 'package:fiatre_app/api/models/categories_model.dart';
 import 'package:fiatre_app/api/models/episodes_model.dart';
-import 'package:fiatre_app/api/models/posters_model.dart';
 import 'package:fiatre_app/api/models/posters_model.dart';
 import 'package:fiatre_app/api/services/base_service_provider.dart';
 import 'package:fiatre_app/pages/components/my_app_bar.dart';
@@ -520,7 +518,7 @@ class _HomePageState extends State<HomePage> {
                                             padding: const EdgeInsets.all(10),
                                             child: InkWell(
                                               onTap: () {
-                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.id)));
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.slug)));
                                               },
                                               child: SizedBox(
                                                 width: width * 0.35,
@@ -596,12 +594,12 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<CategoriesModel>? model =
-                        snapshot.data as List<CategoriesModel>?;
+                    snapshot.data as List<CategoriesModel>?;
 
                     return Column(
                       children: List.generate(
                         model!.length,
-                        (index) {
+                            (index) {
                           return Padding(
                             padding: const EdgeInsets.all(10),
                             child: Column(
@@ -611,7 +609,7 @@ class _HomePageState extends State<HomePage> {
                                       top: 40, right: 30, left: 30),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       InkWell(
                                         onTap: () {
@@ -660,48 +658,53 @@ class _HomePageState extends State<HomePage> {
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index2) {
                                           var episode =
-                                              model![index].episodes![index2];
+                                          model![index].episodes![index2];
 
                                           return Padding(
                                             padding: const EdgeInsets.all(10),
-                                            child: SizedBox(
-                                              width: width * 0.35,
-                                              child: Container(
-                                                  child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 210,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                          baseApiService
-                                                                  .apiUrl +
-                                                              episode.image
-                                                                  .toString(),
-                                                          fit: BoxFit.fill),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 3),
-                                                    child: Text(
-                                                        episode.title
-                                                            .toString()
-                                                            .substring(0, 18),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 16,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .iconTheme
-                                                                .color)),
-                                                  ),
-                                                ],
-                                              )),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.slug)));
+                                              },
+                                              child: SizedBox(
+                                                width: width * 0.35,
+                                                child: Container(
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 210,
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                20),
+                                                            child: Image.network(
+                                                                baseApiService
+                                                                    .apiUrl +
+                                                                    episode.image
+                                                                        .toString(),
+                                                                fit: BoxFit.fill),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(
+                                                              top: 3),
+                                                          child: Text(
+                                                              episode.title
+                                                                  .toString()
+                                                                  .substring(0, 18),
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight.bold,
+                                                                  fontSize: 16,
+                                                                  color: Theme.of(
+                                                                      context)
+                                                                      .iconTheme
+                                                                      .color)),
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ),
                                             ),
                                           );
                                         },
@@ -709,8 +712,8 @@ class _HomePageState extends State<HomePage> {
                                           return const Divider();
                                         },
                                         itemCount:
-                                            model![index].episodes?.length ??
-                                                0),
+                                        model![index].episodes?.length ??
+                                            0),
                                   ),
                                 )
                               ],
@@ -722,10 +725,10 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: (Theme.of(context).iconTheme.color)!,
-                      fontSize: 80,
-                      dotSpacing: 3,
-                    ));
+                          color: (Theme.of(context).iconTheme.color)!,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
                   }
                 },
               ),
@@ -803,12 +806,12 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<CategoriesModel>? model =
-                        snapshot.data as List<CategoriesModel>?;
+                    snapshot.data as List<CategoriesModel>?;
 
                     return Column(
                       children: List.generate(
                         model!.length,
-                        (index) {
+                            (index) {
                           return Padding(
                             padding: const EdgeInsets.all(10),
                             child: Column(
@@ -818,7 +821,7 @@ class _HomePageState extends State<HomePage> {
                                       top: 40, right: 30, left: 30),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       InkWell(
                                         onTap: () {
@@ -867,48 +870,53 @@ class _HomePageState extends State<HomePage> {
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index2) {
                                           var episode =
-                                              model![index].episodes![index2];
+                                          model![index].episodes![index2];
 
                                           return Padding(
                                             padding: const EdgeInsets.all(10),
-                                            child: SizedBox(
-                                              width: width * 0.35,
-                                              child: Container(
-                                                  child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 210,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                          baseApiService
-                                                                  .apiUrl +
-                                                              episode.image
-                                                                  .toString(),
-                                                          fit: BoxFit.fill),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 3),
-                                                    child: Text(
-                                                        episode.title
-                                                            .toString()
-                                                            .substring(0, 18),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 16,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .iconTheme
-                                                                .color)),
-                                                  ),
-                                                ],
-                                              )),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.slug)));
+                                              },
+                                              child: SizedBox(
+                                                width: width * 0.35,
+                                                child: Container(
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 210,
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                20),
+                                                            child: Image.network(
+                                                                baseApiService
+                                                                    .apiUrl +
+                                                                    episode.image
+                                                                        .toString(),
+                                                                fit: BoxFit.fill),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(
+                                                              top: 3),
+                                                          child: Text(
+                                                              episode.title
+                                                                  .toString()
+                                                                  .substring(0, 18),
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight.bold,
+                                                                  fontSize: 16,
+                                                                  color: Theme.of(
+                                                                      context)
+                                                                      .iconTheme
+                                                                      .color)),
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ),
                                             ),
                                           );
                                         },
@@ -916,8 +924,8 @@ class _HomePageState extends State<HomePage> {
                                           return const Divider();
                                         },
                                         itemCount:
-                                            model![index].episodes?.length ??
-                                                0),
+                                        model![index].episodes?.length ??
+                                            0),
                                   ),
                                 )
                               ],
@@ -929,10 +937,10 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: (Theme.of(context).iconTheme.color)!,
-                      fontSize: 80,
-                      dotSpacing: 3,
-                    ));
+                          color: (Theme.of(context).iconTheme.color)!,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
                   }
                 },
               ),
@@ -1388,12 +1396,12 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<CategoriesModel>? model =
-                        snapshot.data as List<CategoriesModel>?;
+                    snapshot.data as List<CategoriesModel>?;
 
                     return Column(
                       children: List.generate(
                         model!.length,
-                        (index) {
+                            (index) {
                           return Padding(
                             padding: const EdgeInsets.all(10),
                             child: Column(
@@ -1403,7 +1411,7 @@ class _HomePageState extends State<HomePage> {
                                       top: 40, right: 30, left: 30),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       InkWell(
                                         onTap: () {
@@ -1452,48 +1460,53 @@ class _HomePageState extends State<HomePage> {
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index2) {
                                           var episode =
-                                              model![index].episodes![index2];
+                                          model![index].episodes![index2];
 
                                           return Padding(
                                             padding: const EdgeInsets.all(10),
-                                            child: SizedBox(
-                                              width: width * 0.35,
-                                              child: Container(
-                                                  child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 210,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                          baseApiService
-                                                                  .apiUrl +
-                                                              episode.image
-                                                                  .toString(),
-                                                          fit: BoxFit.fill),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 3),
-                                                    child: Text(
-                                                        episode.title
-                                                            .toString()
-                                                            .substring(0, 18),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 16,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .iconTheme
-                                                                .color)),
-                                                  ),
-                                                ],
-                                              )),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.slug)));
+                                              },
+                                              child: SizedBox(
+                                                width: width * 0.35,
+                                                child: Container(
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 210,
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                20),
+                                                            child: Image.network(
+                                                                baseApiService
+                                                                    .apiUrl +
+                                                                    episode.image
+                                                                        .toString(),
+                                                                fit: BoxFit.fill),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(
+                                                              top: 3),
+                                                          child: Text(
+                                                              episode.title
+                                                                  .toString()
+                                                                  .substring(0, 18),
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight.bold,
+                                                                  fontSize: 16,
+                                                                  color: Theme.of(
+                                                                      context)
+                                                                      .iconTheme
+                                                                      .color)),
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ),
                                             ),
                                           );
                                         },
@@ -1501,8 +1514,8 @@ class _HomePageState extends State<HomePage> {
                                           return const Divider();
                                         },
                                         itemCount:
-                                            model![index].episodes?.length ??
-                                                0),
+                                        model![index].episodes?.length ??
+                                            0),
                                   ),
                                 )
                               ],
@@ -1514,10 +1527,10 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: (Theme.of(context).iconTheme.color)!,
-                      fontSize: 80,
-                      dotSpacing: 3,
-                    ));
+                          color: (Theme.of(context).iconTheme.color)!,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
                   }
                 },
               ),
@@ -1597,12 +1610,12 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<CategoriesModel>? model =
-                        snapshot.data as List<CategoriesModel>?;
+                    snapshot.data as List<CategoriesModel>?;
 
                     return Column(
                       children: List.generate(
                         model!.length,
-                        (index) {
+                            (index) {
                           return Padding(
                             padding: const EdgeInsets.all(10),
                             child: Column(
@@ -1612,7 +1625,7 @@ class _HomePageState extends State<HomePage> {
                                       top: 40, right: 30, left: 30),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       InkWell(
                                         onTap: () {
@@ -1661,48 +1674,53 @@ class _HomePageState extends State<HomePage> {
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index2) {
                                           var episode =
-                                              model![index].episodes![index2];
+                                          model![index].episodes![index2];
 
                                           return Padding(
                                             padding: const EdgeInsets.all(10),
-                                            child: SizedBox(
-                                              width: width * 0.35,
-                                              child: Container(
-                                                  child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 210,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                          baseApiService
-                                                                  .apiUrl +
-                                                              episode.image
-                                                                  .toString(),
-                                                          fit: BoxFit.fill),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 3),
-                                                    child: Text(
-                                                        episode.title
-                                                            .toString()
-                                                            .substring(0, 18),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 16,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .iconTheme
-                                                                .color)),
-                                                  ),
-                                                ],
-                                              )),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.slug)));
+                                              },
+                                              child: SizedBox(
+                                                width: width * 0.35,
+                                                child: Container(
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 210,
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                20),
+                                                            child: Image.network(
+                                                                baseApiService
+                                                                    .apiUrl +
+                                                                    episode.image
+                                                                        .toString(),
+                                                                fit: BoxFit.fill),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(
+                                                              top: 3),
+                                                          child: Text(
+                                                              episode.title
+                                                                  .toString()
+                                                                  .substring(0, 18),
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight.bold,
+                                                                  fontSize: 16,
+                                                                  color: Theme.of(
+                                                                      context)
+                                                                      .iconTheme
+                                                                      .color)),
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ),
                                             ),
                                           );
                                         },
@@ -1710,8 +1728,8 @@ class _HomePageState extends State<HomePage> {
                                           return const Divider();
                                         },
                                         itemCount:
-                                            model![index].episodes?.length ??
-                                                0),
+                                        model![index].episodes?.length ??
+                                            0),
                                   ),
                                 )
                               ],
@@ -1723,10 +1741,10 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: (Theme.of(context).iconTheme.color)!,
-                      fontSize: 80,
-                      dotSpacing: 3,
-                    ));
+                          color: (Theme.of(context).iconTheme.color)!,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
                   }
                 },
               ),
@@ -1804,12 +1822,12 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<CategoriesModel>? model =
-                        snapshot.data as List<CategoriesModel>?;
+                    snapshot.data as List<CategoriesModel>?;
 
                     return Column(
                       children: List.generate(
                         model!.length,
-                        (index) {
+                            (index) {
                           return Padding(
                             padding: const EdgeInsets.all(10),
                             child: Column(
@@ -1819,7 +1837,7 @@ class _HomePageState extends State<HomePage> {
                                       top: 40, right: 30, left: 30),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       InkWell(
                                         onTap: () {
@@ -1868,48 +1886,53 @@ class _HomePageState extends State<HomePage> {
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index2) {
                                           var episode =
-                                              model![index].episodes![index2];
+                                          model![index].episodes![index2];
 
                                           return Padding(
                                             padding: const EdgeInsets.all(10),
-                                            child: SizedBox(
-                                              width: width * 0.35,
-                                              child: Container(
-                                                  child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 210,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                          baseApiService
-                                                                  .apiUrl +
-                                                              episode.image
-                                                                  .toString(),
-                                                          fit: BoxFit.fill),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 3),
-                                                    child: Text(
-                                                        episode.title
-                                                            .toString()
-                                                            .substring(0, 18),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 16,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .iconTheme
-                                                                .color)),
-                                                  ),
-                                                ],
-                                              )),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.slug)));
+                                              },
+                                              child: SizedBox(
+                                                width: width * 0.35,
+                                                child: Container(
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 210,
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                20),
+                                                            child: Image.network(
+                                                                baseApiService
+                                                                    .apiUrl +
+                                                                    episode.image
+                                                                        .toString(),
+                                                                fit: BoxFit.fill),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(
+                                                              top: 3),
+                                                          child: Text(
+                                                              episode.title
+                                                                  .toString()
+                                                                  .substring(0, 18),
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight.bold,
+                                                                  fontSize: 16,
+                                                                  color: Theme.of(
+                                                                      context)
+                                                                      .iconTheme
+                                                                      .color)),
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ),
                                             ),
                                           );
                                         },
@@ -1917,8 +1940,8 @@ class _HomePageState extends State<HomePage> {
                                           return const Divider();
                                         },
                                         itemCount:
-                                            model![index].episodes?.length ??
-                                                0),
+                                        model![index].episodes?.length ??
+                                            0),
                                   ),
                                 )
                               ],
@@ -1930,10 +1953,10 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: (Theme.of(context).iconTheme.color)!,
-                      fontSize: 80,
-                      dotSpacing: 3,
-                    ));
+                          color: (Theme.of(context).iconTheme.color)!,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
                   }
                 },
               ),
@@ -2011,12 +2034,12 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<CategoriesModel>? model =
-                        snapshot.data as List<CategoriesModel>?;
+                    snapshot.data as List<CategoriesModel>?;
 
                     return Column(
                       children: List.generate(
                         model!.length,
-                        (index) {
+                            (index) {
                           return Padding(
                             padding: const EdgeInsets.all(10),
                             child: Column(
@@ -2026,7 +2049,7 @@ class _HomePageState extends State<HomePage> {
                                       top: 40, right: 30, left: 30),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       InkWell(
                                         onTap: () {
@@ -2075,48 +2098,53 @@ class _HomePageState extends State<HomePage> {
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index2) {
                                           var episode =
-                                              model![index].episodes![index2];
+                                          model![index].episodes![index2];
 
                                           return Padding(
                                             padding: const EdgeInsets.all(10),
-                                            child: SizedBox(
-                                              width: width * 0.35,
-                                              child: Container(
-                                                  child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 210,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                          baseApiService
-                                                                  .apiUrl +
-                                                              episode.image
-                                                                  .toString(),
-                                                          fit: BoxFit.fill),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 3),
-                                                    child: Text(
-                                                        episode.title
-                                                            .toString()
-                                                            .substring(0, 18),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 16,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .iconTheme
-                                                                .color)),
-                                                  ),
-                                                ],
-                                              )),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.slug)));
+                                              },
+                                              child: SizedBox(
+                                                width: width * 0.35,
+                                                child: Container(
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 210,
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                20),
+                                                            child: Image.network(
+                                                                baseApiService
+                                                                    .apiUrl +
+                                                                    episode.image
+                                                                        .toString(),
+                                                                fit: BoxFit.fill),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(
+                                                              top: 3),
+                                                          child: Text(
+                                                              episode.title
+                                                                  .toString()
+                                                                  .substring(0, 18),
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight.bold,
+                                                                  fontSize: 16,
+                                                                  color: Theme.of(
+                                                                      context)
+                                                                      .iconTheme
+                                                                      .color)),
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ),
                                             ),
                                           );
                                         },
@@ -2124,8 +2152,8 @@ class _HomePageState extends State<HomePage> {
                                           return const Divider();
                                         },
                                         itemCount:
-                                            model![index].episodes?.length ??
-                                                0),
+                                        model![index].episodes?.length ??
+                                            0),
                                   ),
                                 )
                               ],
@@ -2137,10 +2165,10 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: (Theme.of(context).iconTheme.color)!,
-                      fontSize: 80,
-                      dotSpacing: 3,
-                    ));
+                          color: (Theme.of(context).iconTheme.color)!,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
                   }
                 },
               ),
@@ -2152,12 +2180,12 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<CategoriesModel>? model =
-                        snapshot.data as List<CategoriesModel>?;
+                    snapshot.data as List<CategoriesModel>?;
 
                     return Column(
                       children: List.generate(
                         model!.length,
-                        (index) {
+                            (index) {
                           return Padding(
                             padding: const EdgeInsets.all(10),
                             child: Column(
@@ -2167,7 +2195,7 @@ class _HomePageState extends State<HomePage> {
                                       top: 40, right: 30, left: 30),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       InkWell(
                                         onTap: () {
@@ -2216,48 +2244,53 @@ class _HomePageState extends State<HomePage> {
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index2) {
                                           var episode =
-                                              model![index].episodes![index2];
+                                          model![index].episodes![index2];
 
                                           return Padding(
                                             padding: const EdgeInsets.all(10),
-                                            child: SizedBox(
-                                              width: width * 0.35,
-                                              child: Container(
-                                                  child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 210,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                          baseApiService
-                                                                  .apiUrl +
-                                                              episode.image
-                                                                  .toString(),
-                                                          fit: BoxFit.fill),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 3),
-                                                    child: Text(
-                                                        episode.title
-                                                            .toString()
-                                                            .substring(0, 18),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 16,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .iconTheme
-                                                                .color)),
-                                                  ),
-                                                ],
-                                              )),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.slug)));
+                                              },
+                                              child: SizedBox(
+                                                width: width * 0.35,
+                                                child: Container(
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 210,
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                20),
+                                                            child: Image.network(
+                                                                baseApiService
+                                                                    .apiUrl +
+                                                                    episode.image
+                                                                        .toString(),
+                                                                fit: BoxFit.fill),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(
+                                                              top: 3),
+                                                          child: Text(
+                                                              episode.title
+                                                                  .toString()
+                                                                  .substring(0, 18),
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight.bold,
+                                                                  fontSize: 16,
+                                                                  color: Theme.of(
+                                                                      context)
+                                                                      .iconTheme
+                                                                      .color)),
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ),
                                             ),
                                           );
                                         },
@@ -2265,8 +2298,8 @@ class _HomePageState extends State<HomePage> {
                                           return const Divider();
                                         },
                                         itemCount:
-                                            model![index].episodes?.length ??
-                                                0),
+                                        model![index].episodes?.length ??
+                                            0),
                                   ),
                                 )
                               ],
@@ -2278,10 +2311,10 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: (Theme.of(context).iconTheme.color)!,
-                      fontSize: 80,
-                      dotSpacing: 3,
-                    ));
+                          color: (Theme.of(context).iconTheme.color)!,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
                   }
                 },
               ),
@@ -2293,12 +2326,12 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<CategoriesModel>? model =
-                        snapshot.data as List<CategoriesModel>?;
+                    snapshot.data as List<CategoriesModel>?;
 
                     return Column(
                       children: List.generate(
                         model!.length,
-                        (index) {
+                            (index) {
                           return Padding(
                             padding: const EdgeInsets.all(10),
                             child: Column(
@@ -2308,7 +2341,7 @@ class _HomePageState extends State<HomePage> {
                                       top: 40, right: 30, left: 30),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       InkWell(
                                         onTap: () {
@@ -2357,48 +2390,53 @@ class _HomePageState extends State<HomePage> {
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index2) {
                                           var episode =
-                                              model![index].episodes![index2];
+                                          model![index].episodes![index2];
 
                                           return Padding(
                                             padding: const EdgeInsets.all(10),
-                                            child: SizedBox(
-                                              width: width * 0.35,
-                                              child: Container(
-                                                  child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 210,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                          baseApiService
-                                                                  .apiUrl +
-                                                              episode.image
-                                                                  .toString(),
-                                                          fit: BoxFit.fill),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 3),
-                                                    child: Text(
-                                                        episode.title
-                                                            .toString()
-                                                            .substring(0, 18),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 16,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .iconTheme
-                                                                .color)),
-                                                  ),
-                                                ],
-                                              )),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.slug)));
+                                              },
+                                              child: SizedBox(
+                                                width: width * 0.35,
+                                                child: Container(
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 210,
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                20),
+                                                            child: Image.network(
+                                                                baseApiService
+                                                                    .apiUrl +
+                                                                    episode.image
+                                                                        .toString(),
+                                                                fit: BoxFit.fill),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(
+                                                              top: 3),
+                                                          child: Text(
+                                                              episode.title
+                                                                  .toString()
+                                                                  .substring(0, 18),
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight.bold,
+                                                                  fontSize: 16,
+                                                                  color: Theme.of(
+                                                                      context)
+                                                                      .iconTheme
+                                                                      .color)),
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ),
                                             ),
                                           );
                                         },
@@ -2406,8 +2444,8 @@ class _HomePageState extends State<HomePage> {
                                           return const Divider();
                                         },
                                         itemCount:
-                                            model![index].episodes?.length ??
-                                                0),
+                                        model![index].episodes?.length ??
+                                            0),
                                   ),
                                 )
                               ],
@@ -2419,10 +2457,10 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: (Theme.of(context).iconTheme.color)!,
-                      fontSize: 80,
-                      dotSpacing: 3,
-                    ));
+                          color: (Theme.of(context).iconTheme.color)!,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
                   }
                 },
               ),
@@ -2434,12 +2472,12 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<CategoriesModel>? model =
-                        snapshot.data as List<CategoriesModel>?;
+                    snapshot.data as List<CategoriesModel>?;
 
                     return Column(
                       children: List.generate(
                         model!.length,
-                        (index) {
+                            (index) {
                           return Padding(
                             padding: const EdgeInsets.all(10),
                             child: Column(
@@ -2449,7 +2487,7 @@ class _HomePageState extends State<HomePage> {
                                       top: 40, right: 30, left: 30),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       InkWell(
                                         onTap: () {
@@ -2498,48 +2536,53 @@ class _HomePageState extends State<HomePage> {
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index2) {
                                           var episode =
-                                              model![index].episodes![index2];
+                                          model![index].episodes![index2];
 
                                           return Padding(
                                             padding: const EdgeInsets.all(10),
-                                            child: SizedBox(
-                                              width: width * 0.35,
-                                              child: Container(
-                                                  child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 210,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                          baseApiService
-                                                                  .apiUrl +
-                                                              episode.image
-                                                                  .toString(),
-                                                          fit: BoxFit.fill),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 3),
-                                                    child: Text(
-                                                        episode.title
-                                                            .toString()
-                                                            .substring(0, 18),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 16,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .iconTheme
-                                                                .color)),
-                                                  ),
-                                                ],
-                                              )),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.slug)));
+                                              },
+                                              child: SizedBox(
+                                                width: width * 0.35,
+                                                child: Container(
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 210,
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                20),
+                                                            child: Image.network(
+                                                                baseApiService
+                                                                    .apiUrl +
+                                                                    episode.image
+                                                                        .toString(),
+                                                                fit: BoxFit.fill),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(
+                                                              top: 3),
+                                                          child: Text(
+                                                              episode.title
+                                                                  .toString()
+                                                                  .substring(0, 18),
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight.bold,
+                                                                  fontSize: 16,
+                                                                  color: Theme.of(
+                                                                      context)
+                                                                      .iconTheme
+                                                                      .color)),
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ),
                                             ),
                                           );
                                         },
@@ -2547,8 +2590,8 @@ class _HomePageState extends State<HomePage> {
                                           return const Divider();
                                         },
                                         itemCount:
-                                            model![index].episodes?.length ??
-                                                0),
+                                        model![index].episodes?.length ??
+                                            0),
                                   ),
                                 )
                               ],
@@ -2560,10 +2603,10 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: (Theme.of(context).iconTheme.color)!,
-                      fontSize: 80,
-                      dotSpacing: 3,
-                    ));
+                          color: (Theme.of(context).iconTheme.color)!,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
                   }
                 },
               ),
@@ -2575,12 +2618,12 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<CategoriesModel>? model =
-                        snapshot.data as List<CategoriesModel>?;
+                    snapshot.data as List<CategoriesModel>?;
 
                     return Column(
                       children: List.generate(
                         model!.length,
-                        (index) {
+                            (index) {
                           return Padding(
                             padding: const EdgeInsets.all(10),
                             child: Column(
@@ -2590,7 +2633,7 @@ class _HomePageState extends State<HomePage> {
                                       top: 40, right: 30, left: 30),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       InkWell(
                                         onTap: () {
@@ -2639,48 +2682,53 @@ class _HomePageState extends State<HomePage> {
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index2) {
                                           var episode =
-                                              model![index].episodes![index2];
+                                          model![index].episodes![index2];
 
                                           return Padding(
                                             padding: const EdgeInsets.all(10),
-                                            child: SizedBox(
-                                              width: width * 0.35,
-                                              child: Container(
-                                                  child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 210,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                          baseApiService
-                                                                  .apiUrl +
-                                                              episode.image
-                                                                  .toString(),
-                                                          fit: BoxFit.fill),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 3),
-                                                    child: Text(
-                                                        episode.title
-                                                            .toString()
-                                                            .substring(0, 18),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 16,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .iconTheme
-                                                                .color)),
-                                                  ),
-                                                ],
-                                              )),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.slug)));
+                                              },
+                                              child: SizedBox(
+                                                width: width * 0.35,
+                                                child: Container(
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 210,
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                20),
+                                                            child: Image.network(
+                                                                baseApiService
+                                                                    .apiUrl +
+                                                                    episode.image
+                                                                        .toString(),
+                                                                fit: BoxFit.fill),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(
+                                                              top: 3),
+                                                          child: Text(
+                                                              episode.title
+                                                                  .toString()
+                                                                  .substring(0, 18),
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight.bold,
+                                                                  fontSize: 16,
+                                                                  color: Theme.of(
+                                                                      context)
+                                                                      .iconTheme
+                                                                      .color)),
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ),
                                             ),
                                           );
                                         },
@@ -2688,8 +2736,8 @@ class _HomePageState extends State<HomePage> {
                                           return const Divider();
                                         },
                                         itemCount:
-                                            model![index].episodes?.length ??
-                                                0),
+                                        model![index].episodes?.length ??
+                                            0),
                                   ),
                                 )
                               ],
@@ -2701,10 +2749,10 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: (Theme.of(context).iconTheme.color)!,
-                      fontSize: 80,
-                      dotSpacing: 3,
-                    ));
+                          color: (Theme.of(context).iconTheme.color)!,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
                   }
                 },
               ),
@@ -2716,12 +2764,12 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<CategoriesModel>? model =
-                        snapshot.data as List<CategoriesModel>?;
+                    snapshot.data as List<CategoriesModel>?;
 
                     return Column(
                       children: List.generate(
                         model!.length,
-                        (index) {
+                            (index) {
                           return Padding(
                             padding: const EdgeInsets.all(10),
                             child: Column(
@@ -2731,7 +2779,7 @@ class _HomePageState extends State<HomePage> {
                                       top: 40, right: 30, left: 30),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       InkWell(
                                         onTap: () {
@@ -2780,48 +2828,53 @@ class _HomePageState extends State<HomePage> {
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index2) {
                                           var episode =
-                                              model![index].episodes![index2];
+                                          model![index].episodes![index2];
 
                                           return Padding(
                                             padding: const EdgeInsets.all(10),
-                                            child: SizedBox(
-                                              width: width * 0.35,
-                                              child: Container(
-                                                  child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 210,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                          baseApiService
-                                                                  .apiUrl +
-                                                              episode.image
-                                                                  .toString(),
-                                                          fit: BoxFit.fill),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 3),
-                                                    child: Text(
-                                                        episode.title
-                                                            .toString()
-                                                            .substring(0, 18),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 16,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .iconTheme
-                                                                .color)),
-                                                  ),
-                                                ],
-                                              )),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.slug)));
+                                              },
+                                              child: SizedBox(
+                                                width: width * 0.35,
+                                                child: Container(
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 210,
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                20),
+                                                            child: Image.network(
+                                                                baseApiService
+                                                                    .apiUrl +
+                                                                    episode.image
+                                                                        .toString(),
+                                                                fit: BoxFit.fill),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(
+                                                              top: 3),
+                                                          child: Text(
+                                                              episode.title
+                                                                  .toString()
+                                                                  .substring(0, 18),
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight.bold,
+                                                                  fontSize: 16,
+                                                                  color: Theme.of(
+                                                                      context)
+                                                                      .iconTheme
+                                                                      .color)),
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ),
                                             ),
                                           );
                                         },
@@ -2829,8 +2882,8 @@ class _HomePageState extends State<HomePage> {
                                           return const Divider();
                                         },
                                         itemCount:
-                                            model![index].episodes?.length ??
-                                                0),
+                                        model![index].episodes?.length ??
+                                            0),
                                   ),
                                 )
                               ],
@@ -2842,10 +2895,10 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Center(
                         child: JumpingDotsProgressIndicator(
-                      color: (Theme.of(context).iconTheme.color)!,
-                      fontSize: 80,
-                      dotSpacing: 3,
-                    ));
+                          color: (Theme.of(context).iconTheme.color)!,
+                          fontSize: 80,
+                          dotSpacing: 3,
+                        ));
                   }
                 },
               ),
