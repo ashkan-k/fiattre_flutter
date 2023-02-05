@@ -57,25 +57,71 @@ class _EpisodePageState extends State<EpisodePage> {
                       Stack(
                         children: [
                           SizedBox(
-                            height: height * 0.65,
+                            height: height * 0.75,
                             width: double.infinity,
                             child: HelpersProvider.ShowImageClipRRect(
                                 episode!.cover.toString(), 'network', 0),
                           ),
 
                           Padding(
-                            padding: const EdgeInsets.only(top: 80, right: 20),
-                            child: Text(
-                                episode.title
-                                    .toString().substring(0, 18),
-                                style: TextStyle(
-                                    fontWeight:
-                                    FontWeight.bold,
-                                    fontSize: 25,
-                                    color: Theme.of(
-                                        context)
-                                        .iconTheme
-                                        .color)),
+                            padding: EdgeInsets.only(right: width * 0.055),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(top: height * 0.1),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                          episode.title
+                                              .toString().substring(0, 18),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w900,
+                                              fontSize: 30,
+                                              color: Theme.of(
+                                                  context)
+                                                  .iconTheme
+                                                  .color))
+                                    ],
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 30),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons
+                                            .remove_red_eye_outlined,
+                                        color: Colors.amber,
+                                        size: 30,
+                                      ),
+                                      const SizedBox(width: 5),
+                                      Text(
+                                        ':',
+                                        style: TextStyle(
+                                            fontWeight:
+                                            FontWeight.bold,
+                                            fontSize: 20,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color),
+                                      ),
+                                      const SizedBox(width: 5),
+                                      Text(
+                                        '${episode.view_count ?? '---'} بازدید',
+                                        style: TextStyle(
+                                            fontWeight:
+                                            FontWeight.bold,
+                                            fontSize: 20,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           )
                         ],
                       )
