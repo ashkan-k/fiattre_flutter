@@ -30,7 +30,6 @@ class _MainWrapperState extends State<MainWrapper> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _controller = PersistentTabController(initialIndex: 4);
   }
@@ -42,10 +41,7 @@ class _MainWrapperState extends State<MainWrapper> {
     Color? activeTabColor = Theme.of(context).iconTheme.color;
 
     return PersistentTabView(
-      onItemSelected: (value) {
-        print('bbbbbbbbbbbbbbbbbbbbbb');
-        print(value);
-      },
+      onItemSelected: (value) {},
       context,
       controller: _controller,
       screens: _buildScreens(),
