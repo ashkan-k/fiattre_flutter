@@ -2,6 +2,7 @@ import 'package:fiatre_app/providers/helpers_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyThemeProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.dark;
@@ -9,22 +10,24 @@ class MyThemeProvider extends ChangeNotifier {
 
   bool get isDarkMode => themeMode == ThemeMode.dark;
 
+  MyThemeProvider(){
+    GetCurrentTheme();
+  }
+
   void SetTheme() {
     themeMode = themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
     helpersProvider.RemoveSharedPreference('user_theme_is_dark');
     helpersProvider.SetSharedPreference('user_theme_is_dark', bool, isDarkMode);
-    print(helpersProvider.data);
-    print(isDarkMode);
     notifyListeners();
   }
 
-  void CheckCurrentTheme()
-  {
-    print('vvvvvvvvvvvvvvvvvvvvvvv');
-    helpersProvider.GetSharedPreference('user_theme_is_dark', bool);
-    print(helpersProvider.data);
-    bool is_dark_theme = helpersProvider.data ?? false;
-    themeMode = is_dark_theme ? ThemeMode.dark : ThemeMode.light;
+  void GetCurrentTheme() async {
+    final prefs = await SharedPreferences.getInstance();
+    if(prefs.getBool('user_theme_is_dark') == true){
+      themeMode = ThemeMode.dark;
+    }else{
+      themeMode = ThemeMode.light;
+    }
     notifyListeners();
   }
 }

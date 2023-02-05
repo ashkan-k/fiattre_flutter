@@ -17,10 +17,6 @@ void main() {
     DeviceOrientation.portraitUp
   ]);
 
-  //Check and Set Current Theme
-  MyThemeProvider themeProvider = MyThemeProvider();
-  themeProvider.CheckCurrentTheme();
-
   runApp(
     MultiProvider(
       providers: [
