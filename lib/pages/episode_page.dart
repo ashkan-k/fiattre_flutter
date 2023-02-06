@@ -371,21 +371,38 @@ class _EpisodePageState extends State<EpisodePage> {
 
 
                       Padding(
-                        padding: EdgeInsets.only(top: height * 0.050, right: height * 0.030, left: height * 0.030),
+                        padding: EdgeInsets.only(top: height * 0.050, bottom: height * 0.050, right: height * 0.035, left: height * 0.035),
                         child: Column(
                           children: [
                             Align(
                               alignment: Alignment.centerRight,
-                              child: Text('درباره فیلم',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 22,
-                                      color:
-                                      Theme.of(context).iconTheme.color)),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 1,
+                                    height: 45,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Theme.of(context).buttonColor, spreadRadius: 3)
+                                        ])
+                                  ),
+
+                                  SizedBox(width: 20,),
+
+                                  Text('درباره فیلم',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 22,
+                                          color:
+                                          Theme.of(context).iconTheme.color))
+                                ],
+                              ),
                             ),
 
                             Padding(
-                              padding: EdgeInsets.only(top: height * 0.020),
+                              padding: EdgeInsets.only(top: height * 0.050),
                               child: Text(HelpersProvider.ParseHtmlString(episode.description.toString()),
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
