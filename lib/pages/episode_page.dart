@@ -347,7 +347,7 @@ class _EpisodePageState extends State<EpisodePage> {
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 22,
                                                     color: Theme.of(context)
-                                                        .accentColor,
+                                                        .primaryIconTheme.color,
                                                   )),
                                               SizedBox(width: 20),
                                               Icon(
@@ -367,7 +367,32 @@ class _EpisodePageState extends State<EpisodePage> {
                             ],
                           ),
                         ],
-                      )
+                      ),
+
+
+                      Padding(
+                        padding: EdgeInsets.all(height * 0.050),
+                        child: Column(
+                          children: [
+                            Text('درباره فیلم',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 18,
+                                    color:
+                                    Theme.of(context).iconTheme.color)),
+
+                            Padding(
+                              padding: EdgeInsets.only(top: height * 0.050),
+                              child: Text(episode.description.toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color:
+                                      Theme.of(context).iconTheme.color)),
+                            )
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
