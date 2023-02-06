@@ -371,22 +371,25 @@ class _EpisodePageState extends State<EpisodePage> {
 
 
                       Padding(
-                        padding: EdgeInsets.all(height * 0.050),
+                        padding: EdgeInsets.only(top: height * 0.050, right: height * 0.030, left: height * 0.030),
                         child: Column(
                           children: [
-                            Text('درباره فیلم',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                    color:
-                                    Theme.of(context).iconTheme.color)),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Text('درباره فیلم',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 22,
+                                      color:
+                                      Theme.of(context).iconTheme.color)),
+                            ),
 
                             Padding(
-                              padding: EdgeInsets.only(top: height * 0.050),
-                              child: Text(episode.description.toString(),
+                              padding: EdgeInsets.only(top: height * 0.020),
+                              child: Text(HelpersProvider.ParseHtmlString(episode.description.toString()),
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 12,
+                                      fontSize: 17,
                                       color:
                                       Theme.of(context).iconTheme.color)),
                             )
