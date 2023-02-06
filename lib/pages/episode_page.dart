@@ -379,7 +379,7 @@ class _EpisodePageState extends State<EpisodePage> {
                               child: Row(
                                 children: [
                                   Container(
-                                    width: 1,
+                                    width: 0.5,
                                     height: 45,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(3),

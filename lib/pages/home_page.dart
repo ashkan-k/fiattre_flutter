@@ -204,19 +204,35 @@ class _HomePageState extends State<HomePage> {
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 40, right: 30, left: 30),
+              padding: const EdgeInsets.only(top: 40, right: 20, left: 20),
               child: SizedBox(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Row(
-                      children: [
-                        Text('برترین ها',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 22,
-                                color: Theme.of(context).iconTheme.color)),
-                      ],
+                    Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: Row(
+                        children: [
+                          Container(
+                              width: 0.5,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(3),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Theme.of(context).buttonColor, spreadRadius: 3)
+                                  ])
+                          ),
+
+                          SizedBox(width: 20,),
+
+                          Text('برترین ها',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 22,
+                                  color: Theme.of(context).iconTheme.color)),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -1294,7 +1310,9 @@ class _HomePageState extends State<HomePage> {
                                                       height: height * 0.07,
                                                       width: width,
                                                       child: ElevatedButton(
-                                                        onPressed: () {},
+                                                        onPressed: () {
+                                                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => EpisodePage(episode.slug)));
+                                                        },
                                                         style: ElevatedButton.styleFrom(
                                                             shape: RoundedRectangleBorder(
                                                                 borderRadius:
