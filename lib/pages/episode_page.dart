@@ -473,6 +473,7 @@ class _EpisodePageState extends State<EpisodePage> {
                                       height: height * 0.1,
                                     ),
                                   ],
+                                  labelColor: Theme.of(context).buttonColor,
                                 ),
 
                                 Padding(
@@ -493,6 +494,24 @@ class _EpisodePageState extends State<EpisodePage> {
                                         ),
 
                                         // second tab bar viiew widget
+                                        Container(
+                                          color: Colors.pink,
+                                          child: Center(
+                                            child: Text(
+                                              'Car',
+                                            ),
+                                          ),
+                                        ),
+
+                                        Container(
+                                          color: Colors.pink,
+                                          child: Center(
+                                            child: Text(
+                                              'Car',
+                                            ),
+                                          ),
+                                        ),
+
                                         Container(
                                           color: Colors.pink,
                                           child: Center(
