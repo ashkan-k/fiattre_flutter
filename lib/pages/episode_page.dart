@@ -483,7 +483,6 @@ class _EpisodePageState extends State<EpisodePage> {
                                     height: 500,
                                     child: TabBarView(
                                       children: [
-                                        // first tab bar view widget
                                         Container(
                                           color: Colors.red,
                                           child: Center(
@@ -493,7 +492,6 @@ class _EpisodePageState extends State<EpisodePage> {
                                           ),
                                         ),
 
-                                        // second tab bar viiew widget
                                         Container(
                                           color: Colors.pink,
                                           child: Center(
