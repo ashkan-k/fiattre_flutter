@@ -35,7 +35,7 @@ class _EpisodePageState extends State<EpisodePage> {
     var width = MediaQuery.of(context).size.width;
 
     return DefaultTabController(
-      length: 2,
+      length: 4,
       child: Scaffold(
         appBar: MyAppBar(false),
         body: Consumer<EpisodeDataProvider>(
