@@ -27,6 +27,9 @@ class _EpisodePageState extends State<EpisodePage> {
   void initState() {
     super.initState();
     tabController = TabController(vsync: this, length: 4);
+    tabController.addListener(() {
+      print("Selected Index: " + tabController.index.toString());
+    });
 
     final episodeDataProvider =
         Provider.of<EpisodeDataProvider>(context, listen: false);
@@ -442,6 +445,7 @@ class _EpisodePageState extends State<EpisodePage> {
                             child: Column(
                               children: [
                                 TabBar(
+                                  controller: tabController,
                                   tabs: [
                                     Tab(
                                       child: Text(
