@@ -4,6 +4,9 @@ import 'package:fiatre_app/api/services/base_service_provider.dart';
 class CategoryApiService extends BaseApiService{
   dynamic GetAllCategoriesWithEpisodesData([location]) async {
     final response = await Dio().get("${apiUrl}/api/categories/with-episodes/?location=${location ?? ''}",);
+    print('vvvvvvvvvvvvvvvvvvvv');
+    print(response.statusCode);
+    print(response.data);
     return response;
   }
 

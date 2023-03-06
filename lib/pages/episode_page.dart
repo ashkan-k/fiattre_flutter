@@ -21,9 +21,13 @@ class _EpisodePageState extends State<EpisodePage> {
 
   _EpisodePageState(this.episodeSlug);
 
+  late TabController tabController;
+
   @override
   void initState() {
     super.initState();
+    tabController = TabController(vsync: this, length: 4);
+
     final episodeDataProvider =
         Provider.of<EpisodeDataProvider>(context, listen: false);
     episodeDataProvider.GetEpisode(episodeSlug!);
@@ -73,8 +77,8 @@ class _EpisodePageState extends State<EpisodePage> {
                                         EdgeInsets.only(right: width * 0.055),
                                     child: Column(children: [
                                       Padding(
-                                        padding:
-                                            EdgeInsets.only(top: height * 0.070),
+                                        padding: EdgeInsets.only(
+                                            top: height * 0.070),
                                         child: Row(
                                           children: [
                                             Text(
@@ -91,8 +95,8 @@ class _EpisodePageState extends State<EpisodePage> {
                                         ),
                                       ),
                                       Padding(
-                                        padding:
-                                            EdgeInsets.only(top: height * 0.030),
+                                        padding: EdgeInsets.only(
+                                            top: height * 0.030),
                                         child: Row(
                                           children: [
                                             Row(
@@ -106,7 +110,8 @@ class _EpisodePageState extends State<EpisodePage> {
                                                 Text(
                                                   ':',
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 20,
                                                       color: Theme.of(context)
                                                           .iconTheme
@@ -116,7 +121,8 @@ class _EpisodePageState extends State<EpisodePage> {
                                                 Text(
                                                   '${episode.view_count ?? '---'} بازدید',
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 20,
                                                       color: Theme.of(context)
                                                           .iconTheme
@@ -128,7 +134,8 @@ class _EpisodePageState extends State<EpisodePage> {
                                             Row(
                                               children: [
                                                 Icon(
-                                                  Icons.favorite_outline_outlined,
+                                                  Icons
+                                                      .favorite_outline_outlined,
                                                   color: Colors.red,
                                                   size: 30,
                                                 ),
@@ -136,7 +143,8 @@ class _EpisodePageState extends State<EpisodePage> {
                                                 Text(
                                                   ':',
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 20,
                                                       color: Theme.of(context)
                                                           .iconTheme
@@ -146,7 +154,8 @@ class _EpisodePageState extends State<EpisodePage> {
                                                 Text(
                                                   '${episode.likes_count ?? '---'} لایک',
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 20,
                                                       color: Theme.of(context)
                                                           .iconTheme
@@ -158,8 +167,8 @@ class _EpisodePageState extends State<EpisodePage> {
                                         ),
                                       ),
                                       Padding(
-                                        padding:
-                                            EdgeInsets.only(top: height * 0.020),
+                                        padding: EdgeInsets.only(
+                                            top: height * 0.020),
                                         child: Row(
                                           children: [
                                             Text(
@@ -185,8 +194,8 @@ class _EpisodePageState extends State<EpisodePage> {
                                         ),
                                       ),
                                       Padding(
-                                        padding:
-                                            EdgeInsets.only(top: height * 0.020),
+                                        padding: EdgeInsets.only(
+                                            top: height * 0.020),
                                         child: Row(
                                           children: [
                                             Text(
@@ -212,8 +221,8 @@ class _EpisodePageState extends State<EpisodePage> {
                                         ),
                                       ),
                                       Padding(
-                                        padding:
-                                            EdgeInsets.only(top: height * 0.020),
+                                        padding: EdgeInsets.only(
+                                            top: height * 0.020),
                                         child: Row(
                                           children: [
                                             Text(
@@ -239,8 +248,8 @@ class _EpisodePageState extends State<EpisodePage> {
                                         ),
                                       ),
                                       Padding(
-                                        padding:
-                                            EdgeInsets.only(top: height * 0.020),
+                                        padding: EdgeInsets.only(
+                                            top: height * 0.020),
                                         child: Row(
                                           children: [
                                             Text(
@@ -266,8 +275,8 @@ class _EpisodePageState extends State<EpisodePage> {
                                         ),
                                       ),
                                       Padding(
-                                        padding:
-                                            EdgeInsets.only(top: height * 0.020),
+                                        padding: EdgeInsets.only(
+                                            top: height * 0.020),
                                         child: Row(
                                           children: [
                                             Text(
@@ -293,8 +302,8 @@ class _EpisodePageState extends State<EpisodePage> {
                                         ),
                                       ),
                                       Padding(
-                                        padding:
-                                            EdgeInsets.only(top: height * 0.020),
+                                        padding: EdgeInsets.only(
+                                            top: height * 0.020),
                                         child: Row(
                                           children: [
                                             Text(
@@ -320,8 +329,6 @@ class _EpisodePageState extends State<EpisodePage> {
                                         ),
                                       ),
                                     ])),
-
-
                                 Padding(
                                   padding: EdgeInsets.only(
                                       top: height * 0.075, right: 0),
@@ -339,17 +346,20 @@ class _EpisodePageState extends State<EpisodePage> {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             12)),
-                                                backgroundColor: Theme.of(context)
-                                                    .iconTheme
-                                                    .color),
+                                                backgroundColor:
+                                                    Theme.of(context)
+                                                        .iconTheme
+                                                        .color),
                                             child: Row(
                                               children: [
                                                 Text('پخش آنلاین',
                                                     style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 22,
                                                       color: Theme.of(context)
-                                                          .primaryIconTheme.color,
+                                                          .primaryIconTheme
+                                                          .color,
                                                     )),
                                                 SizedBox(width: 20),
                                                 Icon(
@@ -370,10 +380,12 @@ class _EpisodePageState extends State<EpisodePage> {
                             ),
                           ],
                         ),
-
-
                         Padding(
-                          padding: EdgeInsets.only(top: height * 0.050, bottom: height * 0.050, right: height * 0.035, left: height * 0.035),
+                          padding: EdgeInsets.only(
+                              top: height * 0.050,
+                              bottom: height * 0.050,
+                              right: height * 0.035,
+                              left: height * 0.035),
                           child: Column(
                             children: [
                               Align(
@@ -381,43 +393,50 @@ class _EpisodePageState extends State<EpisodePage> {
                                 child: Row(
                                   children: [
                                     Container(
-                                      width: 0.5,
-                                      height: 45,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(3),
-                                          boxShadow: [
-                                            BoxShadow(
-                                                color: Theme.of(context).buttonColor, spreadRadius: 3)
-                                          ])
+                                        width: 0.5,
+                                        height: 45,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(3),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Theme.of(context)
+                                                      .buttonColor,
+                                                  spreadRadius: 3)
+                                            ])),
+                                    SizedBox(
+                                      width: 20,
                                     ),
-
-                                    SizedBox(width: 20,),
-
                                     Text('درباره فیلم',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w900,
                                             fontSize: 22,
-                                            color:
-                                            Theme.of(context).iconTheme.color))
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color))
                                   ],
                                 ),
                               ),
-
                               Padding(
                                 padding: EdgeInsets.only(top: height * 0.050),
-                                child: Text(HelpersProvider.ParseHtmlString(episode.description.toString()),
+                                child: Text(
+                                    HelpersProvider.ParseHtmlString(
+                                        episode.description.toString()),
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 17,
                                         color:
-                                        Theme.of(context).iconTheme.color)),
+                                            Theme.of(context).iconTheme.color)),
                               )
                             ],
                           ),
                         ),
-
                         Padding(
-                          padding: EdgeInsets.only(top: height * 0.050, bottom: height * 0.050, right: height * 0.035, left: height * 0.035),
+                          padding: EdgeInsets.only(
+                              top: height * 0.050,
+                              bottom: height * 0.050,
+                              right: height * 0.035,
+                              left: height * 0.035),
                           child: Align(
                             alignment: Alignment.centerRight,
                             child: Column(
@@ -475,13 +494,13 @@ class _EpisodePageState extends State<EpisodePage> {
                                   ],
                                   labelColor: Theme.of(context).buttonColor,
                                 ),
-
                                 Padding(
                                   padding: EdgeInsets.only(top: height * 0.050),
                                   child: SizedBox(
                                     width: width,
                                     height: 500,
                                     child: TabBarView(
+                                      controller: tabController,
                                       children: [
                                         Container(
                                           color: Colors.red,
@@ -491,7 +510,6 @@ class _EpisodePageState extends State<EpisodePage> {
                                             ),
                                           ),
                                         ),
-
                                         Container(
                                           color: Colors.pink,
                                           child: Center(
@@ -500,7 +518,6 @@ class _EpisodePageState extends State<EpisodePage> {
                                             ),
                                           ),
                                         ),
-
                                         Container(
                                           color: Colors.pink,
                                           child: Center(
@@ -509,7 +526,6 @@ class _EpisodePageState extends State<EpisodePage> {
                                             ),
                                           ),
                                         ),
-
                                         Container(
                                           color: Colors.pink,
                                           child: Center(
