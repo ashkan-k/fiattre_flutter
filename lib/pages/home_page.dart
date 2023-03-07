@@ -972,7 +972,7 @@ class _HomePageState extends State<HomePage> {
             ),
 
             SizedBox(
-              height: height * 1.4,
+              height: height * 1.5,
               width: double.infinity,
               child: FutureBuilder(
                 future: special_episodes,
@@ -981,7 +981,7 @@ class _HomePageState extends State<HomePage> {
                     List<EpisodesModel>? model = snapshot.data as List<EpisodesModel>?;
 
                     return SizedBox(
-                      height: height * 1.4,
+                      height: height * 1.5,
                       width: double.infinity,
                       child: PageView(
                         controller: specialCategoriesPageController,
@@ -995,7 +995,7 @@ class _HomePageState extends State<HomePage> {
                                   Stack(
                                     children: [
                                       Container(
-                                        height: height * 1.350,
+                                        height: height * 1.4,
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(10),
                                             boxShadow: [
@@ -1260,7 +1260,7 @@ class _HomePageState extends State<HomePage> {
                                                 ),
 
                                                 SizedBox(
-                                                  height: height * 0.270,
+                                                  height: height * 0.3,
                                                   child: Padding(
                                                     padding: const EdgeInsets.all(25),
                                                     child: Center(
@@ -1302,7 +1302,7 @@ class _HomePageState extends State<HomePage> {
                                                 ),
 
                                                 Padding(
-                                                  padding: const EdgeInsets.all(25),
+                                                  padding: EdgeInsets.all(width * 0.050),
                                                   child: Center(
                                                     child: SizedBox(
                                                       height: height * 0.07,
