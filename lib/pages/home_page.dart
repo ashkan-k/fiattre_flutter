@@ -542,7 +542,7 @@ class _HomePageState extends State<HomePage> {
                                                     child: Column(
                                                   children: [
                                                     SizedBox(
-                                                      height: 210,
+                                                       height: height * 0.240,
                                                       child: ClipRRect(
                                                         borderRadius:
                                                             BorderRadius.circular(
@@ -688,7 +688,7 @@ class _HomePageState extends State<HomePage> {
                                                     child: Column(
                                                       children: [
                                                         SizedBox(
-                                                          height: 210,
+                                                           height: height * 0.240,
                                                           child: ClipRRect(
                                                             borderRadius:
                                                             BorderRadius.circular(
@@ -900,7 +900,7 @@ class _HomePageState extends State<HomePage> {
                                                     child: Column(
                                                       children: [
                                                         SizedBox(
-                                                          height: 210,
+                                                           height: height * 0.240,
                                                           child: ClipRRect(
                                                             borderRadius:
                                                             BorderRadius.circular(
@@ -1490,7 +1490,7 @@ class _HomePageState extends State<HomePage> {
                                                     child: Column(
                                                       children: [
                                                         SizedBox(
-                                                          height: 210,
+                                                           height: height * 0.240,
                                                           child: ClipRRect(
                                                             borderRadius:
                                                             BorderRadius.circular(
@@ -1704,7 +1704,7 @@ class _HomePageState extends State<HomePage> {
                                                     child: Column(
                                                       children: [
                                                         SizedBox(
-                                                          height: 210,
+                                                           height: height * 0.240,
                                                           child: ClipRRect(
                                                             borderRadius:
                                                             BorderRadius.circular(
@@ -1916,7 +1916,7 @@ class _HomePageState extends State<HomePage> {
                                                     child: Column(
                                                       children: [
                                                         SizedBox(
-                                                          height: 210,
+                                                           height: height * 0.240,
                                                           child: ClipRRect(
                                                             borderRadius:
                                                             BorderRadius.circular(
@@ -2128,7 +2128,7 @@ class _HomePageState extends State<HomePage> {
                                                     child: Column(
                                                       children: [
                                                         SizedBox(
-                                                          height: 210,
+                                                           height: height * 0.240,
                                                           child: ClipRRect(
                                                             borderRadius:
                                                             BorderRadius.circular(
@@ -2274,7 +2274,7 @@ class _HomePageState extends State<HomePage> {
                                                     child: Column(
                                                       children: [
                                                         SizedBox(
-                                                          height: 210,
+                                                           height: height * 0.240,
                                                           child: ClipRRect(
                                                             borderRadius:
                                                             BorderRadius.circular(
@@ -2420,7 +2420,7 @@ class _HomePageState extends State<HomePage> {
                                                     child: Column(
                                                       children: [
                                                         SizedBox(
-                                                          height: 210,
+                                                           height: height * 0.240,
                                                           child: ClipRRect(
                                                             borderRadius:
                                                             BorderRadius.circular(
@@ -2566,7 +2566,7 @@ class _HomePageState extends State<HomePage> {
                                                     child: Column(
                                                       children: [
                                                         SizedBox(
-                                                          height: 210,
+                                                           height: height * 0.240,
                                                           child: ClipRRect(
                                                             borderRadius:
                                                             BorderRadius.circular(
@@ -2712,7 +2712,7 @@ class _HomePageState extends State<HomePage> {
                                                     child: Column(
                                                       children: [
                                                         SizedBox(
-                                                          height: 210,
+                                                           height: height * 0.240,
                                                           child: ClipRRect(
                                                             borderRadius:
                                                             BorderRadius.circular(
@@ -2858,7 +2858,7 @@ class _HomePageState extends State<HomePage> {
                                                     child: Column(
                                                       children: [
                                                         SizedBox(
-                                                          height: 210,
+                                                           height: height * 0.240,
                                                           child: ClipRRect(
                                                             borderRadius:
                                                             BorderRadius.circular(
