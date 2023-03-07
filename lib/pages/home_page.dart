@@ -971,8 +971,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // #TODO Add special Categories here
-
             SizedBox(
               height: height * 1.4,
               width: double.infinity,

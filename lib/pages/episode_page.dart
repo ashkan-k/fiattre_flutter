@@ -16,7 +16,7 @@ class EpisodePage extends StatefulWidget {
   State<EpisodePage> createState() => _EpisodePageState(this.episodeSlug);
 }
 
-class _EpisodePageState extends State<EpisodePage> {
+class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin {
   String? episodeSlug;
 
   _EpisodePageState(this.episodeSlug);
@@ -28,7 +28,9 @@ class _EpisodePageState extends State<EpisodePage> {
     super.initState();
     tabController = TabController(vsync: this, length: 4);
     tabController.addListener(() {
-      print("Selected Index: " + tabController.index.toString());
+      setState(() {
+        print("Selected Index: " + tabController.index.toString());
+      });
     });
 
     final episodeDataProvider =
@@ -446,60 +448,60 @@ class _EpisodePageState extends State<EpisodePage> {
                               children: [
                                 TabBar(
                                   controller: tabController,
+                                  labelColor: Theme.of(context).buttonColor,
                                   tabs: [
                                     Tab(
                                       child: Text(
                                         'گالری عکس',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 17,
+                                            fontSize: 13,
                                             color: Theme.of(context)
                                                 .iconTheme
                                                 .color),
                                       ),
-                                      height: height * 0.1,
+                                      height: height * 0.070,
                                     ),
                                     Tab(
                                       child: Text(
                                         'جزییات',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 17,
+                                            fontSize: 13,
                                             color: Theme.of(context)
                                                 .iconTheme
                                                 .color),
                                       ),
-                                      height: height * 0.1,
+                                      height: height * 0.070,
                                     ),
                                     Tab(
                                       child: Text(
                                         'مشابه',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 17,
+                                            fontSize: 13,
                                             color: Theme.of(context)
                                                 .iconTheme
                                                 .color),
                                       ),
-                                      height: height * 0.1,
+                                      height: height * 0.070,
                                     ),
                                     Tab(
                                       child: Text(
                                         'نظرات',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 17,
+                                            fontSize: 13,
                                             color: Theme.of(context)
                                                 .iconTheme
                                                 .color),
                                       ),
-                                      height: height * 0.1,
+                                      height: height * 0.070,
                                     ),
                                   ],
-                                  labelColor: Theme.of(context).buttonColor,
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(top: height * 0.050),
+                                  padding: EdgeInsets.only(top: height * 0.040),
                                   child: SizedBox(
                                     width: width,
                                     height: 500,
