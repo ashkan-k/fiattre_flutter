@@ -445,126 +445,126 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
                               left: height * 0.035),
                           child: Align(
                             alignment: Alignment.centerRight,
-                            child: Row(
+                            child: Column(
                               children: [
-                                Container(
-                                    width: 0.5,
-                                    height: 45,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.circular(3),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: Theme.of(context)
-                                                  .buttonColor,
-                                              spreadRadius: 3)
-                                        ])),
-                                SizedBox(
-                                  width: 20,
-                                ),
+                                TabBar(
+                                  controller: tabController,
+                                  labelColor: Theme.of(context).buttonColor,
+                                  tabs: [
+                                    Tab(
+                                      child: Row(
+                                            children: [
+                                              Container(
+                                                  width: 0.5,
+                                                  height: 35,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                      BorderRadius.circular(3),
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                            color: Theme.of(context)
+                                                                .buttonColor,
+                                                            spreadRadius: 3)
+                                                      ])),
+                                              SizedBox(
+                                                width: 20,
+                                              ),
 
-                                Column(
-                                  children: [
-                                    TabBar(
+                                              Text(
+                                                'گالری عکس',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 13,
+                                                    color: Theme.of(context)
+                                                        .iconTheme
+                                                        .color),
+                                              ),
+                                            ],
+                                          ),
+                                          height: height * 0.070,
+                                        ),
+                                    Tab(
+                                      child: Text(
+                                        'جزییات',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 13,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color),
+                                      ),
+                                      height: height * 0.070,
+                                    ),
+                                    Tab(
+                                      child: Text(
+                                        'مشابه',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 13,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color),
+                                      ),
+                                      height: height * 0.070,
+                                    ),
+                                    Tab(
+                                      child: Text(
+                                        'نظرات',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 13,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color),
+                                      ),
+                                      height: height * 0.070,
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: height * 0.040),
+                                  child: SizedBox(
+                                    width: width,
+                                    height: 500,
+                                    child: TabBarView(
                                       controller: tabController,
-                                      labelColor: Theme.of(context).buttonColor,
-                                      tabs: [
-                                        Tab(
-                                          child: Text(
-                                            'گالری عکس',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 13,
-                                                color: Theme.of(context)
-                                                    .iconTheme
-                                                    .color),
+                                      children: [
+                                        Container(
+                                          color: Colors.red,
+                                          child: Center(
+                                            child: Text(
+                                              'Bike',
+                                            ),
                                           ),
-                                          height: height * 0.070,
                                         ),
-                                        Tab(
-                                          child: Text(
-                                            'جزییات',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 13,
-                                                color: Theme.of(context)
-                                                    .iconTheme
-                                                    .color),
+                                        Container(
+                                          color: Colors.pink,
+                                          child: Center(
+                                            child: Text(
+                                              'Car',
+                                            ),
                                           ),
-                                          height: height * 0.070,
                                         ),
-                                        Tab(
-                                          child: Text(
-                                            'مشابه',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 13,
-                                                color: Theme.of(context)
-                                                    .iconTheme
-                                                    .color),
+                                        Container(
+                                          color: Colors.pink,
+                                          child: Center(
+                                            child: Text(
+                                              'Car',
+                                            ),
                                           ),
-                                          height: height * 0.070,
                                         ),
-                                        Tab(
-                                          child: Text(
-                                            'نظرات',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 13,
-                                                color: Theme.of(context)
-                                                    .iconTheme
-                                                    .color),
+                                        Container(
+                                          color: Colors.pink,
+                                          child: Center(
+                                            child: Text(
+                                              'Car',
+                                            ),
                                           ),
-                                          height: height * 0.070,
                                         ),
                                       ],
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: height * 0.040),
-                                      child: SizedBox(
-                                        width: width,
-                                        height: 500,
-                                        child: TabBarView(
-                                          controller: tabController,
-                                          children: [
-                                            Container(
-                                              color: Colors.red,
-                                              child: Center(
-                                                child: Text(
-                                                  'Bike',
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              color: Colors.pink,
-                                              child: Center(
-                                                child: Text(
-                                                  'Car',
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              color: Colors.pink,
-                                              child: Center(
-                                                child: Text(
-                                                  'Car',
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              color: Colors.pink,
-                                              child: Center(
-                                                child: Text(
-                                                  'Car',
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
+                                  ),
+                                )
                               ],
                             ),
                           ),
