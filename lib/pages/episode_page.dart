@@ -448,76 +448,86 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
                             child: Column(
                               children: [
                                 TabBar(
+                                  isScrollable: true,
                                   controller: tabController,
                                   labelColor: Theme.of(context).buttonColor,
                                   tabs: [
-                                    Tab(
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                              width: 0.5,
-                                              height: 35,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                  BorderRadius.circular(3),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Theme.of(context)
-                                                            .buttonColor,
-                                                        spreadRadius: 3)
-                                                  ])),
-                                          SizedBox(
-                                            width: 20,
-                                          ),
+                                    SizedBox(
+                                      width: 80,
+                                      child: Tab(
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                                width: 0.5,
+                                                height: 35,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                    BorderRadius.circular(3),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                          color: Theme.of(context)
+                                                              .buttonColor,
+                                                          spreadRadius: 3)
+                                                    ])),
+                                            SizedBox(
+                                              width: 20,
+                                            ),
 
-                                          Text(
-                                            'گالری عکس',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 13,
-                                                color: Theme.of(context)
-                                                    .iconTheme
-                                                    .color),
-                                          ),
-                                        ],
+                                            Text(
+                                              'گالری عکس',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 13,
+                                                  color: Theme.of(context)
+                                                      .iconTheme
+                                                      .color),
+                                            ),
+                                          ],
+                                        ),
+                                        height: height * 0.070,
                                       ),
-                                      height: height * 0.070,
                                     ),
-                                    Tab(
-                                      child: Text(
-                                        'جزییات',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 13,
-                                            color: Theme.of(context)
-                                                .iconTheme
-                                                .color),
+                                    SizedBox(
+                                      child: Tab(
+                                        child: Text(
+                                          'جزییات',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 13,
+                                              color: Theme.of(context)
+                                                  .iconTheme
+                                                  .color),
+                                        ),
+                                        height: height * 0.070,
                                       ),
-                                      height: height * 0.070,
                                     ),
-                                    Tab(
-                                      child: Text(
-                                        'مشابه',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 13,
-                                            color: Theme.of(context)
-                                                .iconTheme
-                                                .color),
+                                    SizedBox(
+                                      child: Tab(
+                                        child: Text(
+                                          'مشابه',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 13,
+                                              color: Theme.of(context)
+                                                  .iconTheme
+                                                  .color),
+                                        ),
+                                        height: height * 0.070,
                                       ),
-                                      height: height * 0.070,
                                     ),
-                                    Tab(
-                                      child: Text(
-                                        'نظرات',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 13,
-                                            color: Theme.of(context)
-                                                .iconTheme
-                                                .color),
+                                    SizedBox(
+                                      child: Tab(
+                                        child: Text(
+                                          'نظرات',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 13,
+                                              color: Theme.of(context)
+                                                  .iconTheme
+                                                  .color),
+                                        ),
+                                        height: height * 0.070,
                                       ),
-                                      height: height * 0.070,
                                     ),
                                   ],
                                 ),
