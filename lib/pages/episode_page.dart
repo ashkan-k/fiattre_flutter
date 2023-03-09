@@ -34,8 +34,10 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
     episodeDataProvider.GetEpisode(episodeSlug!);
   }
 
+  int tapBarSelectedTab = 0;
   void _handleTabSelection() {
     setState(() {
+      tapBarSelectedTab = tabController.index;
     });
   }
 
@@ -43,6 +45,8 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+
+    Color tapBarSelectedColor = Theme.of(context).buttonColor;
 
     return DefaultTabController(
       length: 4,
@@ -448,9 +452,7 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
                             child: Column(
                               children: [
                                 TabBar(
-                                  // isScrollable: true,
                                   controller: tabController,
-                                  labelColor: Theme.of(context).buttonColor,
                                   labelPadding: EdgeInsets.symmetric(horizontal: width * 0.012),
                                   tabs: [
                                     Tab(
@@ -477,7 +479,7 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 13,
-                                                color: Theme.of(context)
+                                                color: tapBarSelectedTab == 0 ? tapBarSelectedColor : Theme.of(context)
                                                     .iconTheme
                                                     .color),
                                           ),
@@ -491,7 +493,7 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13,
-                                            color: Theme.of(context)
+                                            color: tapBarSelectedTab == 1 ? tapBarSelectedColor : Theme.of(context)
                                                 .iconTheme
                                                 .color),
                                       ),
@@ -503,7 +505,7 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13,
-                                            color: Theme.of(context)
+                                            color: tapBarSelectedTab == 2 ? tapBarSelectedColor : Theme.of(context)
                                                 .iconTheme
                                                 .color),
                                       ),
@@ -515,7 +517,7 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 13,
-                                            color: Theme.of(context)
+                                            color: tapBarSelectedTab == 3 ? tapBarSelectedColor : Theme.of(context)
                                                 .iconTheme
                                                 .color),
                                       ),
