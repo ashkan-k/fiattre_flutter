@@ -453,7 +453,7 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
                                   labelColor: Theme.of(context).buttonColor,
                                   tabs: [
                                     SizedBox(
-                                      width: 80,
+                                      width: width * 0.20,
                                       child: Tab(
                                         child: Row(
                                           children: [
