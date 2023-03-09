@@ -448,10 +448,10 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
                             child: Column(
                               children: [
                                 TabBar(
-                                  isScrollable: true,
+                                  // isScrollable: true,
                                   controller: tabController,
                                   labelColor: Theme.of(context).buttonColor,
-                                  labelPadding: EdgeInsets.symmetric(horizontal: width * 0.055),
+                                  labelPadding: EdgeInsets.symmetric(horizontal: width * 0.012),
                                   tabs: [
                                     Tab(
                                       child: Row(
