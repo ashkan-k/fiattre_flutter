@@ -23,6 +23,7 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
   _EpisodePageState(this.episodeSlug);
 
   late TabController tabController;
+  int tapBarSelectedTab = 0;
 
   @override
   void initState() {
@@ -35,7 +36,6 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
     episodeDataProvider.GetEpisode(episodeSlug!);
   }
 
-  int tapBarSelectedTab = 0;
   void _handleTabSelection() {
     setState(() {
       tapBarSelectedTab = tabController.index;
