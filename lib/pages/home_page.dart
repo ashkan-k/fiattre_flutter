@@ -151,49 +151,60 @@ class _HomePageState extends State<HomePage> {
 
                       // AutoPlaySlider(model);
 
-                      return Stack(
-                        children: [
-                          PageView(
-                            controller: pageController,
-                            children: List.generate(model!.length, (index) {
-                              return InkWell(
-                                onTap: () async {
-                                  await HelpersProvider.LunchUrl(
-                                      model[index].link.toString(), false);
-                                },
-                                child: HelpersProvider.ShowImageClipRRect(
-                                    model[index].file_mobile.toString(),
-                                    'network',
-                                    0),
-                              );
-                            }),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Padding(
-                              padding: const EdgeInsets.only(bottom: 10),
-                              child: SmoothPageIndicator(
-                                controller: pageController,
-                                count: model!.length,
-                                effect: ExpandingDotsEffect(
-                                    dotWidth: 10,
-                                    dotHeight: 10,
-                                    spacing: 3,
-                                    dotColor: (Theme.of(context)
-                                        .textTheme
-                                        .labelSmall
-                                        ?.color)!,
-                                    activeDotColor:
-                                        Theme.of(context).secondaryHeaderColor),
-                                onDotClicked: (index) =>
-                                    pageController.animateToPage(index,
-                                        duration: Duration(milliseconds: 350),
-                                        curve: Curves.easeIn),
-                              ),
+                      if(model!.isNotEmpty){
+                        return Stack(
+                          children: [
+                            PageView(
+                              controller: pageController,
+                              children: List.generate(model!.length, (index) {
+                                return InkWell(
+                                  onTap: () async {
+                                    await HelpersProvider.LunchUrl(
+                                        model[index].link.toString(), false);
+                                  },
+                                  child: HelpersProvider.ShowImageClipRRect(
+                                      model[index].file_mobile.toString(),
+                                      'network',
+                                      0),
+                                );
+                              }),
                             ),
-                          )
-                        ],
-                      );
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: SmoothPageIndicator(
+                                  controller: pageController,
+                                  count: model!.length,
+                                  effect: ExpandingDotsEffect(
+                                      dotWidth: 10,
+                                      dotHeight: 10,
+                                      spacing: 3,
+                                      dotColor: (Theme.of(context)
+                                          .textTheme
+                                          .labelSmall
+                                          ?.color)!,
+                                      activeDotColor:
+                                      Theme.of(context).secondaryHeaderColor),
+                                  onDotClicked: (index) =>
+                                      pageController.animateToPage(index,
+                                          duration: Duration(milliseconds: 350),
+                                          curve: Curves.easeIn),
+                                ),
+                              ),
+                            )
+                          ],
+                        );
+                      }else{
+                        return Center(
+                          child: JumpingDotsProgressIndicator(
+                            color: (Theme.of(context).iconTheme.color)!,
+                            fontSize: 80,
+                            dotSpacing: 3,
+                          ),
+                        );
+                      }
+
                     case Status.ERROR:
                       return Text(posterDataProvider.state.message);
                     default:
