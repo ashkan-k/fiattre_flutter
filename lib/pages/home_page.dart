@@ -4,6 +4,7 @@ import 'package:fiatre_app/api/models/categories_model.dart';
 import 'package:fiatre_app/api/models/episodes_model.dart';
 import 'package:fiatre_app/api/models/posters_model.dart';
 import 'package:fiatre_app/api/services/base_service_provider.dart';
+import 'package:fiatre_app/pages/components/loading.dart';
 import 'package:fiatre_app/pages/components/my_app_bar.dart';
 import 'package:fiatre_app/providers/category_data_provider.dart';
 import 'package:fiatre_app/providers/episode_data_provider.dart';
@@ -138,13 +139,7 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, sliderDataProvider, child) {
                   switch (sliderDataProvider.state.status) {
                     case Status.LOADING:
-                      return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: (Theme.of(context).iconTheme.color)!,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ),
-                      );
+                      return const MyLoading();
                     case Status.COMPLETED:
                       List<SlidersModel>? model =
                           sliderDataProvider.data as List<SlidersModel>?;
@@ -196,13 +191,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         );
                       }else{
-                        return Center(
-                          child: JumpingDotsProgressIndicator(
-                            color: (Theme.of(context).iconTheme.color)!,
-                            fontSize: 80,
-                            dotSpacing: 3,
-                          ),
-                        );
+                        return const MyLoading();
                       }
 
                     case Status.ERROR:
@@ -457,13 +446,7 @@ class _HomePageState extends State<HomePage> {
                       }),
                     );
                   } else {
-                    return Center(
-                      child: JumpingDotsProgressIndicator(
-                        color: (Theme.of(context).iconTheme.color)!,
-                        fontSize: 80,
-                        dotSpacing: 3,
-                      ),
-                    );
+                    return const MyLoading();
                   }
                 },
               ),
@@ -604,12 +587,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                      color: (Theme.of(context).iconTheme.color)!,
-                      fontSize: 80,
-                      dotSpacing: 3,
-                    ));
+                    return const MyLoading();
                   }
                 },
               ),
@@ -752,12 +730,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: (Theme.of(context).iconTheme.color)!,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                    return const MyLoading();
                   }
                 },
               ),
@@ -817,13 +790,7 @@ class _HomePageState extends State<HomePage> {
                       }),
                     );
                   } else {
-                    return Center(
-                      child: JumpingDotsProgressIndicator(
-                        color: (Theme.of(context).iconTheme.color)!,
-                        fontSize: 80,
-                        dotSpacing: 3,
-                      ),
-                    );
+                    return const MyLoading();
                   }
                 },
               ),
@@ -966,12 +933,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: (Theme.of(context).iconTheme.color)!,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                    return const MyLoading();
                   }
                 },
               ),
@@ -1349,12 +1311,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: (Theme.of(context).iconTheme.color)!,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                    return const MyLoading();
                   }
                 },
               ),
@@ -1558,12 +1515,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: (Theme.of(context).iconTheme.color)!,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                    return const MyLoading();
                   }
                 },
               ),
@@ -1616,13 +1568,7 @@ class _HomePageState extends State<HomePage> {
                       }),
                     );
                   } else {
-                    return Center(
-                      child: JumpingDotsProgressIndicator(
-                        color: (Theme.of(context).iconTheme.color)!,
-                        fontSize: 80,
-                        dotSpacing: 3,
-                      ),
-                    );
+                    return const MyLoading();
                   }
                 },
               ),
@@ -1774,12 +1720,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: (Theme.of(context).iconTheme.color)!,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                    return const MyLoading();
                   }
                 },
               ),
@@ -1830,13 +1771,7 @@ class _HomePageState extends State<HomePage> {
                       }),
                     );
                   } else {
-                    return Center(
-                      child: JumpingDotsProgressIndicator(
-                        color: (Theme.of(context).iconTheme.color)!,
-                        fontSize: 80,
-                        dotSpacing: 3,
-                      ),
-                    );
+                    return const MyLoading();
                   }
                 },
               ),
@@ -1988,12 +1923,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: (Theme.of(context).iconTheme.color)!,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                    return const MyLoading();
                   }
                 },
               ),
@@ -2044,13 +1974,7 @@ class _HomePageState extends State<HomePage> {
                       }),
                     );
                   } else {
-                    return Center(
-                      child: JumpingDotsProgressIndicator(
-                        color: (Theme.of(context).iconTheme.color)!,
-                        fontSize: 80,
-                        dotSpacing: 3,
-                      ),
-                    );
+                    return const MyLoading();
                   }
                 },
               ),
@@ -2202,12 +2126,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: (Theme.of(context).iconTheme.color)!,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                    return const MyLoading();
                   }
                 },
               ),
@@ -2350,12 +2269,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: (Theme.of(context).iconTheme.color)!,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                    return const MyLoading();
                   }
                 },
               ),
@@ -2498,12 +2412,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: (Theme.of(context).iconTheme.color)!,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                    return const MyLoading();
                   }
                 },
               ),
@@ -2646,12 +2555,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: (Theme.of(context).iconTheme.color)!,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                    return const MyLoading();
                   }
                 },
               ),
@@ -2794,12 +2698,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: (Theme.of(context).iconTheme.color)!,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                    return const MyLoading();
                   }
                 },
               ),
@@ -2942,12 +2841,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(
-                        child: JumpingDotsProgressIndicator(
-                          color: (Theme.of(context).iconTheme.color)!,
-                          fontSize: 80,
-                          dotSpacing: 3,
-                        ));
+                    return const MyLoading();
                   }
                 },
               ),

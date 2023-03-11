@@ -1,4 +1,5 @@
 import 'package:fiatre_app/api/models/episodes_model.dart';
+import 'package:fiatre_app/pages/components/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 import 'package:provider/provider.dart';
@@ -56,13 +57,7 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
           builder: (context, episodeDataProvider, child) {
             switch (episodeDataProvider.state.status) {
               case Status.LOADING:
-                return Center(
-                  child: JumpingDotsProgressIndicator(
-                    color: (Theme.of(context).iconTheme.color)!,
-                    fontSize: 80,
-                    dotSpacing: 3,
-                  ),
-                );
+                return const MyLoading();
               case Status.COMPLETED:
                 EpisodesModel? episode =
                     episodeDataProvider.single_data as EpisodesModel?;
