@@ -92,9 +92,10 @@ class _EpisodePageState extends State<EpisodePage> with TickerProviderStateMixin
                                         child: Row(
                                           children: [
                                             Text(
-                                                episode.title
+                                                episode.title.toString().length > 18 ? episode.title
                                                     .toString()
-                                                    .substring(0, 18),
+                                                    .substring(0, 18) : episode.title
+                                                    .toString(),
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w900,
                                                     fontSize: 30,

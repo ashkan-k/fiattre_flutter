@@ -572,8 +572,10 @@ class _HomePageState extends State<HomePage> {
                                                               top: 3),
                                                       child: Text(
                                                           episode.title
+                                                              .toString().length > 18 ? episode.title
                                                               .toString()
-                                                              .substring(0, 18),
+                                                              .substring(0, 18) : episode.title
+                                                              .toString(),
                                                           style: TextStyle(
                                                               fontWeight:
                                                                   FontWeight.bold,
@@ -592,9 +594,7 @@ class _HomePageState extends State<HomePage> {
                                         separatorBuilder: (context, index) {
                                           return const Divider();
                                         },
-                                        itemCount:
-                                            model![index].episodes?.length ??
-                                                0),
+                                        itemCount: model![index].episodes?.length ?? 0),
                                   ),
                                 )
                               ],
@@ -718,8 +718,10 @@ class _HomePageState extends State<HomePage> {
                                                               top: 3),
                                                           child: Text(
                                                               episode.title
+                                                                  .toString().length > 18 ? episode.title
                                                                   .toString()
-                                                                  .substring(0, 18),
+                                                                  .substring(0, 18) : episode.title
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight.bold,
@@ -930,8 +932,10 @@ class _HomePageState extends State<HomePage> {
                                                               top: 3),
                                                           child: Text(
                                                               episode.title
+                                                                  .toString().length > 18 ? episode.title
                                                                   .toString()
-                                                                  .substring(0, 18),
+                                                                  .substring(0, 18) : episode.title
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight.bold,
@@ -1296,7 +1300,7 @@ class _HomePageState extends State<HomePage> {
                                                             child: Directionality(
                                                               textDirection: TextDirection.rtl,
                                                               child: Text(
-                                                                HelpersProvider.ParseHtmlString(episode.description.toString().substring(0, 288 >= episode.description!.length ? episode.description!.length : 288)),
+                                                                HelpersProvider.ParseHtmlString(episode.description.toString().substring(0, 180 >= episode.description!.length ? episode.description!.length : 180)),
                                                                 style: TextStyle(
                                                                     fontWeight:
                                                                     FontWeight.bold,
@@ -1520,8 +1524,10 @@ class _HomePageState extends State<HomePage> {
                                                               top: 3),
                                                           child: Text(
                                                               episode.title
+                                                                  .toString().length > 18 ? episode.title
                                                                   .toString()
-                                                                  .substring(0, 18),
+                                                                  .substring(0, 18) : episode.title
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight.bold,
@@ -1734,8 +1740,10 @@ class _HomePageState extends State<HomePage> {
                                                               top: 3),
                                                           child: Text(
                                                               episode.title
+                                                                  .toString().length > 18 ? episode.title
                                                                   .toString()
-                                                                  .substring(0, 18),
+                                                                  .substring(0, 18) : episode.title
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight.bold,
@@ -1946,8 +1954,10 @@ class _HomePageState extends State<HomePage> {
                                                               top: 3),
                                                           child: Text(
                                                               episode.title
+                                                                  .toString().length > 18 ? episode.title
                                                                   .toString()
-                                                                  .substring(0, 18),
+                                                                  .substring(0, 18) : episode.title
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight.bold,
@@ -2158,8 +2168,10 @@ class _HomePageState extends State<HomePage> {
                                                               top: 3),
                                                           child: Text(
                                                               episode.title
+                                                                  .toString().length > 18 ? episode.title
                                                                   .toString()
-                                                                  .substring(0, 18),
+                                                                  .substring(0, 18) : episode.title
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight.bold,
@@ -2304,8 +2316,10 @@ class _HomePageState extends State<HomePage> {
                                                               top: 3),
                                                           child: Text(
                                                               episode.title
+                                                                  .toString().length > 18 ? episode.title
                                                                   .toString()
-                                                                  .substring(0, 18),
+                                                                  .substring(0, 18) : episode.title
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight.bold,
@@ -2450,8 +2464,10 @@ class _HomePageState extends State<HomePage> {
                                                               top: 3),
                                                           child: Text(
                                                               episode.title
+                                                                  .toString().length > 18 ? episode.title
                                                                   .toString()
-                                                                  .substring(0, 18),
+                                                                  .substring(0, 18) : episode.title
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight.bold,
@@ -2596,8 +2612,10 @@ class _HomePageState extends State<HomePage> {
                                                               top: 3),
                                                           child: Text(
                                                               episode.title
+                                                                  .toString().length > 18 ? episode.title
                                                                   .toString()
-                                                                  .substring(0, 18),
+                                                                  .substring(0, 18) : episode.title
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight.bold,
@@ -2742,8 +2760,10 @@ class _HomePageState extends State<HomePage> {
                                                               top: 3),
                                                           child: Text(
                                                               episode.title
+                                                                  .toString().length > 18 ? episode.title
                                                                   .toString()
-                                                                  .substring(0, 18),
+                                                                  .substring(0, 18) : episode.title
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight.bold,
@@ -2888,8 +2908,10 @@ class _HomePageState extends State<HomePage> {
                                                               top: 3),
                                                           child: Text(
                                                               episode.title
+                                                                  .toString().length > 18 ? episode.title
                                                                   .toString()
-                                                                  .substring(0, 18),
+                                                                  .substring(0, 18) : episode.title
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight.bold,
