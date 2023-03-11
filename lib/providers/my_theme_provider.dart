@@ -16,17 +16,17 @@ class MyThemeProvider extends ChangeNotifier {
 
   void SetTheme() {
     themeMode = themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
-    helpersProvider.RemoveSharedPreference('user_theme_is_dark');
-    helpersProvider.SetSharedPreference('user_theme_is_dark', bool, isDarkMode);
+    helpersProvider.RemoveSharedPreference('user_theme_is_light');
+    helpersProvider.SetSharedPreference('user_theme_is_light', bool, !isDarkMode);
     notifyListeners();
   }
 
   void GetCurrentTheme() async {
     final prefs = await SharedPreferences.getInstance();
-    if(prefs.getBool('user_theme_is_dark') == true){
-      themeMode = ThemeMode.dark;
-    }else{
+    if(prefs.getBool('user_theme_is_light') == true){
       themeMode = ThemeMode.light;
+    }else{
+      themeMode = ThemeMode.dark;
     }
     notifyListeners();
   }
