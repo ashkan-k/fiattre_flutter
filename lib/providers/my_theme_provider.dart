@@ -70,7 +70,7 @@ class MyThemes {
       labelSmall: GoogleFonts.ubuntu(color: Colors.black38, fontSize: 13),
       titleSmall: GoogleFonts.ubuntu(color: Color(0xFF1a1a1c), fontSize: 12),
     ),
-    unselectedWidgetColor: Colors.grey.shade600,
+    unselectedWidgetColor: Colors.grey,
     primaryColorLight: Colors.grey,
     scaffoldBackgroundColor: Colors.grey,
     primaryColor: Colors.grey.shade800,
